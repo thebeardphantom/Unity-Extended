@@ -83,9 +83,21 @@ namespace BeardPhantom.UnityExtended
 
         public static void LookAt2D(this Transform transform, Vector2 position, Vector2 forward2D)
         {
+            var angle = transform.GetLookAtAngle2D(position, forward2D);
+            transform.SetAngle2D(angle);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float GetLookAtAngle2D(this Transform transform, Vector2 position)
+        {
+            return GetLookAtAngle2D(transform, position, Forward2DDefault);
+        }
+
+        public static float GetLookAtAngle2D(this Transform transform, Vector2 position, Vector2 forward2D)
+        {
             var directionTo = (position - transform.GetPosition2D()).normalized;
             var angle = Vector2.SignedAngle(forward2D, directionTo);
-            transform.SetAngle2D(angle);
+            return angle;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
