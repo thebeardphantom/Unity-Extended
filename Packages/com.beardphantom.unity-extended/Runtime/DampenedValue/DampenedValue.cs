@@ -18,7 +18,7 @@ namespace BeardPhantom.UnityExtended
         public float SmoothTime { get; private set; }
 
         [field: SerializeField]
-        public float MaxSpeed { get; private set; } = float.MaxValue;
+        public float MaxSpeed { get; private set; } = float.PositiveInfinity;
 
         #endregion
 

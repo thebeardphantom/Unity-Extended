@@ -10,6 +10,8 @@ namespace BeardPhantom.UnityExtended.Editor
 
         private SerializedPropertyTree.Node _tree;
 
+        private UnityEditor.Editor _editor;
+
         #endregion
 
         #region Methods
@@ -86,14 +88,19 @@ namespace BeardPhantom.UnityExtended.Editor
                 }
             }
 
-            foreach (var item in ActiveEditorTracker.sharedTracker.activeEditors)
+            if (_editor == null)
             {
-                if (item.serializedObject == property.serializedObject)
+                foreach (var editor in ActiveEditorTracker.sharedTracker.activeEditors)
                 {
-                    item.Repaint();
-                    break;
+                    if (editor.serializedObject == property.serializedObject)
+                    {
+                        _editor = editor;
+                        break;
+                    }
                 }
             }
+
+            _editor.Repaint();
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
