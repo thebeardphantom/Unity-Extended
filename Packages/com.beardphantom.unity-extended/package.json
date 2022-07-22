@@ -1,7 +1,6 @@
 {
   "name": "com.beardphantom.unity-extended",
   "displayName": "Unity Extended",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.2.0",
   "unity": "2021.3"
 }
