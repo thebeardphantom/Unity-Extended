@@ -5,6 +5,12 @@ namespace BeardPhantom.UnityExtended
 {
     public static class Transform2DExtensions
     {
+        #region Fields
+
+        public static Vector2 Forward2D = Forward2DDefault;
+
+        #endregion
+
         #region Properties
 
         public static Vector2 Forward2DDefault => Vector2.right;
@@ -66,7 +72,7 @@ namespace BeardPhantom.UnityExtended
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void LookAt2D(this Transform transform, Transform other)
         {
-            LookAt2D(transform, other.GetPosition2D(), Forward2DDefault);
+            LookAt2D(transform, other.GetPosition2D(), Forward2D);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -78,7 +84,7 @@ namespace BeardPhantom.UnityExtended
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void LookAt2D(this Transform transform, Vector2 position)
         {
-            LookAt2D(transform, position, Forward2DDefault);
+            LookAt2D(transform, position, Forward2D);
         }
 
         public static void LookAt2D(this Transform transform, Vector2 position, Vector2 forward2D)
@@ -90,7 +96,7 @@ namespace BeardPhantom.UnityExtended
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float GetLookAtAngle2D(this Transform transform, Vector2 position)
         {
-            return GetLookAtAngle2D(transform, position, Forward2DDefault);
+            return GetLookAtAngle2D(transform, position, Forward2D);
         }
 
         public static float GetLookAtAngle2D(this Transform transform, Vector2 position, Vector2 forward2D)
@@ -109,6 +115,11 @@ namespace BeardPhantom.UnityExtended
         public static Vector2 DirectionTo(this Transform transform, Vector2 position)
         {
             return (position - transform.GetPosition2D()).normalized;
+        }
+
+        public static Vector2 GetForward2D(this Transform transform)
+        {
+            return transform.TransformDirection(Forward2D);
         }
 
         #endregion
