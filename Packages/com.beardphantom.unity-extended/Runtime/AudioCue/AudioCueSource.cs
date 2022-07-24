@@ -5,23 +5,16 @@ namespace BeardPhantom.UnityExtended
     [RequireComponent(typeof(AudioSource))]
     public class AudioCueSource : MonoBehaviour
     {
-        #region Fields
-
-        [SerializeField]
-        private AudioSource _audioSource;
-
-        [SerializeField]
-        private AudioCueAsset _audioCue;
-
-        #endregion
-
         #region Properties
 
-        public AudioCueAsset AudioCue
-        {
-            get => _audioCue;
-            set => _audioCue = value;
-        }
+        [field: SerializeField]
+        public AudioCueAsset AudioCueAsset { get; private set; }
+
+        [field: SerializeField]
+        private AudioSource AudioSource { get; set; }
+
+        [field: SerializeField]
+        private bool PlayOnAwake { get; set; }
 
         #endregion
 
@@ -29,13 +22,21 @@ namespace BeardPhantom.UnityExtended
 
         public void Play(AudioCueAsset.PlayArgs args = default)
         {
-            _audioCue.Play(_audioSource, args);
+            AudioCueAsset.Play(AudioSource, args);
+        }
+
+        private void Awake()
+        {
+            if (PlayOnAwake)
+            {
+                Play();
+            }
         }
 
         private void OnValidate()
         {
-            _audioSource = GetComponent<AudioSource>();
-            _audioSource.hideFlags = HideFlags.NotEditable;
+            AudioSource = GetComponent<AudioSource>();
+            AudioSource.hideFlags = HideFlags.NotEditable;
         }
 
         #endregion
