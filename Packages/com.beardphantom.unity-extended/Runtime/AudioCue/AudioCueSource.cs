@@ -10,11 +10,18 @@ namespace BeardPhantom.UnityExtended
         [field: SerializeField]
         public AudioCueAsset AudioCueAsset { get; set; }
 
+        [field: Header("Play on Awake Settings")]
         [field: SerializeField]
-        private AudioSource AudioSource { get; set; }
+        public bool PlayOnAwake { get; set; }
 
         [field: SerializeField]
-        private bool PlayOnAwake { get; set; }
+        public bool Loop { get; set; }
+
+        [field: SerializeField]
+        public bool PlayAtPosition { get; private set; }
+
+        [field: SerializeField]
+        private AudioSource AudioSource { get; set; }
 
         #endregion
 
@@ -29,7 +36,7 @@ namespace BeardPhantom.UnityExtended
         {
             if (PlayOnAwake)
             {
-                Play();
+                Play(new AudioCueAsset.PlayArgs(Loop, position: PlayAtPosition ? transform.position : null));
             }
         }
 
