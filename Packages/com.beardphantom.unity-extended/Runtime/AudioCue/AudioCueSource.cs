@@ -8,7 +8,7 @@ namespace BeardPhantom.UnityExtended
         #region Properties
 
         [field: SerializeField]
-        public AudioCueAsset AudioCueAsset { get; private set; }
+        public AudioCueAsset AudioCueAsset { get; set; }
 
         [field: SerializeField]
         private AudioSource AudioSource { get; set; }
