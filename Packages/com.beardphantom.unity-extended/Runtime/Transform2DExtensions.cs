@@ -20,6 +20,24 @@ namespace BeardPhantom.UnityExtended
         #region Methods
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2 TransformPoint2D(this Transform transform, Vector2 point)
+        {
+            return transform.TransformPoint(point);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2 TransformDirection2D(this Transform transform, Vector2 direction)
+        {
+            return transform.TransformDirection(direction);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2 TransformVector2D(this Transform transform, Vector2 vector)
+        {
+            return transform.TransformVector(vector);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 GetPosition2D(this Transform transform)
         {
             return transform.position;
