@@ -80,7 +80,7 @@ namespace BeardPhantom.UnityExtended
     {
         #region Types
 
-        public delegate void OnEventInvoked(in TArgs args);
+        public delegate void OnEventInvoked(TArgs args);
 
         #endregion
 
@@ -134,14 +134,14 @@ namespace BeardPhantom.UnityExtended
             return _listeners.Remove(listener);
         }
 
-        public void Invoke(in TArgs args)
+        public void Invoke(TArgs args)
         {
             using (ListPool<OnEventInvoked>.Get(out var listenersCopy))
             {
                 listenersCopy.AddRange(_listeners);
                 foreach (var listener in listenersCopy)
                 {
-                    listener.Invoke(in args);
+                    listener.Invoke(args);
                 }
             }
         }
