@@ -6,32 +6,11 @@ namespace BeardPhantom.UnityExtended
     {
         #region Types
 
-        public readonly struct ValueChangedArgs
-        {
-            #region Fields
-
-            public readonly T OldValue;
-
-            public readonly T NewValue;
-
-            #endregion
-
-            #region Constructors
-
-            public ValueChangedArgs(T oldValue, T newValue)
-            {
-                OldValue = oldValue;
-                NewValue = newValue;
-            }
-
-            #endregion
-        }
-
         #endregion
 
         #region Fields
 
-        public readonly LiteEvent<ValueChangedArgs> ValueChanged = new();
+        public readonly LiteEvent<ObservableValueChangedArgs<T>> ValueChanged = new();
 
         private T _value;
 
@@ -51,13 +30,29 @@ namespace BeardPhantom.UnityExtended
 
                 var oldValue = _value;
                 _value = value;
-                ValueChanged.Invoke(new ValueChangedArgs(oldValue, _value));
+                ValueChanged.Invoke(new ObservableValueChangedArgs<T>(oldValue, _value));
             }
         }
 
         #endregion
 
+        #region Constructors
+
+        public ObservableValue() { }
+
+        public ObservableValue(T initialValue)
+        {
+            SetWithoutNotify(initialValue);
+        }
+
+        #endregion
+
         #region Methods
+
+        public void SetWithoutNotify(T newValue)
+        {
+            _value = newValue;
+        }
 
         public static implicit operator T(ObservableValue<T> observableValue)
         {
