@@ -56,5 +56,14 @@ namespace BeardPhantom.UnityExtended
         }
 
         #endregion
+
+        #region Methods
+
+        public static implicit operator T(ObservableValue<T> observableValue)
+        {
+            return observableValue.Value;
+        }
+
+        #endregion
     }
 }
