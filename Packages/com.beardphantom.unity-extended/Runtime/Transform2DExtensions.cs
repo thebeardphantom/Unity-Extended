@@ -130,14 +130,28 @@ namespace BeardPhantom.UnityExtended
             return DirectionTo(transform, other.GetPosition2D());
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 DirectionTo(this Transform transform, Vector2 position)
         {
             return (position - transform.GetPosition2D()).normalized;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 GetForward2D(this Transform transform)
         {
             return transform.TransformDirection(Forward2D);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float DistanceTo(this Transform transform, Transform other)
+        {
+            return DistanceTo(transform, other.GetPosition2D());
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float DistanceTo(this Transform transform, Vector2 position)
+        {
+            return Vector2.Distance(transform.GetPosition2D(), position);
         }
 
         #endregion

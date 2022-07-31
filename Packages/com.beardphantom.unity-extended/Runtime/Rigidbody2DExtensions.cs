@@ -69,7 +69,25 @@ namespace BeardPhantom.UnityExtended
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static Quaternion GetRotationAsQuaternion(this Rigidbody2D rigidbody2D)
+        public static float DistanceTo(this Rigidbody2D rigidbody2D, Rigidbody2D other)
+        {
+            return DistanceTo(rigidbody2D, other.position);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float DistanceTo(this Rigidbody2D rigidbody2D, Transform transform)
+        {
+            return DistanceTo(rigidbody2D, transform.GetPosition2D());
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float DistanceTo(this Rigidbody2D rigidbody2D, Vector2 position)
+        {
+            return Vector2.Distance(rigidbody2D.position, position);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Quaternion GetRotationAsQuaternion(this Rigidbody2D rigidbody2D)
         {
             return Quaternion.Euler(0f, 0f, rigidbody2D.rotation);
         }
