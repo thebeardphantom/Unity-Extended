@@ -125,13 +125,13 @@ namespace BeardPhantom.UnityExtended
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2 DirectionTo(this Transform transform, Transform other)
+        public static Vector2 DirectionTo2D(this Transform transform, Transform other)
         {
-            return DirectionTo(transform, other.GetPosition2D());
+            return DirectionTo2D(transform, other.GetPosition2D());
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2 DirectionTo(this Transform transform, Vector2 position)
+        public static Vector2 DirectionTo2D(this Transform transform, Vector2 position)
         {
             return (position - transform.GetPosition2D()).normalized;
         }
@@ -143,13 +143,13 @@ namespace BeardPhantom.UnityExtended
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float DistanceTo(this Transform transform, Transform other)
+        public static float DistanceTo2D(this Transform transform, Transform other)
         {
-            return DistanceTo(transform, other.GetPosition2D());
+            return DistanceTo2D(transform, other.GetPosition2D());
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float DistanceTo(this Transform transform, Vector2 position)
+        public static float DistanceTo2D(this Transform transform, Vector2 position)
         {
             return Vector2.Distance(transform.GetPosition2D(), position);
         }
