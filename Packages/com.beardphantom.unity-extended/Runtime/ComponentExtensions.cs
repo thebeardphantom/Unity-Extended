@@ -15,7 +15,7 @@ namespace BeardPhantom.UnityExtended
                 clone.GetComponentsInChildren(true, components);
                 foreach (var component in components)
                 {
-                    if (!IsRenderingComponent(component))
+                    if (!IsRenderingComponent(component) && component is not Transform)
                     {
                         Object.Destroy(component);
                     }
