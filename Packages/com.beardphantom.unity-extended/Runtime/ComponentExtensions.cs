@@ -27,7 +27,7 @@ namespace BeardPhantom.UnityExtended
 
         private static bool IsRenderingComponent(Component component)
         {
-            return component is Renderer or MeshFilter;
+            return component is Renderer or MeshFilter or Animator;
         }
 
         #endregion
