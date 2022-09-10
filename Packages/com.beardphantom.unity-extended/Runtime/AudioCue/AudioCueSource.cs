@@ -70,6 +70,11 @@ namespace BeardPhantom.UnityExtended
                 var allSources = GetComponents<AudioSource>();
                 foreach (var audioSource in allSources)
                 {
+                    if (audioSource.hideFlags == HideFlags.None)
+                    {
+                        continue;
+                    }
+
                     var didFind = false;
                     foreach (var cueSource in allCueSources)
                     {
