@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace BeardPhantom.UnityExtended
 {
-    [RequireComponent(typeof(AudioSource))]
+    [ExecuteAlways]
     public class AudioCueSource : MonoBehaviour
     {
         #region Properties
@@ -20,6 +24,7 @@ namespace BeardPhantom.UnityExtended
         [field: SerializeField]
         public bool PlayAtPosition { get; private set; }
 
+        [field: HideInInspector]
         [field: SerializeField]
         private AudioSource AudioSource { get; set; }
 
@@ -34,16 +39,56 @@ namespace BeardPhantom.UnityExtended
 
         private void Awake()
         {
+            if (AudioSource == null)
+            {
+                if (Application.isPlaying)
+                {
+                    throw new Exception("No AudioSource created at edit time.");
+                }
+
+                AudioSource = gameObject.AddComponent<AudioSource>();
+                AudioSource.hideFlags = HideFlags.HideInInspector | HideFlags.NotEditable;
+            }
+
             if (PlayOnAwake)
             {
                 Play(new AudioCueAsset.PlayArgs(Loop, position: PlayAtPosition ? transform.position : null));
             }
         }
 
-        private void OnValidate()
+        private void OnDestroy()
         {
-            AudioSource = GetComponent<AudioSource>();
-            AudioSource.hideFlags = HideFlags.NotEditable;
+#if UNITY_EDITOR
+            if (Application.isPlaying)
+            {
+                Destroy(AudioSource);
+            }
+            else if (!EditorApplication.isPlayingOrWillChangePlaymode)
+            {
+                AudioSource = null;
+                var allCueSources = GetComponents<AudioCueSource>();
+                var allSources = GetComponents<AudioSource>();
+                foreach (var audioSource in allSources)
+                {
+                    var didFind = false;
+                    foreach (var cueSource in allCueSources)
+                    {
+                        if (cueSource.AudioSource == audioSource)
+                        {
+                            didFind = true;
+                        }
+                    }
+
+                    if (!didFind)
+                    {
+                        Debug.Log($"Destroying hidden AudioSource: {audioSource}");
+                        DestroyImmediate(audioSource);
+                    }
+                }
+            }
+#else
+            Destroy(AudioSource);
+#endif
         }
 
         #endregion
