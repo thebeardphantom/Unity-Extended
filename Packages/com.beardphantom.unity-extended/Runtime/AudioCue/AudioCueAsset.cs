@@ -116,13 +116,20 @@ namespace BeardPhantom.UnityExtended
             var audio = Audio[index];
             Assert.IsNotNull(audio.Clip, $"Audio entry {index} for {name} has no assigned clip");
 
-            audioSrc.volume += audio.VolumeOffset;
-            audioSrc.loop = args.Loop;
-            audioSrc.clip = audio.Clip;
-
-            if (args.Position.HasValue)
+            if (args.OneShot)
             {
-                audioSrc.transform.position = args.Position.Value;
+                audioSrc.PlayOneShot(audio.Clip);
+            }
+            else
+            {
+                if (args.Position.HasValue)
+                {
+                    audioSrc.transform.position = args.Position.Value;
+                }
+
+                audioSrc.volume = 1f + audio.VolumeOffset;
+                audioSrc.loop = args.Loop;
+                audioSrc.clip = audio.Clip;
             }
 
             audioSrc.Play();
