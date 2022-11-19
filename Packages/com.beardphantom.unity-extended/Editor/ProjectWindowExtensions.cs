@@ -19,7 +19,7 @@ namespace BeardPhantom.UnityExtended.Editor
                 var type = AssetDatabase.GetMainAssetTypeAtPath(originalPath);
                 var originalName = Path.GetFileNameWithoutExtension(originalPath);
                 var replacementPath = EditorUtility.OpenFilePanelWithFilters(
-                    "Replace Source Asset",
+                    $"Replace Source Asset '{originalPath}'",
                     "",
                     new[]
                     {
