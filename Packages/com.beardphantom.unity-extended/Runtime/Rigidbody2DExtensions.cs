@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace BeardPhantom.UnityExtended
 {
@@ -90,6 +91,29 @@ namespace BeardPhantom.UnityExtended
         public static Quaternion GetRotationAsQuaternion(this Rigidbody2D rigidbody2D)
         {
             return Quaternion.Euler(0f, 0f, rigidbody2D.rotation);
+        }
+
+        public static Bounds GetBounds(this Rigidbody2D rigidbody2D)
+        {
+            using (ListPool<Collider2D>.Get(out var colliders))
+            {
+                rigidbody2D.GetAttachedColliders(colliders);
+                Bounds bounds = default;
+                for (var i = 0; i < colliders.Count; i++)
+                {
+                    var collider = colliders[i];
+                    if (i == 0)
+                    {
+                        bounds = collider.bounds;
+                    }
+                    else
+                    {
+                        bounds.Encapsulate(collider.bounds);
+                    }
+                }
+
+                return bounds;
+            }
         }
 
         #endregion

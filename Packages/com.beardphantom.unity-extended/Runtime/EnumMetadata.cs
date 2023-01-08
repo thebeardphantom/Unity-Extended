@@ -1,4 +1,6 @@
 ﻿using System;
+using Unity.Collections.LowLevel.Unsafe;
+using UnityEngine;
 
 namespace BeardPhantom.UnityExtended
 {
@@ -6,7 +8,7 @@ namespace BeardPhantom.UnityExtended
     /// Statically and lazily stores information about an enum type.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public static class EnumData<T> where T : Enum
+    public static class EnumData<T> where T : struct, Enum, IConvertible
     {
         #region Fields
 
@@ -24,6 +26,10 @@ namespace BeardPhantom.UnityExtended
         /// All valid values in this type
         /// </summary>
         public static readonly T[] Values;
+
+        public static readonly T AllFlagsValue;
+
+        public static readonly bool IsFlagsEnum;
 
         #endregion
 
@@ -46,6 +52,19 @@ namespace BeardPhantom.UnityExtended
             Type = typeof(T);
             Values = (T[])Enum.GetValues(Type);
             Names = Enum.GetNames(Type);
+            IsFlagsEnum = true;
+            var allFlagsValue = 0;
+            foreach (var value in Values)
+            {
+                var intValue = UnsafeUtility.EnumToInt(value);
+                allFlagsValue |= intValue;
+                if (!Mathf.IsPowerOfTwo(intValue))
+                {
+                    IsFlagsEnum = false;
+                }
+            }
+
+            AllFlagsValue = (T)Enum.ToObject(Type, allFlagsValue);
         }
 
         #endregion

@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64f31cad-ec58-4a78-8302-329c0c4bf66f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Vector3Extensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Vector3Extensions.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Extended/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Extended/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Physic Material.physicMaterial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Physic Material.physicMaterial.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ProjectWindowExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ProjectWindowExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeardPhantom.UnityExtended.Editor.csproj.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/BeardPhantom.UnityExtended.Editor.csproj.DotSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +26,15 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4a31731933e0419ca5a995305014ad37157a00/48/97454151/PropertyAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9e893022843f45a88085fc45ea2d3f8929400/e4/98e54b6e/GUIUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dc1a47a5816e4be7bc6817ee4d339e75816c00/63/f794d728/EditorTool.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dc1a47a5816e4be7bc6817ee4d339e75816c00/7b/14130cf1/Handles.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dc1a47a5816e4be7bc6817ee4d339e75816c00/dc/31a57d4d/Slider1D.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Mika/WorkRoot/Other/Unity-Extended/Packages/com.beardphantom.unity-extended/Editor/ProjectWindowExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ReadOnlyPropertyDrawer.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ILiteEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/LiteEvent.cs" root0="FORCE_HIGHLIGHTING" />
@@ -86,10 +91,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="39512">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="39512" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -115,7 +120,7 @@
       <workItem from="1659402457003" duration="3225000" />
       <workItem from="1662843298531" duration="3398000" />
       <workItem from="1663112517795" duration="219000" />
-      <workItem from="1668895579046" duration="179000" />
+      <workItem from="1668895579046" duration="9684000" />
     </task>
     <task id="LOCAL-00001" summary="Add ObservableValue.cs, remove in from LiteEvent.cs">
       <created>1659144187516</created>
@@ -236,7 +241,21 @@
       <option name="project" value="LOCAL" />
       <updated>1662846084564</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Add Vector3Extensions.cs">
+      <created>1668896015342</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1668896015342</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Bump version.">
+      <created>1668896044162</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1668896044162</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,6 +299,8 @@
     <MESSAGE value="Dont destroy animator" />
     <MESSAGE value="Add ReadOnlyAttribute.cs" />
     <MESSAGE value="Make AudioCueSource.cs easier to use at cost of perf." />
-    <option name="LAST_COMMIT_MESSAGE" value="Make AudioCueSource.cs easier to use at cost of perf." />
+    <MESSAGE value="Add Vector3Extensions.cs" />
+    <MESSAGE value="Bump version." />
+    <option name="LAST_COMMIT_MESSAGE" value="Bump version." />
   </component>
 </project>
