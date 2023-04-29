@@ -8,13 +8,13 @@ namespace BeardPhantom.UnityExtended
         #region Methods
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2 DirectionTo(this Transform transform, Transform other)
+        public static Vector3 DirectionTo(this Transform transform, Transform other)
         {
             return DirectionTo(transform, other.position);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2 DirectionTo(this Transform transform, Vector3 position)
+        public static Vector3 DirectionTo(this Transform transform, Vector3 position)
         {
             return (position - transform.position).normalized;
         }
@@ -28,7 +28,19 @@ namespace BeardPhantom.UnityExtended
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float DistanceTo(this Transform transform, Vector3 position)
         {
-            return Vector2.Distance(transform.GetPosition2D(), position);
+            return Vector3.Distance(transform.position, position);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float DistanceToSqr(this Transform transform, Transform other)
+        {
+            return DistanceToSqr(transform, other.position);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float DistanceToSqr(this Transform transform, Vector3 position)
+        {
+            return Vector3.SqrMagnitude(position - transform.position);
         }
 
         #endregion

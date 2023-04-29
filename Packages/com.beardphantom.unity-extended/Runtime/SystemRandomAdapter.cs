@@ -6,15 +6,24 @@ namespace BeardPhantom.UnityExtended
     {
         #region Properties
 
-        public Random Rnd { get; set; }
+        /// <inheritdoc />
+        public int Seed
+        {
+            set => Random = new Random(value);
+        }
+
+        /// <inheritdoc />
+        public float Value => (float)Random.NextDouble();
+
+        internal Random Random { get; set; }
 
         #endregion
 
         #region Constructors
 
-        public SystemRandomAdapter(Random rnd)
+        public SystemRandomAdapter(Random random)
         {
-            Rnd = rnd;
+            Random = random;
         }
 
         #endregion
@@ -24,7 +33,13 @@ namespace BeardPhantom.UnityExtended
         /// <inheritdoc />
         public int Next(int minInclusive, int maxExclusive)
         {
-            return Rnd.Next(minInclusive, maxExclusive);
+            return Random.Next(minInclusive, maxExclusive);
+        }
+
+        /// <inheritdoc />
+        public float Next(float minInclusive, float maxInclusive)
+        {
+            return (float)Mathd.Lerp(minInclusive, maxInclusive, Random.NextDouble());
         }
 
         #endregion

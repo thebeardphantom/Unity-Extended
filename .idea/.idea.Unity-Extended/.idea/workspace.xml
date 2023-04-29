@@ -5,13 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64f31cad-ec58-4a78-8302-329c0c4bf66f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/GameObjectUtility.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/GameObjectUtility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/AABB.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/AABB.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Point3D.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Point3D.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Ray3D.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Ray3D.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Sphere.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Sphere.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Vector2Extensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Vector2Extensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Tests.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Tests/Editor/ShapeMath.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Tests/Editor/ShapeMath/AABBTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Tests/Editor/ShapeMath/AABBTests.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Extended/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Extended/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/IRandomAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/IRandomAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Mathd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Mathd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Rigidbody2DExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Rigidbody2DExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/SystemRandomAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/SystemRandomAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Transform2DExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Transform2DExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/TransformExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/TransformExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/UnityRandomAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/UnityRandomAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Vector3Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Vector3Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/WeightedChoiceUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/WeightedChoiceUtility.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +49,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/c0/83eb8eec/Bounds.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ReadOnlyPropertyDrawer.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ILiteEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/LiteEvent.cs" root0="FORCE_HIGHLIGHTING" />
@@ -35,6 +57,7 @@
     <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ObservableValueChangedArgs.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/UnityObjectExtensions.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Tests/Editor/ShapeMath/SphereTests.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -50,28 +73,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "XThreadsFramesViewSplitterKey": "0.7092511",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.7092511&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\mika\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\mika\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\mika\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\mika\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\mika\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\mika\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\Mika\WorkRoot\UnityEditors\2021.3.19f1\Editor\Unity.exe" />
@@ -129,7 +152,8 @@
       <workItem from="1662843298531" duration="3398000" />
       <workItem from="1663112517795" duration="219000" />
       <workItem from="1668895579046" duration="9684000" />
-      <workItem from="1681188564981" duration="410000" />
+      <workItem from="1681188564981" duration="1106000" />
+      <workItem from="1682755031553" duration="4605000" />
     </task>
     <task id="LOCAL-00001" summary="Add ObservableValue.cs, remove in from LiteEvent.cs">
       <created>1659144187516</created>
@@ -264,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668896044162</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added GameObjectUtility.cs">
+      <created>1681189062141</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1681189062141</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,6 +341,7 @@
     <MESSAGE value="Make AudioCueSource.cs easier to use at cost of perf." />
     <MESSAGE value="Add Vector3Extensions.cs" />
     <MESSAGE value="Bump version." />
-    <option name="LAST_COMMIT_MESSAGE" value="Bump version." />
+    <MESSAGE value="Added GameObjectUtility.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GameObjectUtility.cs" />
   </component>
 </project>

@@ -154,6 +154,18 @@ namespace BeardPhantom.UnityExtended
             return Vector2.Distance(transform.GetPosition2D(), position);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float DistanceToSqr2D(this Transform transform, Transform other)
+        {
+            return DistanceToSqr2D(transform, other.GetPosition2D());
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float DistanceToSqr2D(this Transform transform, Vector2 position)
+        {
+            return Vector2.SqrMagnitude(position - transform.GetPosition2D());
+        }
+
         #endregion
     }
 }

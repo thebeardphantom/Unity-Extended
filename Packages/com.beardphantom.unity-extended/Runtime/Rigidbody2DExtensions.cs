@@ -88,9 +88,33 @@ namespace BeardPhantom.UnityExtended
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float DistanceToSqr(this Rigidbody2D rigidbody2D, Rigidbody2D other)
+        {
+            return DistanceToSqr(rigidbody2D, other.position);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float DistanceToSqr(this Rigidbody2D rigidbody2D, Transform transform)
+        {
+            return DistanceToSqr(rigidbody2D, transform.GetPosition2D());
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float DistanceToSqr(this Rigidbody2D rigidbody2D, Vector2 position)
+        {
+            return Vector2.SqrMagnitude(position - rigidbody2D.position);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion GetRotationAsQuaternion(this Rigidbody2D rigidbody2D)
         {
             return Quaternion.Euler(0f, 0f, rigidbody2D.rotation);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3 GetRotationAsEuler(this Rigidbody2D rigidbody2D)
+        {
+            return new Vector3(0f, 0f, rigidbody2D.rotation);
         }
 
         public static Bounds GetBounds(this Rigidbody2D rigidbody2D)

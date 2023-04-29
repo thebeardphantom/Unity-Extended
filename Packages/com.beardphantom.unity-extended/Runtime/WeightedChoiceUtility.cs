@@ -27,17 +27,17 @@ namespace BeardPhantom.UnityExtended
 
         public static T ChooseFromWeighted<T>(this IReadOnlyList<T> choices, Random systemRandom) where T : IWeightedChoice
         {
-            _systemRandomAdapter.Rnd = systemRandom;
+            _systemRandomAdapter.Random = systemRandom;
             var result = ChooseFromWeighted(choices, _systemRandomAdapter);
-            _systemRandomAdapter.Rnd = null;
+            _systemRandomAdapter.Random = null;
             return result;
         }
 
         public static int ChooseIndexFromWeighted<T>(this IReadOnlyList<T> choices, Random systemRandom) where T : IWeightedChoice
         {
-            _systemRandomAdapter.Rnd = systemRandom;
+            _systemRandomAdapter.Random = systemRandom;
             var index = ChooseIndexFromWeighted(choices, _systemRandomAdapter);
-            _systemRandomAdapter.Rnd = null;
+            _systemRandomAdapter.Random = null;
             return index;
         }
 
