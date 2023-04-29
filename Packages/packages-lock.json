@@ -4,7 +4,9 @@
       "version": "file:com.beardphantom.unity-extended",
       "depth": 0,
       "source": "embedded",
-      "dependencies": {}
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      }
     },
     "com.unity.editorcoroutines": {
       "version": "1.0.0",
