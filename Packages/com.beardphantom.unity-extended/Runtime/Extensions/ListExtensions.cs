@@ -12,6 +12,25 @@ namespace BeardPhantom.UnityExtended
 
         #region Methods
 
+        public static void RemoveSwapback<T>(this IList<T> list, T item)
+        {
+            var index = list.IndexOf(item);
+            RemoveAtSwapback(list, index);
+        }
+
+        public static T RemoveAtSwapback<T>(this IList<T> list, int index)
+        {
+            var endIndex = list.Count - 1;
+            var toRemove = list[index];
+            if (endIndex > 0)
+            {
+                list[index] = list[endIndex];
+            }
+
+            list.RemoveAt(endIndex);
+            return toRemove;
+        }
+
         public static void Shuffle<T>(this IList<T> list)
         {
             Shuffle(list, _unityRandomAdapter);
