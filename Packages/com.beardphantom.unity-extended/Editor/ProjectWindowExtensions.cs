@@ -8,6 +8,21 @@ namespace BeardPhantom.UnityExtended.Editor
     {
         #region Methods
 
+        [MenuItem("Assets/Delete Subasset", true)]
+        private static bool DeleteSubassetValidate(MenuCommand cmd)
+        {
+            var selection = Selection.activeObject;
+            return selection.IsNotNull() && AssetDatabase.IsSubAsset(selection);
+        }
+
+        [MenuItem("Assets/Delete Subasset")]
+        private static void DeleteSubasset(MenuCommand cmd)
+        {
+            var selection = Selection.activeObject;
+            AssetDatabase.RemoveObjectFromAsset(selection);
+            AssetDatabase.SaveAssets();
+        }
+
         [MenuItem("Assets/Replace Source")]
         private static void ReplaceSourceAsset()
         {
