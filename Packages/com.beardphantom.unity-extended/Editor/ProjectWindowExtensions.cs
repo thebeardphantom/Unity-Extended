@@ -6,21 +6,55 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public static class ProjectWindowExtensions
     {
+        #region Fields
+
+        private const string DELETE_SUBASSET = "Assets/Delete Subasset";
+
+        private const string DELETE_SUBASSET_CONTEXT = "CONTEXT/ScriptableObject/Delete Subasset";
+
+        #endregion
+
         #region Methods
 
-        [MenuItem("Assets/Delete Subasset", true)]
-        private static bool DeleteSubassetValidate(MenuCommand cmd)
+        private static bool IsValidSubasset(Object obj)
         {
-            var selection = Selection.activeObject;
-            return selection.IsNotNull() && AssetDatabase.IsSubAsset(selection);
+            return obj.IsNotNull() && AssetDatabase.IsSubAsset(obj);
         }
 
-        [MenuItem("Assets/Delete Subasset")]
-        private static void DeleteSubasset(MenuCommand cmd)
+        private static void DeleteSubasset(Object obj)
         {
-            var selection = Selection.activeObject;
-            AssetDatabase.RemoveObjectFromAsset(selection);
+            if (Selection.activeObject == obj)
+            {
+                var path = AssetDatabase.GetAssetPath(obj);
+                Selection.activeObject = AssetDatabase.LoadAssetAtPath<Object>(path);
+            }
+
+            AssetDatabase.RemoveObjectFromAsset(obj);
             AssetDatabase.SaveAssets();
+        }
+
+        [MenuItem(DELETE_SUBASSET, true)]
+        private static bool DeleteSubassetValidate()
+        {
+            return IsValidSubasset(Selection.activeObject);
+        }
+
+        [MenuItem(DELETE_SUBASSET, priority = 16)]
+        private static void DeleteSubasset()
+        {
+            DeleteSubasset(Selection.activeObject);
+        }
+
+        [MenuItem(DELETE_SUBASSET_CONTEXT, true)]
+        private static bool DeleteSubassetContextValidate(MenuCommand cmd)
+        {
+            return IsValidSubasset(cmd.context);
+        }
+
+        [MenuItem(DELETE_SUBASSET_CONTEXT)]
+        private static void DeleteSubassetContext(MenuCommand cmd)
+        {
+            DeleteSubasset(cmd.context);
         }
 
         [MenuItem("Assets/Replace Source")]

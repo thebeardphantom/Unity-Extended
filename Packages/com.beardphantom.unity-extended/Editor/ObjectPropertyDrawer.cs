@@ -1,7 +1,9 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Object = UnityEngine.Object;
 
 namespace BeardPhantom.UnityExtended.Editor
 {
@@ -16,6 +18,9 @@ namespace BeardPhantom.UnityExtended.Editor
 
         private Button _menuButton;
 
+        private Type _type;
+        private ObjectField _objField;
+
         #endregion
 
         #region Properties
@@ -29,6 +34,11 @@ namespace BeardPhantom.UnityExtended.Editor
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
             SerializedProperty = property.Copy();
+            if (IsGhostObject())
+            {
+                SerializedProperty.objectReferenceValue = null;
+                SerializedProperty.serializedObject.ApplyModifiedProperties();
+            }
 
             var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(AssetDatabase.GUIDToAssetPath(STYLESHEET_GUID));
 
@@ -38,10 +48,16 @@ namespace BeardPhantom.UnityExtended.Editor
             root.styleSheets.Add(styleSheet);
 
             // Property field
-            var propertyField = new PropertyField();
-            propertyField.BindProperty(SerializedProperty);
-            propertyField.AddToClassList("extended-property-field");
-            root.Add(propertyField);
+            _objField = new ObjectField(SerializedProperty.displayName)
+            {
+                objectType = fieldInfo.FieldType,
+                value = SerializedProperty.objectReferenceValue
+            };
+            _objField.Q<Label>(className: "unity-object-field__label").AddToClassList("unity-property-field__label");
+            _objField.RegisterValueChangedCallback(OnValueChanged);
+            _objField.AddToClassList("unity-base-field__aligned");
+            _objField.AddToClassList("extended-property-field");
+            root.Add(_objField);
 
             // Menu button
             _menuButton = new Button
@@ -70,6 +86,69 @@ namespace BeardPhantom.UnityExtended.Editor
             {
                 menu.AddDisabledItem(EDIT_LABEL, false);
             }
+        }
+
+        protected void UpdateObjectField()
+        {
+            _objField.SetValueWithoutNotify(SerializedProperty.objectReferenceValue);
+        }
+
+        /// <summary>
+        /// Attempts to check if the assigned value is a deleted subasset stranded in memory.
+        /// </summary>
+        private bool IsGhostObject()
+        {
+            var obj = SerializedProperty.objectReferenceValue;
+            if (!obj.IsNotNull())
+            {
+                return false;
+            }
+
+            if (!EditorUtility.IsPersistent(SerializedProperty.serializedObject.targetObject))
+            {
+                // Check if owning object exists in a scene
+                // Ghost objects only exist as subassets.
+                return false;
+            }
+
+            if (AssetDatabase.IsSubAsset(obj))
+            {
+                // Valid subasset, not a ghost
+                return false;
+            }
+
+            if (EditorUtility.IsPersistent(obj))
+            {
+                // Persistent in some way, not a ghost 
+                return false;
+            }
+
+            // AssetDatabase doesn't contain this at all, ghost
+            return !AssetDatabase.Contains(obj);
+        }
+
+        private void OnValueChanged(ChangeEvent<Object> evt)
+        {
+            if (evt.previousValue.IsNotNull() && evt.newValue.IsNull() && AssetDatabase.IsSubAsset(evt.previousValue))
+            {
+                if (EditorUtility.DisplayDialog(
+                        "Confirm Delete",
+                        "This action will delete a subasset, are you sure?",
+                        "Yes",
+                        "No"))
+                {
+                    AssetDatabase.RemoveObjectFromAsset(evt.previousValue);
+                    AssetDatabase.SaveAssets();
+                }
+                else
+                {
+                    _objField.SetValueWithoutNotify(evt.previousValue);
+                    return;
+                }
+            }
+
+            SerializedProperty.objectReferenceValue = evt.newValue;
+            SerializedProperty.serializedObject.ApplyModifiedProperties();
         }
 
         private void EditValue()

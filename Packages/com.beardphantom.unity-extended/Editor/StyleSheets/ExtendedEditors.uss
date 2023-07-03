@@ -5,14 +5,15 @@
     border-right-width: 0;
     background-color: rgba(0, 0, 0, 0);
     padding: 0;
-    min-width: 16;
-    width: 16;
-    margin-left: 4;
+    min-width: 16px;
+    width: 16px;
+    margin-left: 4px;
     margin-right: 0;
     background-size: contain;
 }
 
 .extended-property-field {
+    max-width: 95%;
     flex-grow: 1;
 }
 
@@ -22,4 +23,5 @@
 
 .extended-root {
     flex-direction: row;
+    max-width: 100%;
 }

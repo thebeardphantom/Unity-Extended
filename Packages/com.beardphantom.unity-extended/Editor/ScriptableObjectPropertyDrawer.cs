@@ -1,7 +1,9 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Object = UnityEngine.Object;
 
 namespace BeardPhantom.UnityExtended.Editor
 {
@@ -12,7 +14,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
         private static bool IsEmbeddedObject(Object obj)
         {
-            return obj.IsNotNull() && !EditorUtility.IsPersistent(obj);
+            return obj.IsNotNull() && (!EditorUtility.IsPersistent(obj) || AssetDatabase.IsSubAsset(obj));
         }
 
         /// <inheritdoc />
@@ -37,7 +39,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
             var typeName = Regex.Match(SerializedProperty.type, @"PPtr<\$(.+?)>").Groups[1].Value.Trim();
             var instance = ScriptableObject.CreateInstance(typeName);
-            instance.name = "(Embedded)";
+            instance.name = $"(Embedded {Guid.NewGuid():N})";
 
             var host = SerializedProperty.serializedObject.targetObject;
             if (EditorUtility.IsPersistent(host))
@@ -48,6 +50,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
             SerializedProperty.objectReferenceValue = instance;
             SerializedProperty.serializedObject.ApplyModifiedProperties();
+            UpdateObjectField();
             EditorUtility.OpenPropertyEditor(instance);
         }
 
