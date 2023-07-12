@@ -31,6 +31,18 @@ namespace BeardPhantom.UnityExtended.Editor
 
         #region Methods
 
+        /// <inheritdoc />
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            EditorGUI.PropertyField(position, property, label);
+        }
+
+        /// <inheritdoc />
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        {
+            return EditorGUI.GetPropertyHeight(property, label);
+        }
+
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
             SerializedProperty = property.Copy();

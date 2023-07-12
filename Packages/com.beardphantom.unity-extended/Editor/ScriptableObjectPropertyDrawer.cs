@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Object = UnityEngine.Object;
+using PopupWindow = UnityEditor.PopupWindow;
 
 namespace BeardPhantom.UnityExtended.Editor
 {
