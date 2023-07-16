@@ -8,9 +8,9 @@ namespace BeardPhantom.UnityExtended
         #region Methods
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3Int To3D(this Vector2Int v2Int)
+        public static Vector3Int To3D(this Vector2Int v2Int, int z = 0)
         {
-            return new Vector3Int(v2Int.x, v2Int.y);
+            return new Vector3Int(v2Int.x, v2Int.y, z);
         }
 
         #endregion

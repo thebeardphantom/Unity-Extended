@@ -1,24 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace BeardPhantom.UnityExtended
 {
-    public enum HexFlatTopDirection
-    {
-        Up = 0,
-        UpRight = 1,
-        DownRight = 2,
-        Down = 3,
-        DownLeft = 4,
-        UpLeft = 5
-    }
-
-    /*
-     * Unity uses odd-r for pointy-top hex grids and odd-q for flat top hex grids.
-     * This class is only designed to work with flat-top.
-     *
-     * Math from https://www.redblobgames.com/grids/hexagons/#neighbors-offset
-     */
-    public static class HexFlatTopDirectionUtility
+    public static partial class HexFlatTop
     {
         #region Fields
 
@@ -58,25 +42,26 @@ namespace BeardPhantom.UnityExtended
 
         #region Methods
 
-        public static Vector2Int GetNeighborOffset(this Vector2Int cell, HexFlatTopDirection direction)
+        public static Vector2Int GetNeighborOffset(this Vector2Int cell, Direction direction)
         {
             return GetNeighborOffset(cell.To3D(), direction).To2D();
         }
 
-        public static Vector3Int GetNeighborOffset(this Vector3Int cell, HexFlatTopDirection direction)
+        public static Vector3Int GetNeighborOffset(this Vector3Int cell, Direction direction)
         {
+            // Not a mistake, Unity swizzles cell coordinates for flat top grids
             var isEvenColumn = cell.y % 2 == 0;
             var offsets = isEvenColumn ? _evenColumnOffsets : _oddColumnOffsets;
             var offset = offsets[(int)direction];
             return offset;
         }
 
-        public static Vector2Int GetNeighborCell(this Vector2Int cell, HexFlatTopDirection direction)
+        public static Vector2Int GetNeighborCell(this Vector2Int cell, Direction direction)
         {
             return GetNeighborCell(cell.To3D(), direction).To2D();
         }
 
-        public static Vector3Int GetNeighborCell(this Vector3Int cell, HexFlatTopDirection direction)
+        public static Vector3Int GetNeighborCell(this Vector3Int cell, Direction direction)
         {
             var offset = GetNeighborOffset(cell, direction);
             return cell + offset;
