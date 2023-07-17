@@ -43,6 +43,12 @@ namespace BeardPhantom.UnityExtended
 
         public IEnumerable<CubeCoord> Ring(int radius)
         {
+            if (radius == 0)
+            {
+                yield return this;
+                yield break;
+            }
+
             var hex = this + _directionVectors[4].Scale(radius);
             for (var i = 0; i < 6; i++)
             {

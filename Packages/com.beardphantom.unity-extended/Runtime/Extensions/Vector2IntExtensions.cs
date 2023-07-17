@@ -13,6 +13,12 @@ namespace BeardPhantom.UnityExtended
             return new Vector3Int(v2Int.x, v2Int.y, z);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2Int Abs(this Vector2Int v2Int)
+        {
+            return new Vector2Int(Mathf.Abs(v2Int.x), Mathf.Abs(v2Int.y));
+        }
+
         #endregion
     }
 }
