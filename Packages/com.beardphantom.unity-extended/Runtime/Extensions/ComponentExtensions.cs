@@ -1,13 +1,31 @@
 ﻿using System;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Pool;
 using Object = UnityEngine.Object;
+#if UNITASK_SUPPORT
+using Cysharp.Threading.Tasks;
+#endif
 
 namespace BeardPhantom.UnityExtended
 {
     public static class ComponentExtensions
     {
         #region Methods
+
+        public static CancellationToken GetDestroyCancellationToken(this GameObject gameObject)
+        {
+            if (gameObject.TryGetComponent<MonoBehaviour>(out var monoBehaviour))
+            {
+                return monoBehaviour.destroyCancellationToken;
+            }
+
+#if UNITASK_SUPPORT
+            return gameObject.GetCancellationTokenOnDestroy();
+#else
+            return gameObject.AddOrGetComponent<DummyMonoBehaviour>().destroyCancellationToken;
+#endif
+        }
 
         public static T GetRequiredComponent<T>(this Component component)
         {
