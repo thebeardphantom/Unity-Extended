@@ -2,15 +2,15 @@
 
 namespace BeardPhantom.UnityExtended
 {
-    public static class HashSetExtensions
+    public static class CollectionExtensions
     {
         #region Methods
 
-        public static void AddRange<T>(this HashSet<T> set, IEnumerable<T> range)
+        public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> range)
         {
             foreach (var v in range)
             {
-                set.Add(v);
+                collection.Add(v);
             }
         }
 

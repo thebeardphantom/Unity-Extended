@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -62,7 +63,7 @@ namespace BeardPhantom.UnityExtended.Editor
             // Property field
             _objField = new ObjectField(SerializedProperty.displayName)
             {
-                objectType = fieldInfo.FieldType,
+                objectType = GetUnpackedFieldInfoType(),
                 value = SerializedProperty.objectReferenceValue
             };
             _objField.Q<Label>(className: "unity-object-field__label").AddToClassList("unity-property-field__label");
@@ -103,6 +104,22 @@ namespace BeardPhantom.UnityExtended.Editor
         protected void UpdateObjectField()
         {
             _objField.SetValueWithoutNotify(SerializedProperty.objectReferenceValue);
+        }
+
+        private Type GetUnpackedFieldInfoType()
+        {
+            if (fieldInfo.FieldType.IsArray)
+            {
+                return fieldInfo.FieldType.GetElementType();
+            }
+
+            if (fieldInfo.FieldType.IsGenericType
+                && typeof(List<>).IsAssignableFrom(fieldInfo.FieldType.GetGenericTypeDefinition()))
+            {
+                return fieldInfo.FieldType.GetGenericArguments()[0];
+            }
+
+            return fieldInfo.FieldType;
         }
 
         /// <summary>

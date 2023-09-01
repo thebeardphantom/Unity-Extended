@@ -2,7 +2,7 @@ using UnityEngine.Pool;
 
 namespace BeardPhantom.UnityExtended
 {
-    public sealed class LiteEvent : LiteEventBase<LiteEvent.OnEventInvoked>
+    public sealed partial class LiteEvent : LiteEventBase<LiteEvent.OnEventInvoked>
     {
         #region Types
 
@@ -37,7 +37,7 @@ namespace BeardPhantom.UnityExtended
         #endregion
     }
 
-    public sealed class LiteEvent<TArgs> : LiteEventBase<LiteEvent<TArgs>.OnEventInvoked> where TArgs : struct
+    public sealed partial class LiteEvent<TArgs> : LiteEventBase<LiteEvent<TArgs>.OnEventInvoked> where TArgs : struct
     {
         #region Types
 
