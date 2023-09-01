@@ -9,14 +9,17 @@ public class AnimationEventRelay : MonoBehaviour
     {
         #region Fields
 
+        public readonly Animator Animator;
+
         public readonly AnimationEventAsset Event;
 
         #endregion
 
         #region Constructors
 
-        public AnimationEventReceivedArgs(AnimationEventAsset evt)
+        public AnimationEventReceivedArgs(Animator animator, AnimationEventAsset evt)
         {
+            Animator = animator;
             Event = evt;
         }
 
@@ -34,7 +37,7 @@ public class AnimationEventRelay : MonoBehaviour
     #region Properties
 
     [field: SerializeField]
-    private Animator Animator { get; set; }
+    public Animator Animator { get; private set; }
 
     #endregion
 
@@ -63,7 +66,13 @@ public class AnimationEventRelay : MonoBehaviour
 
     private void OnAnimEvent(AnimationEventAsset evt)
     {
-        EventReceived.Invoke(new(evt));
+        EventReceived.Invoke(new(Animator, evt));
+    }
+
+    private void OnValidate()
+    {
+        TryGetComponent<Animator>(out var animator);
+        Animator = animator;
     }
 
     #endregion

@@ -7,7 +7,7 @@ namespace BeardPhantom.UnityExtended
     {
         #region Methods
 
-        public UniTask AwaitInvocation()
+        public UniTask WaitForInvocationAsync()
         {
             // TODO: Use AutoResetUniTaskCompletionSource?
             var completionSource = new UniTaskCompletionSource();
@@ -29,7 +29,7 @@ namespace BeardPhantom.UnityExtended
     {
         #region Methods
 
-        public UniTask<TArgs> AwaitInvocation()
+        public UniTask<TArgs> WaitForInvocationAsync()
         {
             var completionSource = new UniTaskCompletionSource<TArgs>();
 
