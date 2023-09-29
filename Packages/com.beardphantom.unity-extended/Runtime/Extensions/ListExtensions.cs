@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine.Assertions;
 
 namespace BeardPhantom.UnityExtended
 {
@@ -20,15 +21,24 @@ namespace BeardPhantom.UnityExtended
 
         public static T RemoveAtSwapback<T>(this IList<T> list, int index)
         {
-            var endIndex = list.Count - 1;
-            var toRemove = list[index];
-            if (endIndex > 0)
+            var count = list.Count;
+            Assert.AreNotEqual(0, count, "list.Count == 0");
+            Assert.IsTrue(index < count, "index < list.Count");
+            Assert.IsTrue(index >= 0, "index >= 0");
+            T item;
+            if (count == 1)
             {
-                list[index] = list[endIndex];
+                item = list[0];
+                list.Clear();
+            }
+            else
+            {
+                item = list[index];
+                list[index] = list[count - 1];
+                list.RemoveAt(count - 1);
             }
 
-            list.RemoveAt(endIndex);
-            return toRemove;
+            return item;
         }
 
         public static void Shuffle<T>(this IList<T> list)
