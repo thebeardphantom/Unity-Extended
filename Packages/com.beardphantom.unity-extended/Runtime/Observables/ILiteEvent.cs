@@ -7,6 +7,8 @@ namespace BeardPhantom.UnityExtended
         #region Properties
 
         int ListenerCount { get; }
+        
+        bool Enabled { get; }
 
         #endregion
 

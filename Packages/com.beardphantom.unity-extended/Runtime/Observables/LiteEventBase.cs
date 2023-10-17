@@ -17,6 +17,9 @@ namespace BeardPhantom.UnityExtended
         /// <inheritdoc />
         public int ListenerCount => Listeners.Count;
 
+        /// <inheritdoc />
+        public bool Enabled { get; set; } = true;
+
         #endregion
 
         #region Methods

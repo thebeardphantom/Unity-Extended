@@ -4,10 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public class ObservableValue<T>
     {
-        #region Types
-
-        #endregion
-
         #region Fields
 
         public readonly LiteEvent<ObservableValueChangedArgs<T>> ValueChanged = new();

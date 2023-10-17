@@ -24,6 +24,11 @@ namespace BeardPhantom.UnityExtended
 
         public void Invoke()
         {
+            if (!Enabled)
+            {
+                return;
+            }
+            
             using (ListPool<OnEventInvoked>.Get(out var listenersCopy))
             {
                 listenersCopy.AddRange(Listeners);
@@ -59,6 +64,11 @@ namespace BeardPhantom.UnityExtended
 
         public void Invoke(in TArgs args)
         {
+            if (!Enabled)
+            {
+                return;
+            }
+            
             using (ListPool<OnEventInvoked>.Get(out var listenersCopy))
             {
                 listenersCopy.AddRange(Listeners);
