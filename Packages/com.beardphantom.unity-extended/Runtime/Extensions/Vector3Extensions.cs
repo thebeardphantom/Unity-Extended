@@ -37,6 +37,11 @@ namespace BeardPhantom.UnityExtended
             return new Vector2(v3.x, v3.z);
         }
 
+        public static Vector3 RemapToX0Z(this Vector3 v3)
+        {
+            return new Vector3(v3.x, 0, v3.y);
+        }
+
         #endregion
     }
 }

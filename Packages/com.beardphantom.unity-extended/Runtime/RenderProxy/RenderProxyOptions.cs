@@ -6,7 +6,7 @@ namespace BeardPhantom.UnityExtended
     public enum RenderProxyOptions
     {
         UseUniqueMeshInstance = 1 << 0,
-        UseUniqueMaterialInstance = 1 << 1,
+        UseUniqueMaterialInstances = 1 << 1,
         LogUnsupportedRendererTypes = 1 << 2,
         FindInactiveRenderers = 1 << 3
     }

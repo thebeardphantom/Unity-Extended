@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
-public class RaycastHit2DComparer : PhysicsRaycastComparer<RaycastHit2DComparer, RaycastHit2D>
+namespace BeardPhantom.UnityExtended
 {
-    #region Methods
-
-    public override int Compare(RaycastHit2D x, RaycastHit2D y)
+    public class RaycastHit2DComparer : PhysicsRaycastComparer<RaycastHit2DComparer, RaycastHit2D>
     {
-        return x.distance.CompareTo(y.distance);
-    }
+        #region Methods
 
-    #endregion
+        public override int Compare(RaycastHit2D x, RaycastHit2D y)
+        {
+            return x.distance.CompareTo(y.distance);
+        }
+
+        #endregion
+    }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
-namespace BeardPhantom.UnityExtended.ShapeMath
+namespace BeardPhantom.UnityExtended
 {
     [SuppressMessage("ReSharper", "PossiblyImpureMethodCallOnReadonlyVariable")]
     public readonly struct AABB

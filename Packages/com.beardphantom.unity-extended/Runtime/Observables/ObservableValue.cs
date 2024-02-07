@@ -2,17 +2,17 @@
 
 namespace BeardPhantom.UnityExtended
 {
-    public class ObservableValue<T>
+    public class ObservableValue<T> : IObservableValue<T>
     {
         #region Fields
-
-        public readonly LiteEvent<ObservableValueChangedArgs<T>> ValueChanged = new();
 
         private T _value;
 
         #endregion
 
         #region Properties
+
+        public LiteEvent<ObservableValueChangedArgs<T>> ValueChanged { get; } = new();
 
         public T Value
         {
@@ -26,7 +26,7 @@ namespace BeardPhantom.UnityExtended
 
                 var oldValue = _value;
                 _value = value;
-                ValueChanged.Invoke(new ObservableValueChangedArgs<T>(oldValue, _value));
+                ValueChanged.Invoke(new ObservableValueChangedArgs<T>(this, oldValue, _value));
             }
         }
 

@@ -6,6 +6,8 @@ namespace BeardPhantom.UnityExtended
     {
         #region Properties
 
+        public static readonly UnityRandomAdapter Instance = new();
+
         /// <inheritdoc />
         public int Seed
         {

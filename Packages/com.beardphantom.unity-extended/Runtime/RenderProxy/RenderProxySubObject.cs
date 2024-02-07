@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BeardPhantom.UnityExtended
@@ -7,7 +8,13 @@ namespace BeardPhantom.UnityExtended
     {
         #region Fields
 
-        public Matrix4x4 LocalToWorld;
+        protected Matrix4x4 LocalToWorld;
+
+        #endregion
+
+        #region Properties
+
+        public abstract IEnumerable<Material> Materials { get; }
 
         #endregion
 

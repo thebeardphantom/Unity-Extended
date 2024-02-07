@@ -4,6 +4,8 @@
     {
         #region Fields
 
+        public readonly IObservableValue<T> Observable;
+
         public readonly T OldValue;
 
         public readonly T NewValue;
@@ -12,10 +14,11 @@
 
         #region Constructors
 
-        public ObservableValueChangedArgs(T oldValue, T newValue)
+        public ObservableValueChangedArgs(IObservableValue<T> observable, T oldValue, T newValue)
         {
             OldValue = oldValue;
             NewValue = newValue;
+            Observable = observable;
         }
 
         #endregion

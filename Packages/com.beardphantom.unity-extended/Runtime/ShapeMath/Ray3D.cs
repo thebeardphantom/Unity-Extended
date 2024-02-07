@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BeardPhantom.UnityExtended.ShapeMath
+namespace BeardPhantom.UnityExtended
 {
     public readonly struct Ray3D
     {

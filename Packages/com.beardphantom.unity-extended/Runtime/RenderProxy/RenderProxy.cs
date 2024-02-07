@@ -36,7 +36,17 @@ namespace BeardPhantom.UnityExtended
                     {
                         case MeshRenderer meshRenderer:
                         {
-                            _subObjects.Add(new MeshRendererSubObject(meshRenderer, options));
+                            var meshRendererSubObject = MeshRendererSubObject.CreateInstance(meshRenderer, options);
+                            if (meshRendererSubObject.IsNotNull())
+                            {
+                                _subObjects.Add(meshRendererSubObject);
+                            }
+
+                            break;
+                        }
+                        case SkinnedMeshRenderer skinnedMeshRenderer:
+                        {
+                            _subObjects.Add(new SkinnedMeshRendererSubObject(skinnedMeshRenderer, options));
                             break;
                         }
                         default:
@@ -60,14 +70,16 @@ namespace BeardPhantom.UnityExtended
         #region Methods
 
         public void Render(
-            Vector3 position = default,
-            Quaternion rotation = default,
-            Vector3 localScale = default,
+            Vector3? position = default,
+            Quaternion? rotation = default,
+            Vector3? localScale = default,
             int layer = -1,
             Camera camera = null)
         {
-            rotation = rotation == default ? Quaternion.identity : rotation;
-            var trs = Matrix4x4.TRS(position, rotation, localScale);
+            position ??= Vector3.zero;
+            rotation ??= Quaternion.identity;
+            localScale ??= Vector3.one;
+            var trs = Matrix4x4.TRS(position.Value, rotation.Value, localScale.Value);
             Render(trs, layer, camera);
         }
 

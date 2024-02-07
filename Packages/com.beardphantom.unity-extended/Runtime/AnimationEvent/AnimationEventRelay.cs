@@ -1,79 +1,81 @@
-﻿using BeardPhantom.UnityExtended;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class AnimationEventRelay : MonoBehaviour
+namespace BeardPhantom.UnityExtended
 {
-    #region Types
-
-    public readonly struct AnimationEventReceivedArgs
+    public class AnimationEventRelay : MonoBehaviour
     {
-        #region Fields
+        #region Types
 
-        public readonly Animator Animator;
-
-        public readonly AnimationEventAsset Event;
-
-        #endregion
-
-        #region Constructors
-
-        public AnimationEventReceivedArgs(Animator animator, AnimationEventAsset evt)
+        public readonly struct AnimationEventReceivedArgs
         {
-            Animator = animator;
-            Event = evt;
-        }
+            #region Fields
 
-        #endregion
-    }
+            public readonly Animator Animator;
 
-    #endregion
+            public readonly AnimationEventAsset Event;
 
-    #region Fields
+            #endregion
 
-    public readonly LiteEvent<AnimationEventReceivedArgs> EventReceived = new();
+            #region Constructors
 
-    #endregion
-
-    #region Properties
-
-    [field: SerializeField]
-    public Animator Animator { get; private set; }
-
-    #endregion
-
-    #region Methods
-
-    private void Start()
-    {
-        var controller = Animator.runtimeAnimatorController;
-        var clips = controller.animationClips;
-        foreach (var clip in clips)
-        {
-            var events = clip.events;
-            for (var j = 0; j < events.Length; j++)
+            public AnimationEventReceivedArgs(Animator animator, AnimationEventAsset evt)
             {
-                var evt = events[j];
-                if (evt.objectReferenceParameter is AnimationEventAsset)
-                {
-                    evt.functionName = nameof(OnAnimEvent);
-                    events[j] = evt;
-                }
+                Animator = animator;
+                Event = evt;
             }
 
-            clip.events = events;
+            #endregion
         }
-    }
 
-    private void OnAnimEvent(AnimationEventAsset evt)
-    {
-        EventReceived.Invoke(new(Animator, evt));
-    }
+        #endregion
 
-    private void OnValidate()
-    {
-        TryGetComponent<Animator>(out var animator);
-        Animator = animator;
-    }
+        #region Fields
 
-    #endregion
+        public readonly LiteEvent<AnimationEventReceivedArgs> EventReceived = new();
+
+        #endregion
+
+        #region Properties
+
+        [field: SerializeField]
+        public Animator Animator { get; private set; }
+
+        #endregion
+
+        #region Methods
+
+        private void Start()
+        {
+            var controller = Animator.runtimeAnimatorController;
+            var clips = controller.animationClips;
+            foreach (var clip in clips)
+            {
+                var events = clip.events;
+                for (var j = 0; j < events.Length; j++)
+                {
+                    var evt = events[j];
+                    if (evt.objectReferenceParameter is AnimationEventAsset)
+                    {
+                        evt.functionName = nameof(OnAnimEvent);
+                        events[j] = evt;
+                    }
+                }
+
+                clip.events = events;
+            }
+        }
+
+        private void OnAnimEvent(AnimationEventAsset evt)
+        {
+            EventReceived.Invoke(new(Animator, evt));
+        }
+
+        private void OnValidate()
+        {
+            TryGetComponent<Animator>(out var animator);
+            Animator = animator;
+        }
+
+        #endregion
+    }
 }

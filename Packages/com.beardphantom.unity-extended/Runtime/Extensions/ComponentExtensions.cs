@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Pool;
 using Object = UnityEngine.Object;
-#if UNITASK_SUPPORT
-using Cysharp.Threading.Tasks;
-#endif
 
 namespace BeardPhantom.UnityExtended
 {

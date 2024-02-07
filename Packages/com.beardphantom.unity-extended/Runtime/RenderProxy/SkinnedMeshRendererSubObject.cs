@@ -4,7 +4,7 @@ using UnityEngine.Pool;
 
 namespace BeardPhantom.UnityExtended
 {
-    public class MeshRendererSubObject : RenderProxySubObject
+    public class SkinnedMeshRendererSubObject : RenderProxySubObject
     {
         #region Fields
 
@@ -15,6 +15,8 @@ namespace BeardPhantom.UnityExtended
         private readonly int _subMeshCount;
 
         private readonly RenderProxyOptions _options;
+
+        private readonly SkinnedMeshRenderer _rendererSrc;
 
         #endregion
 
@@ -27,15 +29,14 @@ namespace BeardPhantom.UnityExtended
 
         #region Constructors
 
-        private MeshRendererSubObject(MeshRenderer renderer, MeshFilter meshFilter, RenderProxyOptions options)
+        public SkinnedMeshRendererSubObject(SkinnedMeshRenderer renderer, RenderProxyOptions options)
         {
             _options = options;
 
             LocalToWorld = RenderProxyUtility.CreateMatrix(renderer.transform);
 
-            _mesh = options.HasFlagFast(RenderProxyOptions.UseUniqueMeshInstance)
-                ? Object.Instantiate(meshFilter.sharedMesh)
-                : meshFilter.sharedMesh;
+            _rendererSrc = renderer;
+            _mesh = Object.Instantiate(renderer.sharedMesh);
 
             // Copy shared materials
             using (ListPool<Material>.Get(out var sharedMaterials))
@@ -57,18 +58,6 @@ namespace BeardPhantom.UnityExtended
 
         #region Methods
 
-        public static MeshRendererSubObject CreateInstance(MeshRenderer renderer, RenderProxyOptions options)
-        {
-            var meshFilter = renderer.GetComponent<MeshFilter>();
-            if (meshFilter.IsNull())
-            {
-                // Fixes 3D TextMeshPro objects
-                return null;
-            }
-
-            return new MeshRendererSubObject(renderer, meshFilter, options);
-        }
-
         /// <inheritdoc />
         public override void Render(Matrix4x4 transformation, int layer, Camera camera, Material overrideMaterial)
         {
@@ -77,6 +66,7 @@ namespace BeardPhantom.UnityExtended
             for (var i = 0; i < _subMeshCount; i++)
             {
                 var material = hasOverrideMaterial ? overrideMaterial : _materials[i];
+                _rendererSrc.BakeMesh(_mesh);
                 RenderProxyUtility.DrawMesh(_mesh, material, finalTransformation, i, layer, camera);
             }
         }

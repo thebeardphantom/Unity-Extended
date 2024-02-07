@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Assertions;
 
 namespace BeardPhantom.UnityExtended
@@ -12,6 +14,11 @@ namespace BeardPhantom.UnityExtended
         #endregion
 
         #region Methods
+
+        public static int ResolveIndex(this IList list, Index index)
+        {
+            return index.GetOffset(list.Count);
+        }
 
         public static void RemoveSwapback<T>(this IList<T> list, T item)
         {
