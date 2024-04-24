@@ -12,14 +12,14 @@ namespace BeardPhantom.UnityExtended
             // TODO: Use AutoResetUniTaskCompletionSource?
             var completionSource = new UniTaskCompletionSource();
 
+            Event += WaitForComplete;
+            return completionSource.Task;
+
             void WaitForComplete()
             {
                 Event -= WaitForComplete;
                 completionSource.TrySetResult();
             }
-
-            Event += WaitForComplete;
-            return completionSource.Task;
         }
 
         #endregion

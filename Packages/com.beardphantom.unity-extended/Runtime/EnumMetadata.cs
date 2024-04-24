@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -25,7 +27,7 @@ namespace BeardPhantom.UnityExtended
         /// <summary>
         /// All valid values in this type
         /// </summary>
-        public static readonly T[] Values;
+        public static readonly NativeArray<T> Values;
 
         public static readonly T AllFlagsValue;
 
@@ -50,7 +52,7 @@ namespace BeardPhantom.UnityExtended
         static EnumData()
         {
             Type = typeof(T);
-            Values = (T[])Enum.GetValues(Type);
+            Values = new NativeArray<T>((T[])Enum.GetValues(Type), Allocator.Domain);
             Names = Enum.GetNames(Type);
             IsFlagsEnum = true;
             var allFlagsValue = 0;
@@ -71,6 +73,11 @@ namespace BeardPhantom.UnityExtended
 
         #region Methods
 
+        public static void Prime()
+        {
+            // Does nothing
+        }
+
         /// <summary>
         /// Retrieves the name for a value
         /// </summary>
@@ -78,7 +85,16 @@ namespace BeardPhantom.UnityExtended
         /// <returns></returns>
         public static string GetName(T value)
         {
-            return Names[Array.IndexOf(Values, value)];
+            for (var i = 0; i < Values.Length; i++)
+            {
+                var v = Values[i];
+                if (EqualityComparer<T>.Default.Equals(value, v))
+                {
+                    return Names[i];
+                }
+            }
+
+            throw new IndexOutOfRangeException();
         }
 
         /// <summary>
@@ -88,7 +104,16 @@ namespace BeardPhantom.UnityExtended
         /// <returns></returns>
         public static T GetValue(string name)
         {
-            return Values[Array.IndexOf(Names, name)];
+            for (var i = 0; i < Names.Length; i++)
+            {
+                var n = Names[i];
+                if (name == n)
+                {
+                    return Values[i];
+                }
+            }
+
+            throw new IndexOutOfRangeException();
         }
 
         #endregion

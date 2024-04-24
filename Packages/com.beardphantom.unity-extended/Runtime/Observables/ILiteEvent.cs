@@ -16,9 +16,9 @@ namespace BeardPhantom.UnityExtended
 
         void Clear();
 
-        bool Register(TDelegate listener);
+        bool Add(TDelegate listener);
 
-        bool Unregister(TDelegate listener);
+        bool Remove(TDelegate listener);
 
         #endregion
     }

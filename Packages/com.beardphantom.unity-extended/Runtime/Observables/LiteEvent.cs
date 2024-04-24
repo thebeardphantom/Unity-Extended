@@ -14,8 +14,18 @@ namespace BeardPhantom.UnityExtended
 
         public event OnEventInvoked Event
         {
-            add => Register(value);
-            remove => Unregister(value);
+            add => Add(value);
+            remove => Remove(value);
+        }
+
+        public event OnEventInvoked EventWithImmediateInvoke
+        {
+            add
+            {
+                Add(value);
+                value();
+            }
+            remove => Remove(value);
         }
 
         #endregion
@@ -28,7 +38,7 @@ namespace BeardPhantom.UnityExtended
             {
                 return;
             }
-            
+
             using (ListPool<OnEventInvoked>.Get(out var listenersCopy))
             {
                 listenersCopy.AddRange(Listeners);
@@ -54,13 +64,19 @@ namespace BeardPhantom.UnityExtended
 
         public event OnEventInvoked Event
         {
-            add => Register(value);
-            remove => Unregister(value);
+            add => Add(value);
+            remove => Remove(value);
         }
 
         #endregion
 
         #region Methods
+
+        public void AddWithImmediateInvoke(OnEventInvoked callback, in TArgs initArgs)
+        {
+            Event += callback;
+            callback(in initArgs);
+        }
 
         public void Invoke(in TArgs args)
         {
@@ -68,7 +84,7 @@ namespace BeardPhantom.UnityExtended
             {
                 return;
             }
-            
+
             using (ListPool<OnEventInvoked>.Get(out var listenersCopy))
             {
                 listenersCopy.AddRange(Listeners);

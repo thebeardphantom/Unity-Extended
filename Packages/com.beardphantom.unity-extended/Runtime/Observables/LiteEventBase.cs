@@ -31,13 +31,13 @@ namespace BeardPhantom.UnityExtended
         }
 
         /// <inheritdoc />
-        public bool Register(TDelegate listener)
+        public bool Add(TDelegate listener)
         {
             return Listeners.Add(listener);
         }
 
         /// <inheritdoc />
-        public bool Unregister(TDelegate listener)
+        public bool Remove(TDelegate listener)
         {
             return Listeners.Remove(listener);
         }

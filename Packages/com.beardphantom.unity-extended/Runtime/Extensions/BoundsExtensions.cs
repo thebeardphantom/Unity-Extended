@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Pool;
 
 namespace BeardPhantom.UnityExtended
 {
@@ -24,6 +26,43 @@ namespace BeardPhantom.UnityExtended
                 y = Mathf.Lerp(bounds.min.y, bounds.max.y, y),
                 z = Mathf.Lerp(bounds.min.z, bounds.max.z, z)
             };
+        }
+
+        public static Bounds GetTotalBounds(GameObject gameObject)
+        {
+            using var _ = ListPool<Renderer>.Get(out var renderers);
+            gameObject.GetComponentsInChildren(renderers);
+            return GetTotalBounds(renderers);
+        }
+
+        public static Bounds GetTotalBounds(IEnumerable<Renderer> renderers)
+        {
+            Bounds totalBounds = default;
+            var hasBounds = false;
+            foreach (var renderer in renderers)
+            {
+                var bounds = renderer.bounds;
+                if (hasBounds)
+                {
+                    totalBounds.Encapsulate(bounds);
+                }
+                else
+                {
+                    hasBounds = true;
+                    totalBounds = bounds;
+                }
+            }
+
+            return totalBounds;
+        }
+
+        public static Bounds WorldToScreenBounds(this Bounds boundsWorld, Camera camera)
+        {
+            var screenBounds = new Bounds();
+            var minScreen = camera.WorldToScreenPoint(boundsWorld.min);
+            var maxScreen = camera.WorldToScreenPoint(boundsWorld.max);
+            screenBounds.SetMinMax(minScreen, maxScreen);
+            return screenBounds;
         }
 
         #endregion

@@ -23,6 +23,19 @@ namespace BeardPhantom.UnityExtended
             return new Vector3(v2.x, 0f, v2.y);
         }
 
+        public static Vector2 Rotate(this Vector2 v2, float degrees)
+        {
+            var rads = degrees * Mathf.Deg2Rad;
+            var sin = Mathf.Sin(rads);
+            var cos = Mathf.Cos(rads);
+
+            var tx = v2.x;
+            var ty = v2.y;
+            v2.x = cos * tx - sin * ty;
+            v2.y = sin * tx + cos * ty;
+            return v2;
+        }
+
         #endregion
     }
 }

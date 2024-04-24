@@ -4,7 +4,7 @@
     {
         #region Fields
 
-        public readonly IObservableValue<T> Observable;
+        public readonly IReadOnlyObservableValue<T> Observable;
 
         public readonly T OldValue;
 
@@ -14,7 +14,7 @@
 
         #region Constructors
 
-        public ObservableValueChangedArgs(IObservableValue<T> observable, T oldValue, T newValue)
+        public ObservableValueChangedArgs(IReadOnlyObservableValue<T> observable, T oldValue, T newValue)
         {
             OldValue = oldValue;
             NewValue = newValue;

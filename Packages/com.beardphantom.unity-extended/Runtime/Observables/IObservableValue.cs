@@ -1,12 +1,20 @@
 ﻿namespace BeardPhantom.UnityExtended
 {
-    public interface IObservableValue<T>
+    public interface IObservableValue<T> : IReadOnlyObservableValue<T>
     {
         #region Properties
 
-        T Value { get; set; }
+        new T Value { get; set; }
 
-        LiteEvent<ObservableValueChangedArgs<T>> ValueChanged { get; }
+        #endregion
+
+        #region Methods
+
+        void SetValueWithoutNotify(T newValue);
+
+        internal void OffsetChangeScopeCount(int offset);
+
+        internal void InvokeValueChange(T oldValue);
 
         #endregion
     }

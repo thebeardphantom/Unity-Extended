@@ -67,7 +67,7 @@ namespace BeardPhantom.UnityExtended
 
         private void OnAnimEvent(AnimationEventAsset evt)
         {
-            EventReceived.Invoke(new(Animator, evt));
+            EventReceived.Invoke(new AnimationEventReceivedArgs(Animator, evt));
         }
 
         private void OnValidate()
