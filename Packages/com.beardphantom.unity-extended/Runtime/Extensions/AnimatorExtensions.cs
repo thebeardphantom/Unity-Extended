@@ -1,8 +1,8 @@
-﻿using Cysharp.Threading.Tasks;
+﻿#if UNITASK_SUPPORT
+using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
 
-#if UNITASK_SUPPORT
 namespace BeardPhantom.UnityExtended
 {
     public static class AnimatorExtensions
