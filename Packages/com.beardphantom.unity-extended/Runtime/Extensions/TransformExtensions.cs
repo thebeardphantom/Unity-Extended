@@ -5,8 +5,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class TransformExtensions
     {
-        #region Methods
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3 DirectionTo(this Transform transform, Transform other)
         {
@@ -42,7 +40,5 @@ namespace BeardPhantom.UnityExtended
         {
             return Vector3.SqrMagnitude(position - transform.position);
         }
-
-        #endregion
     }
 }

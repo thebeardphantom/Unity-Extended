@@ -10,15 +10,9 @@ namespace BeardPhantom.UnityExtended
     /// <typeparam name="T"></typeparam>
     public class FastRef<T> : IReadOnlyFastRef<T> where T : class
     {
-        #region Fields
-
         private T _value;
 
         private bool _hasValue;
-
-        #endregion
-
-        #region Properties
 
         public T Value
         {
@@ -43,10 +37,6 @@ namespace BeardPhantom.UnityExtended
             }
         }
 
-        #endregion
-
-        #region Methods
-
         public void ClearValue()
         {
             _value = default;
@@ -59,7 +49,5 @@ namespace BeardPhantom.UnityExtended
             var hasValue = _value.IsNotNull();
             Assert.AreEqual(_hasValue, hasValue, "Value was destroyed and this FastRef is out of sync.");
         }
-
-        #endregion
     }
 }

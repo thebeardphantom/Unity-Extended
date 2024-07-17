@@ -5,19 +5,9 @@ namespace BeardPhantom.UnityExtended
 {
     public static class Transform2DExtensions
     {
-        #region Fields
-
         public static Vector2 Forward2D = Forward2DDefault;
 
-        #endregion
-
-        #region Properties
-
         public static Vector2 Forward2DDefault => Vector2.right;
-
-        #endregion
-
-        #region Methods
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 TransformPoint2D(this Transform transform, Vector2 point)
@@ -165,7 +155,5 @@ namespace BeardPhantom.UnityExtended
         {
             return Vector2.SqrMagnitude(position - transform.GetPosition2D());
         }
-
-        #endregion
     }
 }

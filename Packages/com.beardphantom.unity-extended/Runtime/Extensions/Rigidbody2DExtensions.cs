@@ -6,8 +6,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class Rigidbody2DExtensions
     {
-        #region Methods
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void LookAt2D(this Rigidbody2D rigidbody2D, Transform other)
         {
@@ -139,7 +137,5 @@ namespace BeardPhantom.UnityExtended
                 return bounds;
             }
         }
-
-        #endregion
     }
 }

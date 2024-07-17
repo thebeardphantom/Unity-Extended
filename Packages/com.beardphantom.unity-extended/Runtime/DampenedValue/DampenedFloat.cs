@@ -6,14 +6,8 @@ namespace BeardPhantom.UnityExtended
     [Serializable]
     public class DampenedFloat : DampenedValue<float>
     {
-        #region Properties
-
         [field: SerializeField]
         public bool AsAngle { get; private set; }
-
-        #endregion
-
-        #region Methods
 
         /// <inheritdoc />
         public override float Simulate(float deltaTime)
@@ -25,7 +19,5 @@ namespace BeardPhantom.UnityExtended
             Velocity = velocity;
             return Value;
         }
-
-        #endregion
     }
 }

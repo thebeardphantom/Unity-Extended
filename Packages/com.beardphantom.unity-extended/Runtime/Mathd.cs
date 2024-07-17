@@ -5,8 +5,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class Mathd
     {
-        #region Fields
-
         public const double PI = Math.PI;
 
         public const double INFINITY = double.PositiveInfinity;
@@ -20,10 +18,6 @@ namespace BeardPhantom.UnityExtended
         public const double EQUALITY_TOLERANCE_DEFAULT = 0.0000000001;
 
         public static double EqualityTolerance = EQUALITY_TOLERANCE_DEFAULT;
-
-        #endregion
-
-        #region Methods
 
         public static double Sin(double f)
         {
@@ -380,7 +374,6 @@ namespace BeardPhantom.UnityExtended
             var change = current - target;
             var originalTo = target;
 
-
             var maxChange = maxSpeed * smoothTime;
             change = Math.Clamp(change, -maxChange, maxChange);
             target = current - change;
@@ -388,7 +381,6 @@ namespace BeardPhantom.UnityExtended
             var temp = (currentVelocity + omega * change) * deltaTime;
             currentVelocity = (currentVelocity - omega * temp) * exp;
             var output = target + (change + temp) * exp;
-
 
             if (originalTo - current > 0.0 == output > originalTo)
             {
@@ -536,7 +528,5 @@ namespace BeardPhantom.UnityExtended
 
             return (float)value;
         }
-
-        #endregion
     }
 }

@@ -6,8 +6,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class BoundsExtensions
     {
-        #region Methods
-
         public static Vector3 GetPositionFromNormalized(this Bounds bounds, Vector3 normalizedPosition)
         {
             return GetPositionFromNormalized(bounds, normalizedPosition.x, normalizedPosition.y, normalizedPosition.z);
@@ -24,7 +22,7 @@ namespace BeardPhantom.UnityExtended
             {
                 x = Mathf.Lerp(bounds.min.x, bounds.max.x, x),
                 y = Mathf.Lerp(bounds.min.y, bounds.max.y, y),
-                z = Mathf.Lerp(bounds.min.z, bounds.max.z, z)
+                z = Mathf.Lerp(bounds.min.z, bounds.max.z, z),
             };
         }
 
@@ -64,7 +62,5 @@ namespace BeardPhantom.UnityExtended
             screenBounds.SetMinMax(minScreen, maxScreen);
             return screenBounds;
         }
-
-        #endregion
     }
 }

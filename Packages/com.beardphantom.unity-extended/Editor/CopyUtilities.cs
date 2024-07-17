@@ -8,17 +8,11 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public static class CopyUtilities
     {
-        #region Fields
-
         private const string ASSETS_COPY_PREFIX = "Assets/Copy.../";
 
         private const int PRIORITY = 17;
 
         private static MethodInfo _makeAssetUriMethod;
-
-        #endregion
-
-        #region Methods
 
         private static void FindUriMethod()
         {
@@ -73,11 +67,9 @@ namespace BeardPhantom.UnityExtended.Editor
                 new object[]
                 {
                     assetObject,
-                    false
+                    false,
                 });
             GUIUtility.systemCopyBuffer = uri;
         }
-
-        #endregion
     }
 }

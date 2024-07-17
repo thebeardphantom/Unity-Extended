@@ -4,45 +4,10 @@ namespace BeardPhantom.UnityExtended
 {
     public class AnimationEventRelay : MonoBehaviour
     {
-        #region Types
-
-        public readonly struct AnimationEventReceivedArgs
-        {
-            #region Fields
-
-            public readonly Animator Animator;
-
-            public readonly AnimationEventAsset Event;
-
-            #endregion
-
-            #region Constructors
-
-            public AnimationEventReceivedArgs(Animator animator, AnimationEventAsset evt)
-            {
-                Animator = animator;
-                Event = evt;
-            }
-
-            #endregion
-        }
-
-        #endregion
-
-        #region Fields
-
         public readonly LiteEvent<AnimationEventReceivedArgs> EventReceived = new();
-
-        #endregion
-
-        #region Properties
 
         [field: SerializeField]
         public Animator Animator { get; private set; }
-
-        #endregion
-
-        #region Methods
 
         private void Start()
         {
@@ -76,6 +41,17 @@ namespace BeardPhantom.UnityExtended
             Animator = animator;
         }
 
-        #endregion
+        public readonly struct AnimationEventReceivedArgs
+        {
+            public readonly Animator Animator;
+
+            public readonly AnimationEventAsset Event;
+
+            public AnimationEventReceivedArgs(Animator animator, AnimationEventAsset evt)
+            {
+                Animator = animator;
+                Event = evt;
+            }
+        }
     }
 }

@@ -7,14 +7,8 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public class EditorBoundSceneProcessor : IProcessSceneWithReport
     {
-        #region Properties
-
         /// <inheritdoc />
         public int callbackOrder { get; }
-
-        #endregion
-
-        #region Methods
 
         /// <inheritdoc />
         public void OnProcessScene(Scene scene, BuildReport report)
@@ -27,7 +21,5 @@ namespace BeardPhantom.UnityExtended.Editor
                 editorBoundGameObject.DestroyIfNecessary();
             }
         }
-
-        #endregion
     }
 }

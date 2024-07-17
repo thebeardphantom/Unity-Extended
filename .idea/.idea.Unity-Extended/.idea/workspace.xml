@@ -5,34 +5,109 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64f31cad-ec58-4a78-8302-329c0c4bf66f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/AABB.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/AABB.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Point3D.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Point3D.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Ray3D.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Ray3D.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Sphere.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ShapeMath/Sphere.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Vector2Extensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Vector2Extensions.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Tests.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Tests/Editor/ShapeMath.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Tests/Editor/ShapeMath/AABBTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Tests/Editor/ShapeMath/AABBTests.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Extended/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Extended/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/IRandomAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/IRandomAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/AssetEditingScope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/AssetEditingScope.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/AudioCueAssetEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/AudioCueAssetEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/AutoRefreshDisableScope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/AutoRefreshDisableScope.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/CopyUtilities.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/CopyUtilities.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/DampenedValue/DampenedValuePropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/DampenedValue/DampenedValuePropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/EditorApplicationUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/EditorApplicationUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/EditorBoundSceneProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/EditorBoundSceneProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ObjectEditorUtilities.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ObjectEditorUtilities.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ObjectPropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ObjectPropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/PrefabPropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/PrefabPropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ProjectWindowExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ProjectWindowExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ReadOnlyInPlayModePropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ReadOnlyInPlayModePropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ReadOnlyPropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ReadOnlyPropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ReferenceDrawerAttributePropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ReferenceDrawerAttributePropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ScriptableObjectPropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ScriptableObjectPropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/SerializedDictionaryPropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/SerializedDictionaryPropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/SerializedHashSetPropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/SerializedHashSetPropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/SerializedPropertyTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/SerializedPropertyTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/SerializedPropertyUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/SerializedPropertyUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/AnimationEvent/AnimationEventRelay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/AnimationEvent/AnimationEventRelay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/AudioCue/AudioCueAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/AudioCue/AudioCueAsset.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/AudioCue/AudioCueSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/AudioCue/AudioCueSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/AudioCue/AudioSourceSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/AudioCue/AudioSourceSettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/AudioCue/EditorAudioUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/AudioCue/EditorAudioUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/DampenedDouble.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/DampenedDouble.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/DampenedFloat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/DampenedFloat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/DampenedValue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/DampenedValue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/DampenedVector2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/DampenedVector2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/DampenedVector3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/DampenedVector3.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/IDampenedValue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DampenedValue/IDampenedValue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DictionarySerializationUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/DictionarySerializationUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/EditorBoundGameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/EditorBoundGameObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/EnumMetadata.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/EnumMetadata.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/EventBus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/EventBus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/BoundsExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/BoundsExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/CollectionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/CollectionExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/ColorExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/ColorExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/ComponentExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/ComponentExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/GameObjectExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/GameObjectExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/GridExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/GridExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/ListExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/ListExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/MathExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/MathExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/MathfExtended.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/MathfExtended.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/ObjectPoolExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/ObjectPoolExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/ParticleSystemExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/ParticleSystemExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/QueueExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/QueueExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Rigidbody2DExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Rigidbody2DExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Transform2DExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Transform2DExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/TransformExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/TransformExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/UIToolkitExtensions.Builder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/UIToolkitExtensions.Builder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/UIToolkitExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/UIToolkitExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/UnityObjectExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/UnityObjectExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Vector2Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Vector2Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Vector2IntExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Vector2IntExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Vector3Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Vector3Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Vector3IntExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Vector3IntExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/FastRef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/FastRef.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/GameObjectUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/GameObjectUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/CubeCoord.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/CubeCoord.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexFlatTop.Direction.Offset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexFlatTop.Direction.Offset.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexFlatTop.Direction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexFlatTop.Direction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexFlatTop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexFlatTop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexPointTop.Direction.Offset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexPointTop.Direction.Offset.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexPointTop.Direction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexPointTop.Direction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexPointTop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/HexMath/HexPointTop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/IReadOnlyFastRef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/IReadOnlyFastRef.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/IWeightedChoice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/IWeightedChoice.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/InstantiateArgs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/InstantiateArgs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Mathd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Mathd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Rigidbody2DExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Rigidbody2DExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/SystemRandomAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/SystemRandomAdapter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Transform2DExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Transform2DExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/TransformExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/TransformExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/UnityRandomAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/UnityRandomAdapter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Vector3Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Vector3Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ILiteEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ILiteEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/IObservableValue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/IObservableValue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/IReadOnlyObservableValue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/IReadOnlyObservableValue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/LiteEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/LiteEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/LiteEventBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/LiteEventBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ObservableChangeScope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ObservableChangeScope.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ObservableQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ObservableQueue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ObservableValue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ObservableValue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ObservableValueChangedArgs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ObservableValueChangedArgs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ObservableValueUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Observables/ObservableValueUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/PhysicsRaycastComparer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/PhysicsRaycastComparer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Prefab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Prefab.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/PrefabComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/PrefabComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RandomAdapter/IRandomAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RandomAdapter/IRandomAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RandomAdapter/SystemRandomAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RandomAdapter/SystemRandomAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RandomAdapter/UnityRandomAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RandomAdapter/UnityRandomAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RaycastHit2DComparer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RaycastHit2DComparer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RaycastHitComparer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RaycastHitComparer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/MeshRendererSubObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/MeshRendererSubObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/RenderProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/RenderProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/RenderProxyOptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/RenderProxyOptions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/RenderProxySubObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/RenderProxySubObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/RenderProxyUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/RenderProxyUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/SkinnedMeshRendererSubObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy/SkinnedMeshRendererSubObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/SerializedDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/SerializedDictionary.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/SerializedHashSet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/SerializedHashSet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/SerializedKeyValuePair.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/SerializedKeyValuePair.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/StateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/WeightedChoiceUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/WeightedChoiceUtility.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/boot.config" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +122,7 @@
         <option name="title" value="All" />
       </GitPushTagMode>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/c0/83eb8eec/Bounds.cs" root0="SKIP_HIGHLIGHTING" />
@@ -63,6 +139,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
   <component name="ProjectId" id="2CI7iA7saCaZgDWcEJHPo9ARpuS" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -73,33 +152,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.7092511&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "XThreadsFramesViewSplitterKey": "0.7092511",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\mika\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\mika\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\mika\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\mika\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\mika\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\mika\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Mika\WorkRoot\UnityEditors\2021.3.19f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\_Content\WorkRoot\UnityEditors\2022.3.37f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath D:\Mika\WorkRoot\UPM\Unity-Extended -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Mika\WorkRoot\UPM\Unity-Extended" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\_Content\WorkRoot\UnityEditors\2022.3.37f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\_Content\WorkRoot\UPM\Unity-Extended -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\_Content\WorkRoot\UPM\Unity-Extended" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -154,6 +245,7 @@
       <workItem from="1668895579046" duration="9684000" />
       <workItem from="1681188564981" duration="1106000" />
       <workItem from="1682755031553" duration="4605000" />
+      <workItem from="1721182146252" duration="379000" />
     </task>
     <task id="LOCAL-00001" summary="Add ObservableValue.cs, remove in from LiteEvent.cs">
       <created>1659144187516</created>
@@ -303,6 +395,11 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

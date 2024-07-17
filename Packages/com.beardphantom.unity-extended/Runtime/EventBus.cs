@@ -5,50 +5,9 @@ namespace BeardPhantom.UnityExtended
 {
     public class EventBus
     {
-        #region Types
-
         public delegate void OnEventInvoked<T>(in T eventArgs);
 
-        private class EventInvoker<T> where T : struct
-        {
-            #region Fields
-
-            private readonly HashSet<OnEventInvoked<T>> _callbacks = new();
-
-            #endregion
-
-            #region Methods
-
-            public bool Register(OnEventInvoked<T> callback)
-            {
-                return _callbacks.Add(callback);
-            }
-
-            public bool Unregister(OnEventInvoked<T> callback)
-            {
-                return _callbacks.Remove(callback);
-            }
-
-            public void Invoke(T args)
-            {
-                foreach (var callback in _callbacks)
-                {
-                    callback.Invoke(args);
-                }
-            }
-
-            #endregion
-        }
-
-        #endregion
-
-        #region Fields
-
         private readonly Dictionary<Type, object> _typeToInvoker = new();
-
-        #endregion
-
-        #region Methods
 
         public void Invoke<T>(in T evtArgs) where T : struct
         {
@@ -78,6 +37,27 @@ namespace BeardPhantom.UnityExtended
             return typedInvoker;
         }
 
-        #endregion
+        private class EventInvoker<T> where T : struct
+        {
+            private readonly HashSet<OnEventInvoked<T>> _callbacks = new();
+
+            public bool Register(OnEventInvoked<T> callback)
+            {
+                return _callbacks.Add(callback);
+            }
+
+            public bool Unregister(OnEventInvoked<T> callback)
+            {
+                return _callbacks.Remove(callback);
+            }
+
+            public void Invoke(T args)
+            {
+                foreach (var callback in _callbacks)
+                {
+                    callback.Invoke(args);
+                }
+            }
+        }
     }
 }

@@ -11,8 +11,6 @@ namespace BeardPhantom.UnityExtended
     [Serializable]
     public class AudioSourceSettings
     {
-        #region Fields
-
         [SerializeField]
         private AudioMixerGroup _mixerGroup;
 
@@ -79,10 +77,6 @@ namespace BeardPhantom.UnityExtended
         [SerializeField]
         private float _maxDistance = 500f;
 
-        #endregion
-
-        #region Methods
-
         /// <summary>
         /// Get settings from an AudioSource
         /// </summary>
@@ -106,7 +100,7 @@ namespace BeardPhantom.UnityExtended
                 _rolloffMode = source.rolloffMode,
                 _bypassEffects = source.bypassEffects,
                 _bypassListenerEffects = source.bypassListenerEffects,
-                _bypassReverbZones = source.bypassReverbZones
+                _bypassReverbZones = source.bypassReverbZones,
             };
         }
 
@@ -145,7 +139,5 @@ namespace BeardPhantom.UnityExtended
             source.bypassListenerEffects = _bypassListenerEffects;
             source.bypassReverbZones = _bypassReverbZones;
         }
-
-        #endregion
     }
 }

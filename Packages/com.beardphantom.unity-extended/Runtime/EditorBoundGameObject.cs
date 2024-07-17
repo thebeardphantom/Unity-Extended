@@ -5,8 +5,6 @@ namespace BeardPhantom.UnityExtended
 {
     public class EditorBoundGameObject : MonoBehaviour
     {
-        #region Methods
-
         public void DestroyIfNecessary()
         {
             if (!Application.IsPlaying(this) || !Application.isEditor)
@@ -27,8 +25,6 @@ namespace BeardPhantom.UnityExtended
         {
             hideFlags |= HideFlags.DontSaveInBuild;
         }
-
-        #endregion
     }
 }
 #endif

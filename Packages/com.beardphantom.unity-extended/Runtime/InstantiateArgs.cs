@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public struct InstantiateArgs
     {
-        #region Properties
-
         public static InstantiateArgs Default => new();
 
         public Transform Parent { get; set; }
@@ -33,10 +31,6 @@ namespace BeardPhantom.UnityExtended
         public Space RotationSpace { get; set; }
 
         public bool? Disabled { get; set; }
-
-        #endregion
-
-        #region Methods
 
         public readonly GameObject Instantiate(GameObject input)
         {
@@ -86,7 +80,5 @@ namespace BeardPhantom.UnityExtended
 
             return result;
         }
-
-        #endregion
     }
 }

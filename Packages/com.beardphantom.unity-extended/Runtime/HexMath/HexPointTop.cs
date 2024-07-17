@@ -9,8 +9,6 @@ namespace BeardPhantom.UnityExtended
     /// </summary>
     public static partial class HexPointTop
     {
-        #region Methods
-
         public static Vector2Int CubeToOffsetPoint(this CubeCoord cubeCoord)
         {
             var col = cubeCoord.Q + (cubeCoord.R - (cubeCoord.R & 1)) / 2;
@@ -24,7 +22,5 @@ namespace BeardPhantom.UnityExtended
             var r = offset.y;
             return new CubeCoord(q, r, -q - r);
         }
-
-        #endregion
     }
 }

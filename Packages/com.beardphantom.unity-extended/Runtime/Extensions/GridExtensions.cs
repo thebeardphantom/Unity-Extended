@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class GridExtensions
     {
-        #region Methods
-
         public static Vector2Int WorldToCell2D(this Grid grid, Vector2 position)
         {
             return grid.WorldToCell(position).To2D();
@@ -31,7 +29,5 @@ namespace BeardPhantom.UnityExtended
             var cell = grid.WorldToCell(position3D);
             return grid.GetCellCenterWorld2D(cell);
         }
-
-        #endregion
     }
 }

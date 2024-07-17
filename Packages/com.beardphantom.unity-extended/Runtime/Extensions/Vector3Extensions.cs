@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class Vector3Extensions
     {
-        #region Methods
-
         public static Vector3 WithX(this Vector3 v3, in float x)
         {
             v3.x = x;
@@ -41,7 +39,5 @@ namespace BeardPhantom.UnityExtended
         {
             return new Vector3(v3.x, 0, v3.y);
         }
-
-        #endregion
     }
 }

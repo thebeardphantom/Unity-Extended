@@ -11,8 +11,6 @@ namespace BeardPhantom.UnityExtended.Editor
     [CustomPropertyDrawer(typeof(Object), true)]
     public class ObjectPropertyDrawer : PropertyDrawer
     {
-        #region Fields
-
         private const string STYLESHEET_GUID = "a08593e392de4a94ea9699ea11e91e82";
 
         private static readonly GUIContent _menuIcon = EditorGUIUtility.TrIconContent("_Menu", "Menu");
@@ -22,15 +20,7 @@ namespace BeardPhantom.UnityExtended.Editor
         private Type _type;
         private ObjectField _objField;
 
-        #endregion
-
-        #region Properties
-
         protected SerializedProperty SerializedProperty { get; private set; }
-
-        #endregion
-
-        #region Methods
 
         /// <inheritdoc />
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -64,7 +54,7 @@ namespace BeardPhantom.UnityExtended.Editor
             _objField = new ObjectField(SerializedProperty.displayName)
             {
                 objectType = GetUnpackedFieldInfoType(),
-                value = SerializedProperty.objectReferenceValue
+                value = SerializedProperty.objectReferenceValue,
             };
             _objField.Q<Label>(className: "unity-object-field__label").AddToClassList("unity-property-field__label");
             _objField.RegisterValueChangedCallback(OnValueChanged);
@@ -77,8 +67,8 @@ namespace BeardPhantom.UnityExtended.Editor
             {
                 style =
                 {
-                    backgroundImage = (Texture2D)_menuIcon.image
-                }
+                    backgroundImage = (Texture2D)_menuIcon.image,
+                },
             };
             _menuButton.AddToClassList("extended-button");
             _menuButton.clickable.clickedWithEventInfo += OnMenuButtonClicked;
@@ -193,7 +183,5 @@ namespace BeardPhantom.UnityExtended.Editor
             PopulateGenericMenu(menu);
             menu.DropDown(rect, btn);
         }
-
-        #endregion
     }
 }

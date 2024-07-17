@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class CollectionExtensions
     {
-        #region Methods
-
         public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> range)
         {
             foreach (var v in range)
@@ -13,7 +11,5 @@ namespace BeardPhantom.UnityExtended
                 collection.Add(v);
             }
         }
-
-        #endregion
     }
 }

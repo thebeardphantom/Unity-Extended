@@ -5,8 +5,6 @@ namespace BeardPhantom.UnityExtended
 {
     public struct CubeCoord
     {
-        #region Fields
-
         private static readonly CubeCoord[] _directionVectors =
         {
             new(1, 0, -1),
@@ -14,7 +12,7 @@ namespace BeardPhantom.UnityExtended
             new(0, -1, 1),
             new(-1, 0, 1),
             new(-1, 1, 0),
-            new(0, 1, -1)
+            new(0, 1, -1),
         };
 
         [NonSerialized]
@@ -26,20 +24,12 @@ namespace BeardPhantom.UnityExtended
         [NonSerialized]
         public int S;
 
-        #endregion
-
-        #region Constructors
-
         public CubeCoord(int q, int r, int s)
         {
             Q = q;
             R = r;
             S = s;
         }
-
-        #endregion
-
-        #region Methods
 
         public IEnumerable<CubeCoord> Ring(int radius)
         {
@@ -96,7 +86,5 @@ namespace BeardPhantom.UnityExtended
         {
             return new CubeCoord(a.Q - b.Q, a.R - b.R, a.S - b.S);
         }
-
-        #endregion
     }
 }

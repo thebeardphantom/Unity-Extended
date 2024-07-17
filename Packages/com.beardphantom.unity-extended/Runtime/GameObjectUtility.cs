@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class GameObjectUtility
     {
-        #region Methods
-
         public static TComponent FindWithTag<TComponent>(string tag) where TComponent : Component
         {
             var gameObject = GameObject.FindWithTag(tag);
@@ -18,7 +16,5 @@ namespace BeardPhantom.UnityExtended
                 ? gameObject.transform as TComponent
                 : gameObject.GetComponent<TComponent>();
         }
-
-        #endregion
     }
 }

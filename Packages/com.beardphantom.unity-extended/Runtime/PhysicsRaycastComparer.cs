@@ -6,13 +6,7 @@ namespace BeardPhantom.UnityExtended
     public abstract class PhysicsRaycastComparer<TComparer, TElement> : IComparer<TElement>
         where TComparer : PhysicsRaycastComparer<TComparer, TElement>, new()
     {
-        #region Fields
-
         public static readonly TComparer Instance = new();
-
-        #endregion
-
-        #region Methods
 
         public static void Sort(TElement[] input, int length)
         {
@@ -26,7 +20,5 @@ namespace BeardPhantom.UnityExtended
 
         /// <inheritdoc />
         public abstract int Compare(TElement x, TElement y);
-
-        #endregion
     }
 }

@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class ColorExtensions
     {
-        #region Methods
-
         public static Color WithRed(this Color color, float red)
         {
             color.r = red;
@@ -47,7 +45,5 @@ namespace BeardPhantom.UnityExtended
             Color.RGBToHSV(color, out var hue, out var saturation, out _);
             return Color.HSVToRGB(hue, saturation, value, hdr);
         }
-
-        #endregion
     }
 }

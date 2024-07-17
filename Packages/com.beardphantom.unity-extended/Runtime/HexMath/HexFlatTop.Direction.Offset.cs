@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static partial class HexFlatTop
     {
-        #region Fields
-
         private static readonly Vector3Int[] _evenColumnOffsets =
         {
             // Up
@@ -19,7 +17,7 @@ namespace BeardPhantom.UnityExtended
             // Down Left
             new(-1, -1),
             // Up Left
-            new(0, -1)
+            new(0, -1),
         };
 
         private static readonly Vector3Int[] _oddColumnOffsets =
@@ -35,12 +33,8 @@ namespace BeardPhantom.UnityExtended
             // Down Left
             new(0, -1),
             // Up Left
-            new(1, -1)
+            new(1, -1),
         };
-
-        #endregion
-
-        #region Methods
 
         public static Vector2Int GetNeighborOffset(this Vector2Int cell, Direction direction)
         {
@@ -66,7 +60,5 @@ namespace BeardPhantom.UnityExtended
             var offset = GetNeighborOffset(cell, direction);
             return cell + offset;
         }
-
-        #endregion
     }
 }

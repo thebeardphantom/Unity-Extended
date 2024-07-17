@@ -6,15 +6,9 @@ namespace BeardPhantom.UnityExtended.Editor
     [CustomPropertyDrawer(typeof(DampenedValue<>), true)]
     public class DampenedValuePropertyDrawer : PropertyDrawer
     {
-        #region Fields
-
         private SerializedPropertyTree.Node _tree;
 
         private UnityEditor.Editor _editor;
-
-        #endregion
-
-        #region Methods
 
         private static bool ShouldDrawBonusSection(SerializedProperty property)
         {
@@ -113,7 +107,5 @@ namespace BeardPhantom.UnityExtended.Editor
 
             return height;
         }
-
-        #endregion
     }
 }

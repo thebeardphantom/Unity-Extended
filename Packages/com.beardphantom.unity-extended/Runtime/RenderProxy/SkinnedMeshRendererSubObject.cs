@@ -6,8 +6,6 @@ namespace BeardPhantom.UnityExtended
 {
     public class SkinnedMeshRendererSubObject : RenderProxySubObject
     {
-        #region Fields
-
         private readonly Mesh _mesh;
 
         private readonly List<Material> _materials;
@@ -18,16 +16,8 @@ namespace BeardPhantom.UnityExtended
 
         private readonly SkinnedMeshRenderer _rendererSrc;
 
-        #endregion
-
-        #region Properties
-
         /// <inheritdoc />
         public override IEnumerable<Material> Materials => _materials;
-
-        #endregion
-
-        #region Constructors
 
         public SkinnedMeshRendererSubObject(SkinnedMeshRenderer renderer, RenderProxyOptions options)
         {
@@ -53,10 +43,6 @@ namespace BeardPhantom.UnityExtended
 
             _subMeshCount = _mesh.subMeshCount;
         }
-
-        #endregion
-
-        #region Methods
 
         /// <inheritdoc />
         public override void Render(Matrix4x4 transformation, int layer, Camera camera, Material overrideMaterial)
@@ -88,7 +74,5 @@ namespace BeardPhantom.UnityExtended
                 Object.Destroy(_mesh);
             }
         }
-
-        #endregion
     }
 }

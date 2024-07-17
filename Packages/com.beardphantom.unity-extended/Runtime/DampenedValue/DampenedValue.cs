@@ -6,8 +6,6 @@ namespace BeardPhantom.UnityExtended
     [Serializable]
     public abstract class DampenedValue<T> : IDampenedValue
     {
-        #region Properties
-
         public T Value { get; set; }
 
         public T TargetValue { get; set; }
@@ -20,17 +18,11 @@ namespace BeardPhantom.UnityExtended
         [field: SerializeField]
         public float MaxSpeed { get; private set; } = float.PositiveInfinity;
 
-        #endregion
-
-        #region Methods
-
         public abstract T Simulate(float deltaTime);
 
         public T Simulate()
         {
             return Simulate(Time.deltaTime);
         }
-
-        #endregion
     }
 }

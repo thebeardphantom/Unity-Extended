@@ -5,25 +5,15 @@ namespace BeardPhantom.UnityExtended
 {
     public readonly struct ObservableChangeScope<T> : IDisposable
     {
-        #region Fields
-
         private readonly IObservableValue<T> _observableValue;
 
         private readonly T _initialValue;
-
-        #endregion
-
-        #region Constructors
 
         public ObservableChangeScope(IObservableValue<T> observableValue)
         {
             _observableValue = observableValue;
             _initialValue = observableValue.Value;
         }
-
-        #endregion
-
-        #region Methods
 
         /// <inheritdoc />
         public void Dispose()
@@ -36,7 +26,5 @@ namespace BeardPhantom.UnityExtended
 
             _observableValue.InvokeValueChange(_initialValue);
         }
-
-        #endregion
     }
 }

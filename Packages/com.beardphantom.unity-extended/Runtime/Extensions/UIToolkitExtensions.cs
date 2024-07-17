@@ -5,8 +5,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static partial class UIToolkitExtensions
     {
-        #region Methods
-
         public static void SetPositionFromScreenPoint(this VisualElement visualElement, Vector2 screenPosition)
         {
             var panelPosition = visualElement.panel.GetPanelPositionFromScreenPoint(screenPosition);
@@ -45,7 +43,5 @@ namespace BeardPhantom.UnityExtended
             var rect = visualElement.worldBound;
             return camera.pixelRect.Overlaps(rect);
         }
-
-        #endregion
     }
 }

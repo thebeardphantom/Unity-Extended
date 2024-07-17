@@ -12,8 +12,6 @@ namespace BeardPhantom.UnityExtended
     /// <typeparam name="T"></typeparam>
     public static class EnumData<T> where T : struct, Enum, IConvertible
     {
-        #region Fields
-
         /// <summary>
         /// Names of all values in the type
         /// </summary>
@@ -33,18 +31,10 @@ namespace BeardPhantom.UnityExtended
 
         public static readonly bool IsFlagsEnum;
 
-        #endregion
-
-        #region Properties
-
         /// <summary>
         /// The length of valid values of this type
         /// </summary>
         public static int Count => Values.Length;
-
-        #endregion
-
-        #region Constructors
 
         /// <summary>
         /// Typechecks T and creates information about this enum type
@@ -52,7 +42,7 @@ namespace BeardPhantom.UnityExtended
         static EnumData()
         {
             Type = typeof(T);
-            Values = new NativeArray<T>((T[])Enum.GetValues(Type), Allocator.Domain);
+            Values = new NativeArray<T>((T[])Enum.GetValues(Type), Allocator.Persistent);
             Names = Enum.GetNames(Type);
             IsFlagsEnum = true;
             var allFlagsValue = 0;
@@ -68,10 +58,6 @@ namespace BeardPhantom.UnityExtended
 
             AllFlagsValue = (T)Enum.ToObject(Type, allFlagsValue);
         }
-
-        #endregion
-
-        #region Methods
 
         public static void Prime()
         {
@@ -115,7 +101,5 @@ namespace BeardPhantom.UnityExtended
 
             throw new IndexOutOfRangeException();
         }
-
-        #endregion
     }
 }

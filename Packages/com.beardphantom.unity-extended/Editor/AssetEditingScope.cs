@@ -6,23 +6,13 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public readonly struct AssetEditingScope : IDisposable
     {
-        #region Fields
-
         private readonly bool _isValid;
-
-        #endregion
-
-        #region Constructors
 
         private AssetEditingScope(int _)
         {
             _isValid = true;
             AssetDatabase.StartAssetEditing();
         }
-
-        #endregion
-
-        #region Methods
 
         public static AssetEditingScope Create()
         {
@@ -41,7 +31,5 @@ namespace BeardPhantom.UnityExtended.Editor
                 Debug.LogError("AssetEditingScope must be created through Create() method.");
             }
         }
-
-        #endregion
     }
 }

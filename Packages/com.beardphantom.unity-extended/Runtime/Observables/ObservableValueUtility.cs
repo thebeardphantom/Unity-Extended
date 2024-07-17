@@ -2,8 +2,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class ObservableValueUtility
     {
-        #region Methods
-
         public static ObservableValueChangedArgs<T> CreateEventArgsFromCurrentValue<T>(
             this IReadOnlyObservableValue<T> observableValue)
         {
@@ -34,7 +32,5 @@ namespace BeardPhantom.UnityExtended
             outObservableValue = observableValue;
             return scope;
         }
-
-        #endregion
     }
 }

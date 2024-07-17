@@ -9,17 +9,11 @@ namespace BeardPhantom.UnityExtended
 {
     public class RenderProxy : IDisposable
     {
-        #region Fields
-
         private static readonly int _defaultLayer = LayerMask.NameToLayer("Default");
 
         public readonly ReadOnlyCollection<RenderProxySubObject> SubObjects;
 
         private readonly List<RenderProxySubObject> _subObjects;
-
-        #endregion
-
-        #region Constructors
 
         public RenderProxy(GameObject root, RenderProxyOptions options = (RenderProxyOptions)(-1))
         {
@@ -65,10 +59,6 @@ namespace BeardPhantom.UnityExtended
             }
         }
 
-        #endregion
-
-        #region Methods
-
         public void Render(
             Vector3? position = default,
             Quaternion? rotation = default,
@@ -106,7 +96,5 @@ namespace BeardPhantom.UnityExtended
 
             ListPool<RenderProxySubObject>.Release(_subObjects);
         }
-
-        #endregion
     }
 }

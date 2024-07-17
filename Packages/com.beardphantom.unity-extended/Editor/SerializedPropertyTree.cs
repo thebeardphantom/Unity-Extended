@@ -9,139 +9,11 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public class SerializedPropertyTree
     {
-        #region Types
+        private static readonly Regex _arrayRegex = new(@"[^\.\n\r]+\.Array\.data\[\d+\]");
 
-        public abstract class Node
-        {
-            #region Properties
-
-            public abstract object NodeObject { get; }
-
-            public Node ParentNode { get; set; }
-
-            public Node ChildNode { get; set; }
-
-            public Node RootNode
-            {
-                get
-                {
-                    var node = this;
-                    while (node.ParentNode != null)
-                    {
-                        node = node.ParentNode;
-                    }
-
-                    return node;
-                }
-            }
-
-            public Node TailNode
-            {
-                get
-                {
-                    var node = this;
-                    while (node.ChildNode != null)
-                    {
-                        node = node.ChildNode;
-                    }
-
-                    return node;
-                }
-            }
-
-            #endregion
-
-            #region Methods
-
-            internal T GetMemberByName<T>(string name)
-            {
-                var obj = NodeObject;
-                var field = obj.GetType().GetField(name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-                return (T)field.GetValue(obj);
-            }
-
-            #endregion
-        }
-
-        private class ArrayIndexNode : Node
-        {
-            #region Fields
-
-            private readonly IList _list;
-
-            private readonly int _index;
-
-            #endregion
-
-            #region Properties
-
-            /// <inheritdoc />
-            public override object NodeObject => _list[_index];
-
-            #endregion
-
-            #region Constructors
-
-            public ArrayIndexNode(IList list, int index)
-            {
-                _list = list;
-                _index = index;
-            }
-
-            #endregion
-        }
-
-        private class UnityObjectNode : Node
-        {
-            #region Properties
-
-            /// <inheritdoc />
-            public override object NodeObject { get; }
-
-            #endregion
-
-            #region Constructors
-
-            public UnityObjectNode(Object obj)
-            {
-                NodeObject = obj;
-            }
-
-            #endregion
-        }
-
-        private class GenericObjectNode : Node
-        {
-            #region Properties
-
-            /// <inheritdoc />
-            public override object NodeObject { get; }
-
-            #endregion
-
-            #region Constructors
-
-            public GenericObjectNode(object obj)
-            {
-                NodeObject = obj;
-            }
-
-            #endregion
-        }
-
-        #endregion
-
-        #region Fields
-
-        private static readonly Regex _arrayRegex = new Regex(@"[^\.\n\r]+\.Array\.data\[\d+\]");
-
-        private static readonly Regex _pathPartRegex = new Regex(@"([^\.\n\r]+)\.Array\.data\[(\d+)\]|[^\.\n\r]+");
+        private static readonly Regex _pathPartRegex = new(@"([^\.\n\r]+)\.Array\.data\[(\d+)\]|[^\.\n\r]+");
 
         public readonly Node Root;
-
-        #endregion
-
-        #region Constructors
 
         private SerializedPropertyTree(SerializedProperty property)
         {
@@ -194,10 +66,6 @@ namespace BeardPhantom.UnityExtended.Editor
             Root = root;
         }
 
-        #endregion
-
-        #region Methods
-
         public static Node Build(SerializedProperty property)
         {
             var tree = new SerializedPropertyTree(property);
@@ -211,6 +79,86 @@ namespace BeardPhantom.UnityExtended.Editor
             return child;
         }
 
-        #endregion
+        public abstract class Node
+        {
+            public abstract object NodeObject { get; }
+
+            public Node ParentNode { get; set; }
+
+            public Node ChildNode { get; set; }
+
+            public Node RootNode
+            {
+                get
+                {
+                    var node = this;
+                    while (node.ParentNode != null)
+                    {
+                        node = node.ParentNode;
+                    }
+
+                    return node;
+                }
+            }
+
+            public Node TailNode
+            {
+                get
+                {
+                    var node = this;
+                    while (node.ChildNode != null)
+                    {
+                        node = node.ChildNode;
+                    }
+
+                    return node;
+                }
+            }
+
+            internal T GetMemberByName<T>(string name)
+            {
+                var obj = NodeObject;
+                var field = obj.GetType().GetField(name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                return (T)field.GetValue(obj);
+            }
+        }
+
+        private class ArrayIndexNode : Node
+        {
+            private readonly IList _list;
+
+            private readonly int _index;
+
+            /// <inheritdoc />
+            public override object NodeObject => _list[_index];
+
+            public ArrayIndexNode(IList list, int index)
+            {
+                _list = list;
+                _index = index;
+            }
+        }
+
+        private class UnityObjectNode : Node
+        {
+            /// <inheritdoc />
+            public override object NodeObject { get; }
+
+            public UnityObjectNode(Object obj)
+            {
+                NodeObject = obj;
+            }
+        }
+
+        private class GenericObjectNode : Node
+        {
+            /// <inheritdoc />
+            public override object NodeObject { get; }
+
+            public GenericObjectNode(object obj)
+            {
+                NodeObject = obj;
+            }
+        }
     }
 }

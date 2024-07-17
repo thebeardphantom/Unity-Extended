@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace BeardPhantom.UnityExtended
 {
     public static class RenderProxyUtility
     {
-        #region Methods
-
         public static Matrix4x4 CreateMatrix(Transform tform)
         {
             var root = tform.root;
@@ -38,7 +35,5 @@ namespace BeardPhantom.UnityExtended
             Graphics.DrawMesh(mesh, trs, material, layer, camera, submesh);
 #endif
         }
-
-        #endregion
     }
 }

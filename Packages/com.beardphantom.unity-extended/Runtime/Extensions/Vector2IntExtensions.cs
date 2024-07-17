@@ -5,8 +5,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class Vector2IntExtensions
     {
-        #region Methods
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3Int To3D(this Vector2Int v2Int, int z = 0)
         {
@@ -18,7 +16,5 @@ namespace BeardPhantom.UnityExtended
         {
             return new Vector2Int(Mathf.Abs(v2Int.x), Mathf.Abs(v2Int.y));
         }
-
-        #endregion
     }
 }

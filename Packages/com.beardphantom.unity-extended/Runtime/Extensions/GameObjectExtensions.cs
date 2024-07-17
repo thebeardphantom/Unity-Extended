@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class GameObjectExtensions
     {
-        #region Methods
-
         public static bool TryFindChildWithTag(this GameObject root, string tag, out GameObject result)
         {
             if (root.CompareTag(tag))
@@ -27,7 +25,5 @@ namespace BeardPhantom.UnityExtended
             result = default;
             return false;
         }
-
-        #endregion
     }
 }

@@ -6,57 +6,11 @@ namespace BeardPhantom.UnityExtended
 {
     public interface IObservableQueue : ICollection
     {
-        #region Methods
-
         void CopyFrom(Array array);
-
-        #endregion
     }
 
     public class ObservableQueue<T> : Queue<T>, IObservableQueue
     {
-        #region Types
-
-        public readonly struct ItemEnqueuedArgs
-        {
-            #region Fields
-
-            public readonly T Item;
-
-            #endregion
-
-            #region Constructors
-
-            public ItemEnqueuedArgs(T item)
-            {
-                Item = item;
-            }
-
-            #endregion
-        }
-
-        public readonly struct ItemDequeuedArgs
-        {
-            #region Fields
-
-            public readonly T Item;
-
-            #endregion
-
-            #region Constructors
-
-            public ItemDequeuedArgs(T item)
-            {
-                Item = item;
-            }
-
-            #endregion
-        }
-
-        #endregion
-
-        #region Events
-
         public event LiteEvent<ItemEnqueuedArgs>.OnEventInvoked ItemEnqueued
         {
             add => _itemEnqueued.Add(value);
@@ -69,17 +23,9 @@ namespace BeardPhantom.UnityExtended
             remove => _itemDequeued.Remove(value);
         }
 
-        #endregion
-
-        #region Fields
-
         private readonly LiteEvent<ItemEnqueuedArgs> _itemEnqueued = new();
 
         private readonly LiteEvent<ItemDequeuedArgs> _itemDequeued = new();
-
-        #endregion
-
-        #region Methods
 
         public new void Enqueue(T item)
         {
@@ -103,6 +49,24 @@ namespace BeardPhantom.UnityExtended
             }
         }
 
-        #endregion
+        public readonly struct ItemEnqueuedArgs
+        {
+            public readonly T Item;
+
+            public ItemEnqueuedArgs(T item)
+            {
+                Item = item;
+            }
+        }
+
+        public readonly struct ItemDequeuedArgs
+        {
+            public readonly T Item;
+
+            public ItemDequeuedArgs(T item)
+            {
+                Item = item;
+            }
+        }
     }
 }

@@ -9,13 +9,7 @@ namespace BeardPhantom.UnityExtended
     [InitializeOnLoad]
     public static class EditorAudioUtility
     {
-        #region Fields
-
         private static readonly List<AudioSource> _playingSources = new();
-
-        #endregion
-
-        #region Constructors
 
         static EditorAudioUtility()
         {
@@ -24,10 +18,6 @@ namespace BeardPhantom.UnityExtended
 
             EditorApplication.playModeStateChanged += OnPlaymodeStateChanged;
         }
-
-        #endregion
-
-        #region Methods
 
         public static AudioSource Play(AudioCueAsset cue)
         {
@@ -87,8 +77,6 @@ namespace BeardPhantom.UnityExtended
                 _playingSources.RemoveAt(i);
             }
         }
-
-        #endregion
     }
 }
 

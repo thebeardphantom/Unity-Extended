@@ -9,17 +9,11 @@ namespace BeardPhantom.UnityExtended.Editor
     [CustomPropertyDrawer(typeof(ReferenceDrawerAttribute))]
     public class ReferenceDrawerAttributePropertyDrawer : PropertyDrawer
     {
-        #region Fields
-
-        private readonly List<Type> _typeOptions = new List<Type>();
+        private readonly List<Type> _typeOptions = new();
 
         private string[] _typeOptionLabels;
 
         private bool _initialized;
-
-        #endregion
-
-        #region Methods
 
         private static void Delete(object userData)
         {
@@ -31,7 +25,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
         private static void CreateNew(object userData)
         {
-            (var type, var property) = ((Type, SerializedProperty))userData;
+            var (type, property) = ((Type, SerializedProperty))userData;
             var instance = Activator.CreateInstance(type);
 
             property.managedReferenceValue = instance;
@@ -65,7 +59,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
             var headerRect = new Rect(position)
             {
-                height = EditorGUIUtility.singleLineHeight
+                height = EditorGUIUtility.singleLineHeight,
             };
             var typeName = GetManagedReferenceTypeName(property);
             var hasValue = !string.IsNullOrWhiteSpace(typeName);
@@ -149,7 +143,5 @@ namespace BeardPhantom.UnityExtended.Editor
             _typeOptions.Sort((t1, t2) => string.Compare(t1.Name, t2.Name, StringComparison.OrdinalIgnoreCase));
             _typeOptionLabels = _typeOptions.Select(t => t.Name).ToArray();
         }
-
-        #endregion
     }
 }

@@ -7,8 +7,6 @@ namespace BeardPhantom.UnityExtended.Editor
     [CustomPropertyDrawer(typeof(Prefab), true)]
     public class PrefabPropertyDrawer : PropertyDrawer
     {
-        #region Methods
-
         private static void OnAttachToPanel(AttachToPanelEvent evt)
         {
             var propertyField = (PropertyField)evt.target;
@@ -28,7 +26,5 @@ namespace BeardPhantom.UnityExtended.Editor
             assetPropertyField.RegisterCallback<AttachToPanelEvent>(OnAttachToPanel);
             return assetPropertyField;
         }
-
-        #endregion
     }
 }

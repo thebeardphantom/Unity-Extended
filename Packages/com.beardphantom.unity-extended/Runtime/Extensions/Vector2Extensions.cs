@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class Vector2Extensions
     {
-        #region Methods
-
         public static Vector2 WithX(this Vector2 v2, in float x)
         {
             v2.x = x;
@@ -35,7 +33,5 @@ namespace BeardPhantom.UnityExtended
             v2.y = sin * tx + cos * ty;
             return v2;
         }
-
-        #endregion
     }
 }

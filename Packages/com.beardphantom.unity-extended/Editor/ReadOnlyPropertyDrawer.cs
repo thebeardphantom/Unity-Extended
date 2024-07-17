@@ -6,8 +6,6 @@ namespace BeardPhantom.UnityExtended.Editor
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
     public class ReadOnlyPropertyDrawer : PropertyDrawer
     {
-        #region Methods
-
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             using (new EditorGUI.DisabledScope(true))
@@ -20,7 +18,5 @@ namespace BeardPhantom.UnityExtended.Editor
         {
             return EditorGUI.GetPropertyHeight(property, label, true);
         }
-
-        #endregion
     }
 }

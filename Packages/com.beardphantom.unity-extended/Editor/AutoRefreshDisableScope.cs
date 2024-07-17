@@ -6,23 +6,13 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public readonly struct AutoRefreshDisableScope : IDisposable
     {
-        #region Fields
-
         private readonly bool _isValid;
-
-        #endregion
-
-        #region Constructors
 
         private AutoRefreshDisableScope(int _)
         {
             _isValid = true;
             AssetDatabase.DisallowAutoRefresh();
         }
-
-        #endregion
-
-        #region Methods
 
         public static AutoRefreshDisableScope Create()
         {
@@ -41,7 +31,5 @@ namespace BeardPhantom.UnityExtended.Editor
                 Debug.LogError("AutoRefreshDisableScope must be created through Create() method.");
             }
         }
-
-        #endregion
     }
 }

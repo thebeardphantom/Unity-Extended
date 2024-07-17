@@ -6,8 +6,6 @@ namespace BeardPhantom.UnityExtended
 {
     public class MeshRendererSubObject : RenderProxySubObject
     {
-        #region Fields
-
         private readonly Mesh _mesh;
 
         private readonly List<Material> _materials;
@@ -16,16 +14,8 @@ namespace BeardPhantom.UnityExtended
 
         private readonly RenderProxyOptions _options;
 
-        #endregion
-
-        #region Properties
-
         /// <inheritdoc />
         public override IEnumerable<Material> Materials => _materials;
-
-        #endregion
-
-        #region Constructors
 
         private MeshRendererSubObject(MeshRenderer renderer, MeshFilter meshFilter, RenderProxyOptions options)
         {
@@ -52,10 +42,6 @@ namespace BeardPhantom.UnityExtended
 
             _subMeshCount = _mesh.subMeshCount;
         }
-
-        #endregion
-
-        #region Methods
 
         public static MeshRendererSubObject CreateInstance(MeshRenderer renderer, RenderProxyOptions options)
         {
@@ -98,7 +84,5 @@ namespace BeardPhantom.UnityExtended
                 Object.Destroy(_mesh);
             }
         }
-
-        #endregion
     }
 }

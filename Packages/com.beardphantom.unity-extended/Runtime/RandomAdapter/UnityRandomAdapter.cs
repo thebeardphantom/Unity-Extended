@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public class UnityRandomAdapter : IRandomAdapter
     {
-        #region Properties
-
         public static readonly UnityRandomAdapter Instance = new();
 
         /// <inheritdoc />
@@ -16,10 +14,6 @@ namespace BeardPhantom.UnityExtended
 
         /// <inheritdoc />
         public float Value => Random.value;
-
-        #endregion
-
-        #region Methods
 
         /// <inheritdoc />
         public int Next(int minInclusive, int maxExclusive)
@@ -32,7 +26,5 @@ namespace BeardPhantom.UnityExtended
         {
             return Random.Range(minInclusive, maxInclusive);
         }
-
-        #endregion
     }
 }

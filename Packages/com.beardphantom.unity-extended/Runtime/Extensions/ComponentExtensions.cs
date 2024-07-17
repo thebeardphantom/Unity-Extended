@@ -1,4 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿#if UNITASK_SUPPORT
+using Cysharp.Threading.Tasks;
+#endif
 using System;
 using System.Threading;
 using UnityEngine;
@@ -9,8 +11,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class ComponentExtensions
     {
-        #region Methods
-
         public static CancellationToken GetDestroyCancellationToken(this GameObject gameObject)
         {
             if (gameObject.TryGetComponent<MonoBehaviour>(out var monoBehaviour))
@@ -107,7 +107,5 @@ namespace BeardPhantom.UnityExtended
         {
             return component is Renderer or MeshFilter or Animator;
         }
-
-        #endregion
     }
 }

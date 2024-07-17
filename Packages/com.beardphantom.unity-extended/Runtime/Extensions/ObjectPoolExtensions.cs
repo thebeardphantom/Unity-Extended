@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class ObjectPoolExtensions
     {
-        #region Methods
-
         /// <summary>
         /// Primes an IObjectPool by creating temporary items and then returning them to the pool.
         /// </summary>
@@ -29,7 +27,5 @@ namespace BeardPhantom.UnityExtended
                 }
             }
         }
-
-        #endregion
     }
 }

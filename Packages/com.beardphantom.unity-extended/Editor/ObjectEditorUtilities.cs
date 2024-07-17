@@ -6,16 +6,10 @@ namespace BeardPhantom.UnityExtended.Editor
     [InitializeOnLoad]
     public static class ObjectEditorUtilities
     {
-        #region Constructors
-
         static ObjectEditorUtilities()
         {
             UnityEditor.Editor.finishedDefaultHeaderGUI += OnPostHeader;
         }
-
-        #endregion
-
-        #region Methods
 
         private static void OnPostHeader(UnityEditor.Editor editor)
         {
@@ -44,7 +38,5 @@ namespace BeardPhantom.UnityExtended.Editor
                 }
             }
         }
-
-        #endregion
     }
 }

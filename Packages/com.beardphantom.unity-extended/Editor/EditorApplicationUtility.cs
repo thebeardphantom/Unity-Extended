@@ -6,8 +6,6 @@ namespace BeardPhantom.UnityExtended.Editor
     [InitializeOnLoad]
     public static class EditorApplicationUtility
     {
-        #region Events
-
         public static event EditorApplication.CallbackFunction GlobalEventHandler
         {
             add
@@ -24,15 +22,7 @@ namespace BeardPhantom.UnityExtended.Editor
             }
         }
 
-        #endregion
-
-        #region Fields
-
         private static readonly FieldInfo _globalEventHandler;
-
-        #endregion
-
-        #region Constructors
 
         static EditorApplicationUtility()
         {
@@ -41,7 +31,5 @@ namespace BeardPhantom.UnityExtended.Editor
                 "globalEventHandler",
                 BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
         }
-
-        #endregion
     }
 }

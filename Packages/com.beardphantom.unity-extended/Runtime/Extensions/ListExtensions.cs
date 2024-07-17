@@ -7,13 +7,7 @@ namespace BeardPhantom.UnityExtended
 {
     public static class ListExtensions
     {
-        #region Fields
-
         private static readonly UnityRandomAdapter _unityRandomAdapter = new();
-
-        #endregion
-
-        #region Methods
 
         public static int ResolveIndex(this IList list, Index index)
         {
@@ -89,7 +83,5 @@ namespace BeardPhantom.UnityExtended
             list.RemoveAt(index);
             return rnd;
         }
-
-        #endregion
     }
 }

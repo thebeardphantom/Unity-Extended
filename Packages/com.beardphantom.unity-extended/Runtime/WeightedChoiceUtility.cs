@@ -5,15 +5,9 @@ namespace BeardPhantom.UnityExtended
 {
     public static class WeightedChoiceUtility
     {
-        #region Fields
-
         public static readonly UnityRandomAdapter UnityRandomAdapter = new();
 
         private static readonly SystemRandomAdapter _systemRandomAdapter = new(null);
-
-        #endregion
-
-        #region Methods
 
         public static T ChooseFromWeighted<T>(this IReadOnlyList<T> choices) where T : IWeightedChoice
         {
@@ -71,7 +65,5 @@ namespace BeardPhantom.UnityExtended
 
             return -1;
         }
-
-        #endregion
     }
 }

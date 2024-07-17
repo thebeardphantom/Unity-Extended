@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public class SystemRandomAdapter : IRandomAdapter
     {
-        #region Properties
-
         /// <inheritdoc />
         public int Seed
         {
@@ -17,18 +15,10 @@ namespace BeardPhantom.UnityExtended
 
         internal Random Random { get; set; }
 
-        #endregion
-
-        #region Constructors
-
         public SystemRandomAdapter(Random random)
         {
             Random = random;
         }
-
-        #endregion
-
-        #region Methods
 
         /// <inheritdoc />
         public int Next(int minInclusive, int maxExclusive)
@@ -41,7 +31,5 @@ namespace BeardPhantom.UnityExtended
         {
             return (float)Mathd.Lerp(minInclusive, maxInclusive, Random.NextDouble());
         }
-
-        #endregion
     }
 }

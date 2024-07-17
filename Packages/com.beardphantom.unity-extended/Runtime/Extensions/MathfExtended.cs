@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class MathfExtended
     {
-        #region Methods
-
         public static float Wrap(float value, float min, float max)
         {
             var range = max - min;
@@ -44,7 +42,5 @@ namespace BeardPhantom.UnityExtended
         {
             return Mathf.Repeat(angle, 360f);
         }
-
-        #endregion
     }
 }

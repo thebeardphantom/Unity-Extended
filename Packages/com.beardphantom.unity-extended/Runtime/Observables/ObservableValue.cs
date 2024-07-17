@@ -5,8 +5,6 @@ namespace BeardPhantom.UnityExtended
 {
     public class ObservableValue<T> : IObservableValue<T>
     {
-        #region Events
-
         public event LiteEvent<ObservableValueChangedArgs<T>>.OnEventInvoked ValueChanged
         {
             add => _valueChanged.Add(value);
@@ -24,19 +22,11 @@ namespace BeardPhantom.UnityExtended
             remove => ValueChanged -= value;
         }
 
-        #endregion
-
-        #region Fields
-
         private readonly LiteEvent<ObservableValueChangedArgs<T>> _valueChanged = new();
 
         private T _value;
 
         private int _changeScopeCount;
-
-        #endregion
-
-        #region Properties
 
         public T Value
         {
@@ -59,20 +49,12 @@ namespace BeardPhantom.UnityExtended
             }
         }
 
-        #endregion
-
-        #region Constructors
-
         public ObservableValue() { }
 
         public ObservableValue(T initialValue)
         {
             SetValueWithoutNotify(initialValue);
         }
-
-        #endregion
-
-        #region Methods
 
         /// <inheritdoc />
         public void SetValueWithoutNotify(T newValue)
@@ -96,7 +78,5 @@ namespace BeardPhantom.UnityExtended
         {
             return observableValue.Value;
         }
-
-        #endregion
     }
 }

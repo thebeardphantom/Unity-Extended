@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public class AudioCueSource : MonoBehaviour
     {
-        #region Properties
-
         [field: SerializeField]
         public AudioCueAsset AudioCueAsset { get; set; }
 
@@ -20,10 +18,6 @@ namespace BeardPhantom.UnityExtended
         public bool PlayAtPosition { get; private set; }
 
         private AudioSource AudioSource { get; set; }
-
-        #endregion
-
-        #region Methods
 
         public void Play(AudioCueAsset.PlayArgs args = default)
         {
@@ -45,7 +39,5 @@ namespace BeardPhantom.UnityExtended
         {
             Destroy(AudioSource);
         }
-
-        #endregion
     }
 }

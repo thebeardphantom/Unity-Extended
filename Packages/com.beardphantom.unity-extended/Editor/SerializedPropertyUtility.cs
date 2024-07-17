@@ -7,13 +7,7 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public static class SerializedPropertyUtility
     {
-        #region Fields
-
         private static readonly MethodInfo _getFieldInfoFromProperty;
-
-        #endregion
-
-        #region Constructors
 
         static SerializedPropertyUtility()
         {
@@ -26,10 +20,6 @@ namespace BeardPhantom.UnityExtended.Editor
             Assert.IsNotNull(_getFieldInfoFromProperty, "getFieldInfoFromProperty != null");
         }
 
-        #endregion
-
-        #region Methods
-
         public static FieldInfo GetFieldInfoFromProperty(this SerializedProperty property, out Type type)
         {
             type = null;
@@ -38,11 +28,9 @@ namespace BeardPhantom.UnityExtended.Editor
                 new object[]
                 {
                     property,
-                    type
+                    type,
                 });
             return fieldInfo;
         }
-
-        #endregion
     }
 }

@@ -7,19 +7,13 @@ namespace BeardPhantom.UnityExtended.Editor
     [CustomEditor(typeof(AudioCueAsset))]
     public class AudioCueAssetEditor : UnityEditor.Editor
     {
-        #region Fields
-
         private AudioSource _lastPlayingSource;
-
-        #endregion
-
-        #region Methods
 
         /// <inheritdoc />
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            var cueAsset = (AudioCueAsset) target;
+            var cueAsset = (AudioCueAsset)target;
             var cachedEnabled = GUI.enabled;
             GUI.enabled = cueAsset.Audio != null && cueAsset.Audio.Any(a => a.Clip != null);
             var cachedColor = GUI.color;
@@ -58,7 +52,5 @@ namespace BeardPhantom.UnityExtended.Editor
                 _lastPlayingSource.Stop();
             }
         }
-
-        #endregion
     }
 }

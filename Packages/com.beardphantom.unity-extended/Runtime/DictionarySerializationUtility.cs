@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class DictionarySerializationUtility
     {
-        #region Methods
-
         public static void ToSerialized<TKey, TValue>(
             this ICollection<SerializedKeyValuePair<TKey, TValue>> collection,
             IEnumerable<KeyValuePair<TKey, TValue>> keyValuePairs)
@@ -32,7 +30,5 @@ namespace BeardPhantom.UnityExtended
 
             return addedAll;
         }
-
-        #endregion
     }
 }

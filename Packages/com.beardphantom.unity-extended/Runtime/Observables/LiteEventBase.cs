@@ -6,23 +6,13 @@ namespace BeardPhantom.UnityExtended
 {
     public abstract class LiteEventBase<TDelegate> : IEnumerable<TDelegate>, ILiteEvent<TDelegate> where TDelegate : Delegate
     {
-        #region Fields
-
         protected readonly HashSet<TDelegate> Listeners = new();
-
-        #endregion
-
-        #region Properties
 
         /// <inheritdoc />
         public int ListenerCount => Listeners.Count;
 
         /// <inheritdoc />
         public bool Enabled { get; set; } = true;
-
-        #endregion
-
-        #region Methods
 
         /// <inheritdoc />
         public void Clear()
@@ -53,7 +43,5 @@ namespace BeardPhantom.UnityExtended
         {
             return ((IEnumerable)Listeners).GetEnumerator();
         }
-
-        #endregion
     }
 }

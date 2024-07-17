@@ -9,8 +9,6 @@ namespace BeardPhantom.UnityExtended
     /// </summary>
     public static partial class HexFlatTop
     {
-        #region Methods
-
         public static Vector2Int CubeToCellFlat(this CubeCoord cubeCoord)
         {
             var col = cubeCoord.Q;
@@ -46,7 +44,5 @@ namespace BeardPhantom.UnityExtended
             cell -= offset;
             return cell;
         }
-
-        #endregion
     }
 }

@@ -6,15 +6,9 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public static class ProjectWindowExtensions
     {
-        #region Fields
-
         private const string DELETE_SUBASSET = "Assets/Delete Subasset";
 
         private const string DELETE_SUBASSET_CONTEXT = "CONTEXT/ScriptableObject/Delete Subasset";
-
-        #endregion
-
-        #region Methods
 
         private static bool IsValidSubasset(Object obj)
         {
@@ -73,7 +67,7 @@ namespace BeardPhantom.UnityExtended.Editor
                     new[]
                     {
                         type.Name,
-                        ext
+                        ext,
                     });
                 if (string.IsNullOrWhiteSpace(replacementPath))
                 {
@@ -88,7 +82,5 @@ namespace BeardPhantom.UnityExtended.Editor
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
-
-        #endregion
     }
 }

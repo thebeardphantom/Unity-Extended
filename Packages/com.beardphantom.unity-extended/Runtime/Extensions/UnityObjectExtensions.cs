@@ -4,8 +4,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static class UnityObjectExtensions
     {
-        #region Methods
-
         public static bool IsNull<T>(this T obj) where T : class
         {
             if (obj is Object unityObj)
@@ -39,7 +37,5 @@ namespace BeardPhantom.UnityExtended
             // Uses regular C# null check
             return obj != null;
         }
-
-        #endregion
     }
 }

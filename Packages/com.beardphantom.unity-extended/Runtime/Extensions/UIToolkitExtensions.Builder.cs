@@ -6,8 +6,6 @@ namespace BeardPhantom.UnityExtended
 {
     public static partial class UIToolkitExtensions
     {
-        #region Methods
-
         public static T AddTo<T>(this T t, VisualElement parent) where T : VisualElement
         {
             parent.Add(t);
@@ -118,7 +116,5 @@ namespace BeardPhantom.UnityExtended
             t.label = label;
             return t;
         }
-
-        #endregion
     }
 }

@@ -4,15 +4,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Object = UnityEngine.Object;
-using PopupWindow = UnityEditor.PopupWindow;
 
 namespace BeardPhantom.UnityExtended.Editor
 {
     [CustomPropertyDrawer(typeof(ScriptableObject), true)]
     public class ScriptableObjectPropertyDrawer : ObjectPropertyDrawer
     {
-        #region Methods
-
         private static bool IsEmbeddedObject(Object obj)
         {
             return obj.IsNotNull() && (!EditorUtility.IsPersistent(obj) || AssetDatabase.IsSubAsset(obj));
@@ -54,7 +51,5 @@ namespace BeardPhantom.UnityExtended.Editor
             UpdateObjectField();
             EditorUtility.OpenPropertyEditor(instance);
         }
-
-        #endregion
     }
 }

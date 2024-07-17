@@ -2,15 +2,9 @@ using UnityEngine.Pool;
 
 namespace BeardPhantom.UnityExtended
 {
-    public sealed partial class LiteEvent : LiteEventBase<LiteEvent.OnEventInvoked>
+    public sealed class LiteEvent : LiteEventBase<LiteEvent.OnEventInvoked>
     {
-        #region Types
-
         public delegate void OnEventInvoked();
-
-        #endregion
-
-        #region Events
 
         public event OnEventInvoked Event
         {
@@ -28,10 +22,6 @@ namespace BeardPhantom.UnityExtended
             remove => Remove(value);
         }
 
-        #endregion
-
-        #region Methods
-
         public void Invoke()
         {
             if (!Enabled)
@@ -48,29 +38,17 @@ namespace BeardPhantom.UnityExtended
                 }
             }
         }
-
-        #endregion
     }
 
-    public sealed partial class LiteEvent<TArgs> : LiteEventBase<LiteEvent<TArgs>.OnEventInvoked> where TArgs : struct
+    public sealed class LiteEvent<TArgs> : LiteEventBase<LiteEvent<TArgs>.OnEventInvoked> where TArgs : struct
     {
-        #region Types
-
         public delegate void OnEventInvoked(in TArgs args);
-
-        #endregion
-
-        #region Events
 
         public event OnEventInvoked Event
         {
             add => Add(value);
             remove => Remove(value);
         }
-
-        #endregion
-
-        #region Methods
 
         public void AddWithImmediateInvoke(OnEventInvoked callback, in TArgs initArgs)
         {
@@ -94,7 +72,5 @@ namespace BeardPhantom.UnityExtended
                 }
             }
         }
-
-        #endregion
     }
 }

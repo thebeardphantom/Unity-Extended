@@ -6,8 +6,6 @@ namespace BeardPhantom.UnityExtended
     [Serializable]
     public class DampenedVector2 : DampenedValue<Vector2>
     {
-        #region Methods
-
         /// <inheritdoc />
         public override Vector2 Simulate(float deltaTime)
         {
@@ -16,7 +14,5 @@ namespace BeardPhantom.UnityExtended
             Velocity = velocity;
             return Value;
         }
-
-        #endregion
     }
 }

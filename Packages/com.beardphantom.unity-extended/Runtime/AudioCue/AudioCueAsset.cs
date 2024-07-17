@@ -12,79 +12,6 @@ namespace BeardPhantom.UnityExtended
     [CreateAssetMenu(menuName = "CUSTOM/" + nameof(AudioCueAsset))]
     public class AudioCueAsset : ScriptableObject
     {
-        #region Types
-
-        [Serializable]
-        public class AudioData : IWeightedChoice
-        {
-            #region Fields
-
-            [SerializeField]
-            [FormerlySerializedAs("Clip")]
-            private AudioClip _clip;
-
-            [SerializeField]
-            [FormerlySerializedAs("VolumeOffset")]
-            private float _volumeOffset;
-
-            [SerializeField]
-            private int _weight = 1;
-
-            #endregion
-
-            #region Properties
-
-            public AudioClip Clip => _clip;
-
-            public float VolumeOffset => _volumeOffset;
-
-            /// <inheritdoc />
-            int IWeightedChoice.Weight => _weight;
-
-            #endregion
-
-            #region Methods
-
-            public static AudioData Create(AudioClip clip)
-            {
-                return new AudioData
-                {
-                    _weight = 1,
-                    _clip = clip
-                };
-            }
-
-            #endregion
-        }
-
-        public readonly struct PlayArgs
-        {
-            #region Fields
-
-            public readonly bool Loop;
-
-            public readonly bool OneShot;
-
-            public readonly Vector3? Position;
-
-            #endregion
-
-            #region Constructors
-
-            public PlayArgs(bool loop = false, bool oneShot = false, Vector3? position = default)
-            {
-                Loop = loop;
-                OneShot = oneShot;
-                Position = position;
-            }
-
-            #endregion
-        }
-
-        #endregion
-
-        #region Fields
-
         [SerializeField]
         private AudioSourceSettings _settings;
 
@@ -92,15 +19,7 @@ namespace BeardPhantom.UnityExtended
         [SerializeField]
         private List<AudioData> _audio;
 
-        #endregion
-
-        #region Properties
-
         public List<AudioData> Audio => _audio;
-
-        #endregion
-
-        #region Methods
 
         /// <summary>
         /// Play cue using source.
@@ -136,6 +55,51 @@ namespace BeardPhantom.UnityExtended
             return audioSrc.clip;
         }
 
-        #endregion
+        [Serializable]
+        public class AudioData : IWeightedChoice
+        {
+            [SerializeField]
+            [FormerlySerializedAs("Clip")]
+            private AudioClip _clip;
+
+            [SerializeField]
+            [FormerlySerializedAs("VolumeOffset")]
+            private float _volumeOffset;
+
+            [SerializeField]
+            private int _weight = 1;
+
+            public AudioClip Clip => _clip;
+
+            public float VolumeOffset => _volumeOffset;
+
+            /// <inheritdoc />
+            int IWeightedChoice.Weight => _weight;
+
+            public static AudioData Create(AudioClip clip)
+            {
+                return new AudioData
+                {
+                    _weight = 1,
+                    _clip = clip,
+                };
+            }
+        }
+
+        public readonly struct PlayArgs
+        {
+            public readonly bool Loop;
+
+            public readonly bool OneShot;
+
+            public readonly Vector3? Position;
+
+            public PlayArgs(bool loop = false, bool oneShot = false, Vector3? position = default)
+            {
+                Loop = loop;
+                OneShot = oneShot;
+                Position = position;
+            }
+        }
     }
 }
