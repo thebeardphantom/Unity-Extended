@@ -3,47 +3,36 @@ using Cysharp.Threading.Tasks;
 
 namespace BeardPhantom.UnityExtended
 {
-    public partial class LiteEvent
+    public static class LiteEventUtility
     {
-        #region Methods
-
-        public UniTask WaitForInvocationAsync()
+        public static UniTask WaitForInvocationAsync(this LiteEvent liteEvent)
         {
             // TODO: Use AutoResetUniTaskCompletionSource?
             var completionSource = new UniTaskCompletionSource();
 
-            Event += WaitForComplete;
+            liteEvent.Event += WaitForComplete;
             return completionSource.Task;
 
             void WaitForComplete()
             {
-                Event -= WaitForComplete;
+                liteEvent.Event -= WaitForComplete;
                 completionSource.TrySetResult();
             }
         }
-
-        #endregion
-    }
-
-    public sealed partial class LiteEvent<TArgs>
-    {
-        #region Methods
-
-        public UniTask<TArgs> WaitForInvocationAsync()
+        
+        public static UniTask<TArgs> WaitForInvocationAsync<TArgs>(this LiteEvent<TArgs> liteEvent) where TArgs : struct
         {
             var completionSource = new UniTaskCompletionSource<TArgs>();
 
             void WaitForComplete(in TArgs args)
             {
-                Event -= WaitForComplete;
+                liteEvent.Event -= WaitForComplete;
                 completionSource.TrySetResult(args);
             }
 
-            Event += WaitForComplete;
+            liteEvent.Event += WaitForComplete;
             return completionSource.Task;
         }
-
-        #endregion
     }
 }
 #endif
