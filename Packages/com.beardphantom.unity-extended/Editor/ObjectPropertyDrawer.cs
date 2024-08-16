@@ -181,7 +181,7 @@ namespace BeardPhantom.UnityExtended.Editor
             var rect = btn.worldBound;
             var menu = new GenericDropdownMenu();
             PopulateGenericMenu(menu);
-            menu.DropDown(rect, btn);
+            menu.DropDown(rect, btn, false);
         }
     }
 }

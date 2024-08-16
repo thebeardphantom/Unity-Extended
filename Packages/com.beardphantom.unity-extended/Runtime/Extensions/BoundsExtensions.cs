@@ -25,6 +25,16 @@ namespace BeardPhantom.UnityExtended
                 z = Mathf.Lerp(bounds.min.z, bounds.max.z, z),
             };
         }
+        
+        public static Vector3 GetNormalizedPosition(this Bounds bounds, Vector3 position)
+        {
+            return new Vector3
+            {
+                x = Mathf.InverseLerp(bounds.min.x, bounds.max.x, position.x),
+                y = Mathf.InverseLerp(bounds.min.y, bounds.max.y, position.y),
+                z = Mathf.InverseLerp(bounds.min.z, bounds.max.z, position.z),
+            };
+        }
 
         public static Bounds GetTotalBounds(GameObject gameObject)
         {
