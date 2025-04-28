@@ -14,9 +14,9 @@ namespace BeardPhantom.UnityExtended.Editor
         {
             serializedObject.Update();
             var cueAsset = (AudioCueAsset)target;
-            var cachedEnabled = GUI.enabled;
+            bool cachedEnabled = GUI.enabled;
             GUI.enabled = cueAsset.Audio != null && cueAsset.Audio.Any(a => a.Clip != null);
-            var cachedColor = GUI.color;
+            Color cachedColor = GUI.color;
             if (_lastPlayingSource == null)
             {
                 GUI.color = Color.green;

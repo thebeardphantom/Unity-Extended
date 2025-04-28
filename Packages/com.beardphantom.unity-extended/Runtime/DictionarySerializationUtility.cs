@@ -8,7 +8,7 @@ namespace BeardPhantom.UnityExtended
             this ICollection<SerializedKeyValuePair<TKey, TValue>> collection,
             IEnumerable<KeyValuePair<TKey, TValue>> keyValuePairs)
         {
-            foreach (var keyValuePair in keyValuePairs)
+            foreach (KeyValuePair<TKey, TValue> keyValuePair in keyValuePairs)
             {
                 collection.Add(new SerializedKeyValuePair<TKey, TValue>(keyValuePair));
             }
@@ -19,9 +19,9 @@ namespace BeardPhantom.UnityExtended
             IEnumerable<SerializedKeyValuePair<TKey, TValue>> serializedKeyValuePairs)
         {
             var addedAll = true;
-            foreach (var serializedKeyValuePair in serializedKeyValuePairs)
+            foreach (SerializedKeyValuePair<TKey, TValue> serializedKeyValuePair in serializedKeyValuePairs)
             {
-                var didAdd = dictionary.TryAdd(serializedKeyValuePair.Key, serializedKeyValuePair.Value);
+                bool didAdd = dictionary.TryAdd(serializedKeyValuePair.Key, serializedKeyValuePair.Value);
                 if (!didAdd)
                 {
                     addedAll = false;

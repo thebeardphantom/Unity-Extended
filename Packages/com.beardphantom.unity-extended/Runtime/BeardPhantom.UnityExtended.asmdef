@@ -2,7 +2,6 @@
   "name": "BeardPhantom.UnityExtended",
   "rootNamespace": "BeardPhantom.UnityExtended",
   "references": [
-    "GUID:f51ebe6a0ceec4240a699833d6309b23"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
@@ -11,12 +10,5 @@
   "precompiledReferences": [],
   "autoReferenced": true,
   "defineConstraints": [],
-  "versionDefines": [
-    {
-      "name": "com.cysharp.unitask",
-      "expression": "0.0.0",
-      "define": "UNITASK_SUPPORT"
-    }
-  ],
   "noEngineReferences": false
 }

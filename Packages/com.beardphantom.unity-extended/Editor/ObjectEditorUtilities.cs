@@ -22,7 +22,7 @@ namespace BeardPhantom.UnityExtended.Editor
             }
 
             editor.serializedObject.Update();
-            var name = editor.serializedObject.FindProperty("m_Name");
+            SerializedProperty name = editor.serializedObject.FindProperty("m_Name");
             if (name == null)
             {
                 return;

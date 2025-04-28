@@ -29,10 +29,10 @@ namespace BeardPhantom.UnityExtended
             Assert.IsTrue(Audio.Count > 0, $"No assigned audio for {name}");
             _settings.ApplyTo(audioSrc);
 
-            var index = Audio.ChooseIndexFromWeighted();
+            int index = Audio.ChooseIndexFromWeighted();
             Assert.IsFalse(index < 0, "index < 0");
 
-            var audio = Audio[index];
+            AudioData audio = Audio[index];
             Assert.IsNotNull(audio.Clip, $"Audio entry {index} for {name} has no assigned clip");
 
             if (args.OneShot)

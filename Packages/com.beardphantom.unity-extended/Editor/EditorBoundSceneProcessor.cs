@@ -13,10 +13,10 @@ namespace BeardPhantom.UnityExtended.Editor
         /// <inheritdoc />
         public void OnProcessScene(Scene scene, BuildReport report)
         {
-            var editorBoundGameObjects = Object.FindObjectsByType<EditorBoundGameObject>(
+            EditorBoundGameObject[] editorBoundGameObjects = Object.FindObjectsByType<EditorBoundGameObject>(
                 FindObjectsInactive.Include,
                 FindObjectsSortMode.None);
-            foreach (var editorBoundGameObject in editorBoundGameObjects)
+            foreach (EditorBoundGameObject editorBoundGameObject in editorBoundGameObjects)
             {
                 editorBoundGameObject.DestroyIfNecessary();
             }

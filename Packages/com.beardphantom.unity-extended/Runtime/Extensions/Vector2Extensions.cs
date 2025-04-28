@@ -23,12 +23,12 @@ namespace BeardPhantom.UnityExtended
 
         public static Vector2 Rotate(this Vector2 v2, float degrees)
         {
-            var rads = degrees * Mathf.Deg2Rad;
-            var sin = Mathf.Sin(rads);
-            var cos = Mathf.Cos(rads);
+            float rads = degrees * Mathf.Deg2Rad;
+            float sin = Mathf.Sin(rads);
+            float cos = Mathf.Cos(rads);
 
-            var tx = v2.x;
-            var ty = v2.y;
+            float tx = v2.x;
+            float ty = v2.y;
             v2.x = cos * tx - sin * ty;
             v2.y = sin * tx + cos * ty;
             return v2;

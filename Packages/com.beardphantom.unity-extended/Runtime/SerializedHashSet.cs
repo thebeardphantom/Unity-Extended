@@ -7,7 +7,7 @@ namespace BeardPhantom.UnityExtended
     [Serializable]
     public class SerializedHashSet<T> : HashSet<T>, ISerializationCallbackReceiver
     {
-        public const string SERIALIZED_VALUES_PROPERTY_NAME = nameof(SerializedValues);
+        public const string SerializedValuesPropertyName = nameof(SerializedValues);
 
         private bool _isValid;
 
@@ -37,7 +37,7 @@ namespace BeardPhantom.UnityExtended
         {
             Clear();
             _isValid = true;
-            foreach (var serializedValue in SerializedValues)
+            foreach (T serializedValue in SerializedValues)
             {
                 if (!Add(serializedValue))
                 {

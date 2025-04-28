@@ -7,17 +7,17 @@ namespace BeardPhantom.UnityExtended
     {
         public const double PI = Math.PI;
 
-        public const double INFINITY = double.PositiveInfinity;
+        public const double Infinity = double.PositiveInfinity;
 
-        public const double NEGATIVE_INFINITY = double.NegativeInfinity;
+        public const double NegativeInfinity = double.NegativeInfinity;
 
-        public const double DEG_2_RAD = PI * 2.0 / 360.0;
+        public const double Deg2Rad = PI * 2.0 / 360.0;
 
-        public const double RAD_2_DEG = 1.0 / DEG_2_RAD;
+        public const double Rad2Deg = 1.0 / Deg2Rad;
 
-        public const double EQUALITY_TOLERANCE_DEFAULT = 0.0000000001;
+        public const double EqualityToleranceDefault = 0.0000000001;
 
-        public static double EqualityTolerance = EQUALITY_TOLERANCE_DEFAULT;
+        public static double EqualityTolerance = EqualityToleranceDefault;
 
         public static double Sin(double f)
         {
@@ -76,13 +76,13 @@ namespace BeardPhantom.UnityExtended
 
         public static double Min(params double[] values)
         {
-            var len = values.Length;
+            int len = values.Length;
             if (len == 0)
             {
                 return 0;
             }
 
-            var m = values[0];
+            double m = values[0];
             for (var i = 1; i < len; i++)
             {
                 if (values[i] < m)
@@ -101,13 +101,13 @@ namespace BeardPhantom.UnityExtended
 
         public static int Min(params int[] values)
         {
-            var len = values.Length;
+            int len = values.Length;
             if (len == 0)
             {
                 return 0;
             }
 
-            var m = values[0];
+            int m = values[0];
             for (var i = 1; i < len; i++)
             {
                 if (values[i] < m)
@@ -126,13 +126,13 @@ namespace BeardPhantom.UnityExtended
 
         public static double Max(params double[] values)
         {
-            var len = values.Length;
+            int len = values.Length;
             if (len == 0)
             {
                 return 0;
             }
 
-            var m = values[0];
+            double m = values[0];
             for (var i = 1; i < len; i++)
             {
                 if (values[i] > m)
@@ -151,13 +151,13 @@ namespace BeardPhantom.UnityExtended
 
         public static int Max(params int[] values)
         {
-            var len = values.Length;
+            int len = values.Length;
             if (len == 0)
             {
                 return 0;
             }
 
-            var m = values[0];
+            int m = values[0];
             for (var i = 1; i < len; i++)
             {
                 if (values[i] > m)
@@ -284,7 +284,7 @@ namespace BeardPhantom.UnityExtended
 
         public static double LerpAngle(double a, double b, double t)
         {
-            var delta = Repeat(b - a, 360);
+            double delta = Repeat(b - a, 360);
             if (delta > 180)
             {
                 delta -= 360;
@@ -305,7 +305,7 @@ namespace BeardPhantom.UnityExtended
 
         public static double MoveTowardsAngle(double current, double target, double maxDelta)
         {
-            var deltaAngle = DeltaAngle(current, target);
+            double deltaAngle = DeltaAngle(current, target);
             if (-maxDelta < deltaAngle && deltaAngle < maxDelta)
             {
                 return target;
@@ -324,14 +324,14 @@ namespace BeardPhantom.UnityExtended
 
         public static double Gamma(double value, double absmax, double gamma)
         {
-            var negative = value < 0;
-            var absval = Abs(value);
+            bool negative = value < 0;
+            double absval = Abs(value);
             if (absval > absmax)
             {
                 return negative ? -absval : absval;
             }
 
-            var result = Pow(absval / absmax, gamma) * absmax;
+            double result = Pow(absval / absmax, gamma) * absmax;
             return negative ? -result : result;
         }
 
@@ -347,14 +347,14 @@ namespace BeardPhantom.UnityExtended
             double smoothTime,
             double maxSpeed)
         {
-            var deltaTime = Time.deltaTime;
+            float deltaTime = Time.deltaTime;
             return SmoothDamp(current, target, ref currentVelocity, smoothTime, maxSpeed, deltaTime);
         }
 
         public static double SmoothDamp(double current, double target, ref double currentVelocity, double smoothTime)
         {
-            var deltaTime = Time.deltaTime;
-            var maxSpeed = INFINITY;
+            float deltaTime = Time.deltaTime;
+            double maxSpeed = Infinity;
             return SmoothDamp(current, target, ref currentVelocity, smoothTime, maxSpeed, deltaTime);
         }
 
@@ -367,20 +367,20 @@ namespace BeardPhantom.UnityExtended
             double deltaTime)
         {
             smoothTime = Math.Max(0.0001, smoothTime);
-            var omega = 2 / smoothTime;
+            double omega = 2 / smoothTime;
 
-            var x = omega * deltaTime;
-            var exp = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);
-            var change = current - target;
-            var originalTo = target;
+            double x = omega * deltaTime;
+            double exp = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);
+            double change = current - target;
+            double originalTo = target;
 
-            var maxChange = maxSpeed * smoothTime;
+            double maxChange = maxSpeed * smoothTime;
             change = Math.Clamp(change, -maxChange, maxChange);
             target = current - change;
 
-            var temp = (currentVelocity + omega * change) * deltaTime;
+            double temp = (currentVelocity + omega * change) * deltaTime;
             currentVelocity = (currentVelocity - omega * temp) * exp;
-            var output = target + (change + temp) * exp;
+            double output = target + (change + temp) * exp;
 
             if (originalTo - current > 0.0 == output > originalTo)
             {
@@ -398,14 +398,14 @@ namespace BeardPhantom.UnityExtended
             double smoothTime,
             double maxSpeed)
         {
-            var deltaTime = Time.deltaTime;
+            float deltaTime = Time.deltaTime;
             return SmoothDampAngle(current, target, ref currentVelocity, smoothTime, maxSpeed, deltaTime);
         }
 
         public static double SmoothDampAngle(double current, double target, ref double currentVelocity, double smoothTime)
         {
-            var deltaTime = Time.deltaTime;
-            var maxSpeed = INFINITY;
+            float deltaTime = Time.deltaTime;
+            double maxSpeed = Infinity;
             return SmoothDampAngle(current, target, ref currentVelocity, smoothTime, maxSpeed, deltaTime);
         }
 
@@ -444,7 +444,7 @@ namespace BeardPhantom.UnityExtended
 
         public static double DeltaAngle(double current, double target)
         {
-            var delta = Repeat(target - current, 360.0);
+            double delta = Repeat(target - current, 360.0);
             if (delta > 180.0)
             {
                 delta -= 360.0;
@@ -493,7 +493,7 @@ namespace BeardPhantom.UnityExtended
 
         public static double DiscardLeastSignificantDecimal(double v)
         {
-            var decimals = Math.Max(0, (int)(5 - Math.Log10(Math.Abs(v))));
+            int decimals = Math.Max(0, (int)(5 - Math.Log10(Math.Abs(v))));
             try
             {
                 return Math.Round(v, decimals);

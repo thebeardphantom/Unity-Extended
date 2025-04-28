@@ -1,7 +1,5 @@
-﻿#if UNITASK_SUPPORT
-using Cysharp.Threading.Tasks;
-#endif
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -13,16 +11,9 @@ namespace BeardPhantom.UnityExtended
     {
         public static CancellationToken GetDestroyCancellationToken(this GameObject gameObject)
         {
-            if (gameObject.TryGetComponent<MonoBehaviour>(out var monoBehaviour))
-            {
-                return monoBehaviour.destroyCancellationToken;
-            }
-
-#if UNITASK_SUPPORT
-            return gameObject.GetCancellationTokenOnDestroy();
-#else
-            return gameObject.AddOrGetComponent<DummyMonoBehaviour>().destroyCancellationToken;
-#endif
+            return gameObject.TryGetComponent(out MonoBehaviour monoBehaviour)
+                ? monoBehaviour.destroyCancellationToken
+                : gameObject.AddOrGetComponent<DummyMonoBehaviour>().destroyCancellationToken;
         }
 
         public static T GetRequiredComponent<T>(this Component component)
@@ -42,7 +33,7 @@ namespace BeardPhantom.UnityExtended
                 throw new ArgumentNullException(nameof(gameObject));
             }
 
-            if (gameObject.TryGetComponent<T>(out var component))
+            if (gameObject.TryGetComponent(out T component))
             {
                 return component;
             }
@@ -67,7 +58,7 @@ namespace BeardPhantom.UnityExtended
                 throw new ArgumentNullException(nameof(gameObject));
             }
 
-            if (gameObject.TryGetComponent<T>(out var component))
+            if (gameObject.TryGetComponent(out T component))
             {
                 return component;
             }
@@ -87,11 +78,11 @@ namespace BeardPhantom.UnityExtended
 
         public static GameObject GetRenderClone(GameObject gameObject)
         {
-            var clone = Object.Instantiate(gameObject);
-            using (ListPool<Component>.Get(out var components))
+            GameObject clone = Object.Instantiate(gameObject);
+            using (ListPool<Component>.Get(out List<Component> components))
             {
                 clone.GetComponentsInChildren(true, components);
-                foreach (var component in components)
+                foreach (Component component in components)
                 {
                     if (!IsRenderingComponent(component) && component is not Transform)
                     {

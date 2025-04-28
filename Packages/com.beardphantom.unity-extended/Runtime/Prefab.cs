@@ -11,13 +11,13 @@ namespace BeardPhantom.UnityExtended
 
         public GameObject InstantiatePrefab(in InstantiateArgs instantiateArgs = default)
         {
-            var instance = instantiateArgs.Instantiate(Asset);
+            GameObject instance = instantiateArgs.Instantiate(Asset);
             return instance;
         }
 
         public T Instantiate<T>(in InstantiateArgs instantiateArgs = default)
         {
-            var instance = InstantiatePrefab(instantiateArgs);
+            GameObject instance = InstantiatePrefab(instantiateArgs);
             var component = instance.GetComponent<T>();
             return component;
         }

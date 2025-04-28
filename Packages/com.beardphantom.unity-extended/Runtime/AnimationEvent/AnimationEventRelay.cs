@@ -11,14 +11,14 @@ namespace BeardPhantom.UnityExtended
 
         private void Start()
         {
-            var controller = Animator.runtimeAnimatorController;
-            var clips = controller.animationClips;
-            foreach (var clip in clips)
+            RuntimeAnimatorController controller = Animator.runtimeAnimatorController;
+            AnimationClip[] clips = controller.animationClips;
+            foreach (AnimationClip clip in clips)
             {
-                var events = clip.events;
+                AnimationEvent[] events = clip.events;
                 for (var j = 0; j < events.Length; j++)
                 {
-                    var evt = events[j];
+                    AnimationEvent evt = events[j];
                     if (evt.objectReferenceParameter is AnimationEventAsset)
                     {
                         evt.functionName = nameof(OnAnimEvent);
@@ -37,7 +37,7 @@ namespace BeardPhantom.UnityExtended
 
         private void OnValidate()
         {
-            TryGetComponent<Animator>(out var animator);
+            TryGetComponent<Animator>(out Animator animator);
             Animator = animator;
         }
 

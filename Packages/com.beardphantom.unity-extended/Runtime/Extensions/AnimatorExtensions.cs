@@ -1,26 +1,22 @@
-﻿#if UNITASK_SUPPORT
-using Cysharp.Threading.Tasks;
-using System.Threading;
+﻿using System.Threading;
 using UnityEngine;
 
 namespace BeardPhantom.UnityExtended
 {
     public static class AnimatorExtensions
     {
-        #region Methods
-
-        public static async UniTask PlayAsync(
+        public static async Awaitable PlayAsync(
             this Animator animator,
             int stateHash,
             CancellationToken cancellationToken = default)
         {
             bool IsPlaying()
             {
-                var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+                AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
                 return stateInfo.shortNameHash == stateHash && stateInfo.normalizedTime < 1f;
             }
 
-            var destroyCancellationToken = animator.gameObject.GetDestroyCancellationToken();
+            CancellationToken destroyCancellationToken = animator.gameObject.GetDestroyCancellationToken();
             if (cancellationToken.Equals(default))
             {
                 cancellationToken = destroyCancellationToken;
@@ -34,11 +30,8 @@ namespace BeardPhantom.UnityExtended
             }
 
             animator.Play(stateHash, -1, 0f);
-            await UniTask.WaitUntil(IsPlaying, cancellationToken: cancellationToken);
-            await UniTask.WaitWhile(IsPlaying, cancellationToken: cancellationToken);
+            await AwaitableUtility.WaitUntil(IsPlaying, cancellationToken);
+            await AwaitableUtility.WaitWhile(IsPlaying, cancellationToken);
         }
-
-        #endregion
     }
 }
-#endif

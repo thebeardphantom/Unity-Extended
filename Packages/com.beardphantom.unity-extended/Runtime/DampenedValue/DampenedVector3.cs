@@ -9,7 +9,7 @@ namespace BeardPhantom.UnityExtended
         /// <inheritdoc />
         public override Vector3 Simulate(float deltaTime)
         {
-            var velocity = Velocity;
+            Vector3 velocity = Velocity;
             Value = Vector3.SmoothDamp(Value, TargetValue, ref velocity, SmoothTime, MaxSpeed, deltaTime);
             Velocity = velocity;
             return Value;

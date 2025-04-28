@@ -35,7 +35,7 @@ namespace BeardPhantom.UnityExtended
 
         public new T Dequeue()
         {
-            var item = base.Dequeue();
+            T item = base.Dequeue();
             _itemDequeued.Invoke(new ItemDequeuedArgs(item));
             return item;
         }
@@ -43,7 +43,7 @@ namespace BeardPhantom.UnityExtended
         /// <inheritdoc />
         public void CopyFrom(Array array)
         {
-            foreach (var obj in array)
+            foreach (object obj in array)
             {
                 base.Enqueue((T)obj);
             }

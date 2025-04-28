@@ -12,10 +12,10 @@ namespace BeardPhantom.UnityExtended
                 return true;
             }
 
-            var childCount = root.transform.childCount;
+            int childCount = root.transform.childCount;
             for (var i = 0; i < childCount; i++)
             {
-                var child = root.transform.GetChild(i);
+                Transform child = root.transform.GetChild(i);
                 if (TryFindChildWithTag(child.gameObject, tag, out result))
                 {
                     return true;

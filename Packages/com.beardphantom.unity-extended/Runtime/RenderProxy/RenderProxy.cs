@@ -9,7 +9,7 @@ namespace BeardPhantom.UnityExtended
 {
     public class RenderProxy : IDisposable
     {
-        private static readonly int _defaultLayer = LayerMask.NameToLayer("Default");
+        private static readonly int s_defaultLayer = LayerMask.NameToLayer("Default");
 
         public readonly ReadOnlyCollection<RenderProxySubObject> SubObjects;
 
@@ -17,14 +17,14 @@ namespace BeardPhantom.UnityExtended
 
         public RenderProxy(GameObject root, RenderProxyOptions options = (RenderProxyOptions)(-1))
         {
-            var logUnsupportedTypes = options.HasFlagFast(RenderProxyOptions.LogUnsupportedRendererTypes);
+            bool logUnsupportedTypes = options.HasFlagFast(RenderProxyOptions.LogUnsupportedRendererTypes);
             ListPool<RenderProxySubObject>.Get(out _subObjects);
             SubObjects = new ReadOnlyCollection<RenderProxySubObject>(_subObjects);
-            using (ListPool<Renderer>.Get(out var renderers))
+            using (ListPool<Renderer>.Get(out List<Renderer> renderers))
             {
                 root.GetComponentsInChildren(options.HasFlagFast(RenderProxyOptions.FindInactiveRenderers), renderers);
                 Assert.IsTrue(renderers.Count > 0, "_renderers.Count > 0");
-                foreach (var renderer in renderers)
+                foreach (Renderer renderer in renderers)
                 {
                     switch (renderer)
                     {
@@ -69,7 +69,7 @@ namespace BeardPhantom.UnityExtended
             position ??= Vector3.zero;
             rotation ??= Quaternion.identity;
             localScale ??= Vector3.one;
-            var trs = Matrix4x4.TRS(position.Value, rotation.Value, localScale.Value);
+            Matrix4x4 trs = Matrix4x4.TRS(position.Value, rotation.Value, localScale.Value);
             Render(trs, layer, camera);
         }
 
@@ -79,8 +79,8 @@ namespace BeardPhantom.UnityExtended
             Camera camera = default,
             Material overrideMaterial = default)
         {
-            layer = layer < 0 ? _defaultLayer : layer;
-            foreach (var subObject in _subObjects)
+            layer = layer < 0 ? s_defaultLayer : layer;
+            foreach (RenderProxySubObject subObject in _subObjects)
             {
                 subObject.Render(transformation, layer, camera, overrideMaterial);
             }
@@ -89,7 +89,7 @@ namespace BeardPhantom.UnityExtended
         /// <inheritdoc />
         void IDisposable.Dispose()
         {
-            foreach (var subObject in _subObjects)
+            foreach (RenderProxySubObject subObject in _subObjects)
             {
                 subObject.Dispose();
             }

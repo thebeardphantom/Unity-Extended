@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -26,7 +27,7 @@ namespace BeardPhantom.UnityExtended
 
         public static void LookAt2D(this Rigidbody2D rigidbody2D, Vector2 position, Vector2 forward2D)
         {
-            var angle = rigidbody2D.GetLookAtAngle2D(position, forward2D);
+            float angle = rigidbody2D.GetLookAtAngle2D(position, forward2D);
             rigidbody2D.SetRotation(angle);
         }
 
@@ -38,8 +39,8 @@ namespace BeardPhantom.UnityExtended
 
         public static float GetLookAtAngle2D(this Rigidbody2D rigidbody2D, Vector2 position, Vector2 forward2D)
         {
-            var directionTo = (position - rigidbody2D.position).normalized;
-            var angle = Vector2.SignedAngle(forward2D, directionTo);
+            Vector2 directionTo = (position - rigidbody2D.position).normalized;
+            float angle = Vector2.SignedAngle(forward2D, directionTo);
             return angle;
         }
 
@@ -63,7 +64,7 @@ namespace BeardPhantom.UnityExtended
 
         public static Vector2 GetForward2D(this Rigidbody2D rigidbody2D)
         {
-            var rotation = rigidbody2D.GetRotationAsQuaternion();
+            Quaternion rotation = rigidbody2D.GetRotationAsQuaternion();
             return rotation * Transform2DExtensions.Forward2DDefault;
         }
 
@@ -117,13 +118,13 @@ namespace BeardPhantom.UnityExtended
 
         public static Bounds GetBounds(this Rigidbody2D rigidbody2D)
         {
-            using (ListPool<Collider2D>.Get(out var colliders))
+            using (ListPool<Collider2D>.Get(out List<Collider2D> colliders))
             {
                 rigidbody2D.GetAttachedColliders(colliders);
                 Bounds bounds = default;
                 for (var i = 0; i < colliders.Count; i++)
                 {
-                    var collider = colliders[i];
+                    Collider2D collider = colliders[i];
                     if (i == 0)
                     {
                         bounds = collider.bounds;

@@ -1,4 +1,5 @@
-﻿using UnityEngine.Pool;
+﻿using System.Collections.Generic;
+using UnityEngine.Pool;
 
 namespace BeardPhantom.UnityExtended
 {
@@ -12,17 +13,17 @@ namespace BeardPhantom.UnityExtended
         /// <typeparam name="T">The type of element.</typeparam>
         public static void Prime<T>(this IObjectPool<T> pool, int count) where T : class
         {
-            using (ListPool<T>.Get(out var initPool))
+            using (ListPool<T>.Get(out List<T> initPool))
             {
                 for (var i = 0; i < count; i++)
                 {
-                    var item = pool.Get();
+                    T item = pool.Get();
                     initPool.Add(item);
                 }
 
-                for (var i = count - 1; i >= 0; i--)
+                for (int i = count - 1; i >= 0; i--)
                 {
-                    var element = initPool[i];
+                    T element = initPool[i];
                     pool.Release(element);
                 }
             }

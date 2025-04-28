@@ -65,14 +65,14 @@ namespace BeardPhantom.UnityExtended
 
         public static void SetAngle2D(this Transform transform, float angle)
         {
-            var eulerAngles = transform.eulerAngles;
+            Vector3 eulerAngles = transform.eulerAngles;
             eulerAngles.z = angle;
             transform.eulerAngles = eulerAngles;
         }
 
         public static void SetLocalAngle2D(this Transform transform, float angle)
         {
-            var localEulerAngles = transform.localEulerAngles;
+            Vector3 localEulerAngles = transform.localEulerAngles;
             localEulerAngles.z = angle;
             transform.localEulerAngles = localEulerAngles;
         }
@@ -97,7 +97,7 @@ namespace BeardPhantom.UnityExtended
 
         public static void LookAt2D(this Transform transform, Vector2 position, Vector2 forward2D)
         {
-            var angle = transform.GetLookAtAngle2D(position, forward2D);
+            float angle = transform.GetLookAtAngle2D(position, forward2D);
             transform.SetAngle2D(angle);
         }
 
@@ -109,8 +109,8 @@ namespace BeardPhantom.UnityExtended
 
         public static float GetLookAtAngle2D(this Transform transform, Vector2 position, Vector2 forward2D)
         {
-            var directionTo = (position - transform.GetPosition2D()).normalized;
-            var angle = Vector2.SignedAngle(forward2D, directionTo);
+            Vector2 directionTo = (position - transform.GetPosition2D()).normalized;
+            float angle = Vector2.SignedAngle(forward2D, directionTo);
             return angle;
         }
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine.Pool;
 
 namespace BeardPhantom.UnityExtended
@@ -29,10 +30,10 @@ namespace BeardPhantom.UnityExtended
                 return;
             }
 
-            using (ListPool<OnEventInvoked>.Get(out var listenersCopy))
+            using (ListPool<OnEventInvoked>.Get(out List<OnEventInvoked> listenersCopy))
             {
                 listenersCopy.AddRange(Listeners);
-                foreach (var listener in listenersCopy)
+                foreach (OnEventInvoked listener in listenersCopy)
                 {
                     listener();
                 }
@@ -63,10 +64,10 @@ namespace BeardPhantom.UnityExtended
                 return;
             }
 
-            using (ListPool<OnEventInvoked>.Get(out var listenersCopy))
+            using (ListPool<OnEventInvoked>.Get(out List<OnEventInvoked> listenersCopy))
             {
                 listenersCopy.AddRange(Listeners);
-                foreach (var listener in listenersCopy)
+                foreach (OnEventInvoked listener in listenersCopy)
                 {
                     listener.Invoke(args);
                 }

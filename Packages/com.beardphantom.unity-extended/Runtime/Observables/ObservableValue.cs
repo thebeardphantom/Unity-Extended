@@ -38,7 +38,7 @@ namespace BeardPhantom.UnityExtended
                     return;
                 }
 
-                var oldValue = _value;
+                T oldValue = _value;
                 _value = value;
                 if (_changeScopeCount > 0)
                 {

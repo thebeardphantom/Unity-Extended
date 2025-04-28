@@ -6,7 +6,7 @@ namespace BeardPhantom.UnityExtended
     {
         public static TComponent FindWithTag<TComponent>(string tag) where TComponent : Component
         {
-            var gameObject = GameObject.FindWithTag(tag);
+            GameObject gameObject = GameObject.FindWithTag(tag);
             if (gameObject.IsNull())
             {
                 return default;

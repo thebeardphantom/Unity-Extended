@@ -9,7 +9,7 @@ namespace BeardPhantom.UnityExtended
     [InitializeOnLoad]
     public static class EditorAudioUtility
     {
-        private static readonly List<AudioSource> _playingSources = new();
+        private static readonly List<AudioSource> s_playingSources = new();
 
         static EditorAudioUtility()
         {
@@ -26,24 +26,24 @@ namespace BeardPhantom.UnityExtended
                 return null;
             }
 
-            var source = GetAudioSource();
-            var camera = SceneView.GetAllSceneCameras().First().transform;
-            var position = camera.position + camera.forward * 5f;
+            AudioSource source = GetAudioSource();
+            Transform camera = SceneView.GetAllSceneCameras().First().transform;
+            Vector3 position = camera.position + camera.forward * 5f;
             cue.Play(source, new AudioCueAsset.PlayArgs(position: position));
             return source;
         }
 
         private static void OnPlaymodeStateChanged(PlayModeStateChange obj)
         {
-            for (var i = _playingSources.Count - 1; i >= 0; i--)
+            for (int i = s_playingSources.Count - 1; i >= 0; i--)
             {
-                var source = _playingSources[i];
+                AudioSource source = s_playingSources[i];
                 if (source != null)
                 {
                     Object.DestroyImmediate(source.gameObject);
                 }
 
-                _playingSources.RemoveAt(i);
+                s_playingSources.RemoveAt(i);
             }
         }
 
@@ -54,16 +54,16 @@ namespace BeardPhantom.UnityExtended
                     HideFlags.HideAndDontSave,
                     typeof(AudioSource))
                 .GetComponent<AudioSource>();
-            _playingSources.Add(audioSource);
+            s_playingSources.Add(audioSource);
             return audioSource;
         }
 
         private static void EditorUpdate()
         {
-            for (var i = _playingSources.Count - 1; i >= 0; i--)
+            for (int i = s_playingSources.Count - 1; i >= 0; i--)
             {
-                var source = _playingSources[i];
-                var nullSource = source == null;
+                AudioSource source = s_playingSources[i];
+                bool nullSource = source == null;
                 if (!nullSource && source.isPlaying)
                 {
                     continue;
@@ -74,7 +74,7 @@ namespace BeardPhantom.UnityExtended
                     Object.DestroyImmediate(source.gameObject);
                 }
 
-                _playingSources.RemoveAt(i);
+                s_playingSources.RemoveAt(i);
             }
         }
     }

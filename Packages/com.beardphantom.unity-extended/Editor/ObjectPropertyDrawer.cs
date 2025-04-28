@@ -117,7 +117,7 @@ namespace BeardPhantom.UnityExtended.Editor
         /// </summary>
         private bool IsGhostObject()
         {
-            var obj = SerializedProperty.objectReferenceValue;
+            Object obj = SerializedProperty.objectReferenceValue;
             if (!obj.IsNotNull())
             {
                 return false;
@@ -178,7 +178,7 @@ namespace BeardPhantom.UnityExtended.Editor
         private void OnMenuButtonClicked(EventBase eventBase)
         {
             var btn = (VisualElement)eventBase.target;
-            var rect = btn.worldBound;
+            Rect rect = btn.worldBound;
             var menu = new GenericDropdownMenu();
             PopulateGenericMenu(menu);
             menu.DropDown(rect, btn, false);

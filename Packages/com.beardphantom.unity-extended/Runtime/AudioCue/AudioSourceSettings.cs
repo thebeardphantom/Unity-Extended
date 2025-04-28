@@ -109,7 +109,7 @@ namespace BeardPhantom.UnityExtended
         /// </summary>
         public static void CopyFrom(AudioSource source, AudioSource destination)
         {
-            var settings = GetFromSource(source);
+            AudioSourceSettings settings = GetFromSource(source);
             settings.ApplyTo(destination);
         }
 

@@ -46,7 +46,7 @@ namespace BeardPhantom.UnityExtended
         [Conditional("UNITY_ASSERTIONS")]
         private void AssertInSync()
         {
-            var hasValue = _value.IsNotNull();
+            bool hasValue = _value.IsNotNull();
             Assert.AreEqual(_hasValue, hasValue, "Value was destroyed and this FastRef is out of sync.");
         }
     }

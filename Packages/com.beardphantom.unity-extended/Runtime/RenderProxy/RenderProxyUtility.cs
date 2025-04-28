@@ -9,8 +9,8 @@ namespace BeardPhantom.UnityExtended
     {
         public static Matrix4x4 CreateMatrix(Transform tform)
         {
-            var root = tform.root;
-            var matrix = Matrix4x4.TRS(
+            Transform root = tform.root;
+            Matrix4x4 matrix = Matrix4x4.TRS(
                 root.InverseTransformPoint(tform.position),
                 Quaternion.Inverse(root.rotation) * tform.rotation,
                 tform.lossyScale);

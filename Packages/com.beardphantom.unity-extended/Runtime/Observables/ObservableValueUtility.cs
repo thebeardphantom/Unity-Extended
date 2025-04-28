@@ -2,10 +2,9 @@ namespace BeardPhantom.UnityExtended
 {
     public static class ObservableValueUtility
     {
-        public static ObservableValueChangedArgs<T> CreateEventArgsFromCurrentValue<T>(
-            this IReadOnlyObservableValue<T> observableValue)
+        public static ObservableValueChangedArgs<T> CreateEventArgsFromCurrentValue<T>(this IReadOnlyObservableValue<T> observableValue)
         {
-            var value = observableValue.Value;
+            T value = observableValue.Value;
             return new ObservableValueChangedArgs<T>(observableValue, value, value);
         }
 
@@ -28,7 +27,7 @@ namespace BeardPhantom.UnityExtended
             this ObservableValue<T> observableValue,
             out ObservableValue<T> outObservableValue)
         {
-            var scope = BeginChangeScope(observableValue);
+            ObservableChangeScope<T> scope = BeginChangeScope(observableValue);
             outObservableValue = observableValue;
             return scope;
         }

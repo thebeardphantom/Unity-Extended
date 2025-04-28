@@ -26,7 +26,7 @@ namespace BeardPhantom.UnityExtended
 
         public static Vector2 WorldToCellCenterWorld2D(this Grid grid, Vector3 position3D)
         {
-            var cell = grid.WorldToCell(position3D);
+            Vector3Int cell = grid.WorldToCell(position3D);
             return grid.GetCellCenterWorld2D(cell);
         }
     }

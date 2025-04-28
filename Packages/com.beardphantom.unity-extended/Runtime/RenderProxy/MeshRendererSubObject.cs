@@ -28,13 +28,13 @@ namespace BeardPhantom.UnityExtended
                 : meshFilter.sharedMesh;
 
             // Copy shared materials
-            using (ListPool<Material>.Get(out var sharedMaterials))
+            using (ListPool<Material>.Get(out List<Material> sharedMaterials))
             {
                 renderer.GetSharedMaterials(sharedMaterials);
                 ListPool<Material>.Get(out _materials);
 
-                var useUniqueMaterials = options.HasFlagFast(RenderProxyOptions.UseUniqueMaterialInstances);
-                foreach (var sharedMaterial in sharedMaterials)
+                bool useUniqueMaterials = options.HasFlagFast(RenderProxyOptions.UseUniqueMaterialInstances);
+                foreach (Material sharedMaterial in sharedMaterials)
                 {
                     _materials.Add(useUniqueMaterials ? Object.Instantiate(sharedMaterial) : sharedMaterial);
                 }
@@ -58,11 +58,11 @@ namespace BeardPhantom.UnityExtended
         /// <inheritdoc />
         public override void Render(Matrix4x4 transformation, int layer, Camera camera, Material overrideMaterial)
         {
-            var hasOverrideMaterial = overrideMaterial.IsNotNull();
-            var finalTransformation = LocalToWorld * transformation;
+            bool hasOverrideMaterial = overrideMaterial.IsNotNull();
+            Matrix4x4 finalTransformation = LocalToWorld * transformation;
             for (var i = 0; i < _subMeshCount; i++)
             {
-                var material = hasOverrideMaterial ? overrideMaterial : _materials[i];
+                Material material = hasOverrideMaterial ? overrideMaterial : _materials[i];
                 RenderProxyUtility.DrawMesh(_mesh, material, finalTransformation, i, layer, camera);
             }
         }
@@ -73,7 +73,7 @@ namespace BeardPhantom.UnityExtended
             ListPool<Material>.Release(_materials);
             if (_options.HasFlagFast(RenderProxyOptions.UseUniqueMaterialInstances))
             {
-                foreach (var material in _materials)
+                foreach (Material material in _materials)
                 {
                     Object.Destroy(material);
                 }

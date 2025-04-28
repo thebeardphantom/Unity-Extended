@@ -17,12 +17,12 @@ namespace BeardPhantom.UnityExtended.Editor
 
         private SerializedPropertyTree(SerializedProperty property)
         {
-            var serializedObj = property.serializedObject;
+            SerializedObject serializedObj = property.serializedObject;
             var root = new UnityObjectNode(serializedObj.targetObject);
             Node lastNode = root;
-            var originalPath = property.propertyPath;
+            string originalPath = property.propertyPath;
             var pathBuilder = new StringBuilder();
-            var matches = _pathPartRegex.Matches(originalPath);
+            MatchCollection matches = _pathPartRegex.Matches(originalPath);
 
             foreach (Match match in matches)
             {
@@ -33,15 +33,15 @@ namespace BeardPhantom.UnityExtended.Editor
 
                 pathBuilder.Append(match.Value);
 
-                var prop = serializedObj.FindProperty(pathBuilder.ToString());
+                SerializedProperty prop = serializedObj.FindProperty(pathBuilder.ToString());
 
                 if (_arrayRegex.IsMatch(match.Value))
                 {
-                    var memberName = match.Groups[1].Value;
+                    string memberName = match.Groups[1].Value;
                     var list = lastNode.GetMemberByName<IList>(memberName);
 
-                    var indexStr = match.Groups[2].Value;
-                    var index = int.Parse(indexStr);
+                    string indexStr = match.Groups[2].Value;
+                    int index = int.Parse(indexStr);
                     lastNode = SetupNodePair(lastNode, new ArrayIndexNode(list, index));
                 }
                 else
@@ -91,7 +91,7 @@ namespace BeardPhantom.UnityExtended.Editor
             {
                 get
                 {
-                    var node = this;
+                    Node node = this;
                     while (node.ParentNode != null)
                     {
                         node = node.ParentNode;
@@ -105,7 +105,7 @@ namespace BeardPhantom.UnityExtended.Editor
             {
                 get
                 {
-                    var node = this;
+                    Node node = this;
                     while (node.ChildNode != null)
                     {
                         node = node.ChildNode;
@@ -117,8 +117,8 @@ namespace BeardPhantom.UnityExtended.Editor
 
             internal T GetMemberByName<T>(string name)
             {
-                var obj = NodeObject;
-                var field = obj.GetType().GetField(name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                object obj = NodeObject;
+                FieldInfo field = obj.GetType().GetField(name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                 return (T)field.GetValue(obj);
             }
         }

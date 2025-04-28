@@ -30,19 +30,19 @@ namespace BeardPhantom.UnityExtended
 
         public static Color WithHue(this Color color, float hue, bool hdr = false)
         {
-            Color.RGBToHSV(color, out _, out var saturation, out var value);
+            Color.RGBToHSV(color, out _, out float saturation, out float value);
             return Color.HSVToRGB(hue, saturation, value, hdr);
         }
 
         public static Color WithSaturation(this Color color, float saturation, bool hdr = false)
         {
-            Color.RGBToHSV(color, out var hue, out _, out var value);
+            Color.RGBToHSV(color, out float hue, out _, out float value);
             return Color.HSVToRGB(hue, saturation, value, hdr);
         }
 
         public static Color WithValue(this Color color, float value, bool hdr = false)
         {
-            Color.RGBToHSV(color, out var hue, out var saturation, out _);
+            Color.RGBToHSV(color, out float hue, out float saturation, out _);
             return Color.HSVToRGB(hue, saturation, value, hdr);
         }
     }

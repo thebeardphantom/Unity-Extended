@@ -11,20 +11,20 @@ namespace BeardPhantom.UnityExtended
 
         public void Invoke<T>(in T evtArgs) where T : struct
         {
-            var typedInvoker = AddOrGetTypedInvoker<T>();
+            EventInvoker<T> typedInvoker = AddOrGetTypedInvoker<T>();
             typedInvoker.Invoke(evtArgs);
         }
 
         public void Register<T>(OnEventInvoked<T> callback) where T : struct
         {
-            var typedInvoker = AddOrGetTypedInvoker<T>();
+            EventInvoker<T> typedInvoker = AddOrGetTypedInvoker<T>();
             typedInvoker.Register(callback);
         }
 
         private EventInvoker<T> AddOrGetTypedInvoker<T>() where T : struct
         {
             EventInvoker<T> typedInvoker;
-            if (_typeToInvoker.TryGetValue(typeof(T), out var rawInvoker))
+            if (_typeToInvoker.TryGetValue(typeof(T), out object rawInvoker))
             {
                 typedInvoker = (EventInvoker<T>)rawInvoker;
             }
@@ -53,7 +53,7 @@ namespace BeardPhantom.UnityExtended
 
             public void Invoke(T args)
             {
-                foreach (var callback in _callbacks)
+                foreach (OnEventInvoked<T> callback in _callbacks)
                 {
                     callback.Invoke(args);
                 }

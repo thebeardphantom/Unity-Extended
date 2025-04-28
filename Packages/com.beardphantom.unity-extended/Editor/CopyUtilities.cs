@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reflection;
+using System.Security;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace BeardPhantom.UnityExtended.Editor
 {
@@ -17,8 +20,8 @@ namespace BeardPhantom.UnityExtended.Editor
         private static void FindUriMethod()
         {
             const string TYPE_NAME = "UnityEditor.UIElements.StyleSheets.URIHelpers";
-            var assembly = typeof(UIElementsEntryPoint).Assembly;
-            var type = assembly.GetType(TYPE_NAME);
+            Assembly assembly = typeof(UIElementsEntryPoint).Assembly;
+            Type type = assembly.GetType(TYPE_NAME);
             _makeAssetUriMethod = type.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
                 .FirstOrDefault(m => m.Name == "MakeAssetUri" && m.GetParameters().Length == 2);
         }
@@ -35,14 +38,14 @@ namespace BeardPhantom.UnityExtended.Editor
         [MenuItem(ASSETS_COPY_PREFIX + "Path", priority = PRIORITY)]
         private static void CopyPath()
         {
-            var path = AssetDatabase.GetAssetPath(Selection.activeObject);
+            string path = AssetDatabase.GetAssetPath(Selection.activeObject);
             GUIUtility.systemCopyBuffer = path;
         }
 
         [MenuItem(ASSETS_COPY_PREFIX + "GUID", priority = PRIORITY)]
         private static void CopyGuid()
         {
-            AssetDatabase.TryGetGUIDAndLocalFileIdentifier(Selection.activeObject, out var guid, out long _);
+            AssetDatabase.TryGetGUIDAndLocalFileIdentifier(Selection.activeObject, out string guid, out long _);
             GUIUtility.systemCopyBuffer = guid;
         }
 
@@ -56,7 +59,7 @@ namespace BeardPhantom.UnityExtended.Editor
         [MenuItem(ASSETS_COPY_PREFIX + "UI Toolkit URI", priority = PRIORITY)]
         private static void CopyUIToolkitUri()
         {
-            var assetObject = Selection.activeObject;
+            Object assetObject = Selection.activeObject;
             if (_makeAssetUriMethod.IsNull())
             {
                 FindUriMethod();
@@ -69,6 +72,7 @@ namespace BeardPhantom.UnityExtended.Editor
                     assetObject,
                     false,
                 });
+            uri = SecurityElement.Escape(uri);
             GUIUtility.systemCopyBuffer = uri;
         }
     }

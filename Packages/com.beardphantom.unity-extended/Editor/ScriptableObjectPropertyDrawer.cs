@@ -19,7 +19,7 @@ namespace BeardPhantom.UnityExtended.Editor
         protected override void PopulateGenericMenu(GenericDropdownMenu menu)
         {
             base.PopulateGenericMenu(menu);
-            var hasEmbeddedValue = IsEmbeddedObject(SerializedProperty.objectReferenceValue);
+            bool hasEmbeddedValue = IsEmbeddedObject(SerializedProperty.objectReferenceValue);
             const string ADD_LABEL = "Add";
             if (hasEmbeddedValue)
             {
@@ -35,11 +35,11 @@ namespace BeardPhantom.UnityExtended.Editor
         {
             Debug.Assert(!IsEmbeddedObject(SerializedProperty.objectReferenceValue), "!GetHasEmbeddedValue()");
 
-            var typeName = Regex.Match(SerializedProperty.type, @"PPtr<\$(.+?)>").Groups[1].Value.Trim();
+            string typeName = Regex.Match(SerializedProperty.type, @"PPtr<\$(.+?)>").Groups[1].Value.Trim();
             var instance = ScriptableObject.CreateInstance(typeName);
             instance.name = $"(Embedded {Guid.NewGuid():N})";
 
-            var host = SerializedProperty.serializedObject.targetObject;
+            Object host = SerializedProperty.serializedObject.targetObject;
             if (EditorUtility.IsPersistent(host))
             {
                 AssetDatabase.AddObjectToAsset(instance, host);

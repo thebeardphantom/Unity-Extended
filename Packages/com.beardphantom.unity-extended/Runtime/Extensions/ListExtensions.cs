@@ -7,7 +7,7 @@ namespace BeardPhantom.UnityExtended
 {
     public static class ListExtensions
     {
-        private static readonly UnityRandomAdapter _unityRandomAdapter = new();
+        private static readonly UnityRandomAdapter s_unityRandomAdapter = new();
 
         public static int ResolveIndex(this IList list, Index index)
         {
@@ -16,13 +16,13 @@ namespace BeardPhantom.UnityExtended
 
         public static void RemoveSwapback<T>(this IList<T> list, T item)
         {
-            var index = list.IndexOf(item);
+            int index = list.IndexOf(item);
             RemoveAtSwapback(list, index);
         }
 
         public static T RemoveAtSwapback<T>(this IList<T> list, int index)
         {
-            var count = list.Count;
+            int count = list.Count;
             Assert.AreNotEqual(0, count, "list.Count == 0");
             Assert.IsTrue(index < count, "index < list.Count");
             Assert.IsTrue(index >= 0, "index >= 0");
@@ -44,42 +44,42 @@ namespace BeardPhantom.UnityExtended
 
         public static void Shuffle<T>(this IList<T> list)
         {
-            Shuffle(list, _unityRandomAdapter);
+            Shuffle(list, s_unityRandomAdapter);
         }
 
         public static void Shuffle<T>(this IList<T> list, IRandomAdapter randomAdapter)
         {
-            var n = list.Count;
+            int n = list.Count;
             while (n > 1)
             {
                 n--;
-                var k = randomAdapter.Next(0, n + 1);
+                int k = randomAdapter.Next(0, n + 1);
                 (list[k], list[n]) = (list[n], list[k]);
             }
         }
 
         public static T Random<T>(this IList<T> list, IRandomAdapter randomAdapter)
         {
-            var index = randomAdapter.Next(0, list.Count - 1);
+            int index = randomAdapter.Next(0, list.Count - 1);
             return list[index];
         }
 
         public static T RemoveRandom<T>(this IList<T> list)
         {
-            return RemoveRandom(list, _unityRandomAdapter);
+            return RemoveRandom(list, s_unityRandomAdapter);
         }
 
         public static T RemoveRandom<T>(this IList<T> list, IRandomAdapter randomAdapter)
         {
-            var index = randomAdapter.Next(0, list.Count - 1);
-            var rnd = list[index];
+            int index = randomAdapter.Next(0, list.Count - 1);
+            T rnd = list[index];
             list.RemoveAt(index);
             return rnd;
         }
 
         public static T RemoveAtAndGet<T>(this IList<T> list, int index)
         {
-            var rnd = list[index];
+            T rnd = list[index];
             list.RemoveAt(index);
             return rnd;
         }

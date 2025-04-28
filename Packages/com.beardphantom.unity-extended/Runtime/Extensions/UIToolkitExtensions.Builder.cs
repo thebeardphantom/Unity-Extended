@@ -26,7 +26,7 @@ namespace BeardPhantom.UnityExtended
 
         public static T WithChildren<T>(this T t, IEnumerable<VisualElement> children) where T : VisualElement
         {
-            foreach (var child in children)
+            foreach (VisualElement child in children)
             {
                 t.Add(child);
             }
@@ -72,6 +72,13 @@ namespace BeardPhantom.UnityExtended
         public static T WithClass<T>(this T t, string clss) where T : VisualElement
         {
             t.AddToClassList(clss);
+            return t;
+        }
+
+        public static T WithClassAndName<T>(this T t, string classAndName) where T : VisualElement
+        {
+            t.AddToClassList(classAndName);
+            t.name = classAndName;
             return t;
         }
 

@@ -42,13 +42,13 @@ namespace BeardPhantom.UnityExtended
         static EnumData()
         {
             Type = typeof(T);
-            Values = new NativeArray<T>((T[])Enum.GetValues(Type), Allocator.Persistent);
+            Values = new NativeArray<T>((T[])Enum.GetValues(Type), Allocator.Domain);
             Names = Enum.GetNames(Type);
             IsFlagsEnum = true;
             var allFlagsValue = 0;
-            foreach (var value in Values)
+            foreach (T value in Values)
             {
-                var intValue = UnsafeUtility.EnumToInt(value);
+                int intValue = UnsafeUtility.EnumToInt(value);
                 allFlagsValue |= intValue;
                 if (!Mathf.IsPowerOfTwo(intValue))
                 {
@@ -73,7 +73,7 @@ namespace BeardPhantom.UnityExtended
         {
             for (var i = 0; i < Values.Length; i++)
             {
-                var v = Values[i];
+                T v = Values[i];
                 if (EqualityComparer<T>.Default.Equals(value, v))
                 {
                     return Names[i];
@@ -92,7 +92,7 @@ namespace BeardPhantom.UnityExtended
         {
             for (var i = 0; i < Names.Length; i++)
             {
-                var n = Names[i];
+                string n = Names[i];
                 if (name == n)
                 {
                     return Values[i];

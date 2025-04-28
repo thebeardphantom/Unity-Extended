@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using UnityEditor;
 
 namespace BeardPhantom.UnityExtended.Editor
@@ -26,7 +27,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
         static EditorApplicationUtility()
         {
-            var type = typeof(EditorApplication);
+            Type type = typeof(EditorApplication);
             _globalEventHandler = type.GetField(
                 "globalEventHandler",
                 BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);

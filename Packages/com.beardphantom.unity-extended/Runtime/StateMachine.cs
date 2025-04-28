@@ -23,7 +23,7 @@ namespace BeardPhantom.UnityExtended
         public void ChangeState(Type type)
         {
             _isTransitioning = true;
-            var nextState = States.Single(type.IsInstanceOfType);
+            State nextState = States.Single(type.IsInstanceOfType);
             CurrentState.Exit();
             CurrentState = nextState;
             CurrentState.Enter();

@@ -1,48 +1,74 @@
 ﻿using UnityEngine;
 
-namespace BeardPhantom.UnityExtended
+namespace BeardPhantom.UnityExtended.HexMath
 {
-    /// <summary>
-    /// Unity uses odd-r for pointy-top hex grids and odd-q for flat top hex grids.
-    /// This class is only designed to work with flat-top.
-    /// Math from https://www.redblobgames.com/grids/hexagons/#neighbors-offset
-    /// </summary>
-    public static partial class HexFlatTop
+    public static class HexFlatTop
     {
-        public static Vector2Int CubeToCellFlat(this CubeCoord cubeCoord)
+        private static readonly Vector3Int[] s_evenColumnOffsets =
         {
-            var col = cubeCoord.Q;
-            var row = cubeCoord.R + (cubeCoord.Q - (cubeCoord.Q & 1)) / 2;
-            return new Vector2Int(row, col);
+            // Up
+            new(1, 0),
+            // Up Right
+            new(0, 1),
+            // Down Right
+            new(-1, 1),
+            // Down
+            new(-1, 0),
+            // Down Left
+            new(-1, -1),
+            // Up Left
+            new(0, -1),
+        };
+
+        private static readonly Vector3Int[] s_oddColumnOffsets =
+        {
+            // Up
+            new(1, 0),
+            // Up Right
+            new(1, 1),
+            // Down Right
+            new(0, 1),
+            // Down
+            new(-1, 0),
+            // Down Left
+            new(0, -1),
+            // Up Left
+            new(1, -1),
+        };
+
+        public static Vector2Int GetNeighborOffsetFlat(this Vector2Int cell, Direction direction)
+        {
+            return GetNeighborOffsetFlat(cell.To3D(), direction).To2D();
         }
 
-        public static CubeCoord CellToCubeFlat(this Vector2Int cell)
+        public static Vector3Int GetNeighborOffsetFlat(this Vector3Int cell, Direction direction)
         {
-            var cellSwizzled = new Vector2Int(cell.y, cell.x);
-            var q = cellSwizzled.x;
-            var r = cellSwizzled.y - (cellSwizzled.x - (cellSwizzled.x & 1)) / 2;
-            return new CubeCoord(q, r, -q - r);
+            // Not a mistake, Unity swizzles cell coordinates for flat top grids
+            bool isEvenColumn = cell.y % 2 == 0;
+            Vector3Int[] offsets = isEvenColumn ? s_evenColumnOffsets : s_oddColumnOffsets;
+            Vector3Int offset = offsets[(int)direction];
+            return offset;
         }
 
-        public static int CellToIndex(this Vector3Int cell, BoundsInt cellBounds)
+        public static Vector2Int GetNeighborCellFlat(this Vector2Int cell, Direction direction)
         {
-            return CellToIndex(cell.To2D(), cellBounds);
+            return GetNeighborCellFlat(cell.To3D(), direction).To2D();
         }
 
-        public static int CellToIndex(this Vector2Int cell, BoundsInt cellBounds)
+        public static Vector3Int GetNeighborCellFlat(this Vector3Int cell, Direction direction)
         {
-            var offset = cellBounds.position.To2D().Abs();
-            cell += offset;
-            return cell.x + cell.y * cellBounds.size.x;
+            Vector3Int offset = GetNeighborOffsetFlat(cell, direction);
+            return cell + offset;
         }
 
-        public static Vector2Int IndexToCell(int index, BoundsInt cellBounds)
+        public enum Direction
         {
-            var size = cellBounds.size.To2D();
-            var cell = new Vector2Int(index % size.x, index / size.x);
-            var offset = cellBounds.position.To2D().Abs();
-            cell -= offset;
-            return cell;
+            Up = 0,
+            UpRight = 1,
+            DownRight = 2,
+            Down = 3,
+            DownLeft = 4,
+            UpLeft = 5,
         }
     }
 }

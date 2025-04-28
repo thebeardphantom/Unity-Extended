@@ -34,8 +34,8 @@ namespace BeardPhantom.UnityExtended
 
         public readonly GameObject Instantiate(GameObject input)
         {
-            var inputTform = input.transform;
-            var hasParent = Parent.IsNotNull();
+            Transform inputTform = input.transform;
+            bool hasParent = Parent.IsNotNull();
             Vector3 positionWorld;
             if (PositionSpace == Space.World)
             {
@@ -64,13 +64,13 @@ namespace BeardPhantom.UnityExtended
                 }
             }
 
-            var inputWasActive = input.activeSelf;
+            bool inputWasActive = input.activeSelf;
             if (Disabled.HasValue)
             {
                 input.SetActive(!Disabled.Value);
             }
 
-            var result = hasParent
+            GameObject result = hasParent
                 ? Object.Instantiate(input, positionWorld, rotationWorld, Parent)
                 : Object.Instantiate(input, positionWorld, rotationWorld);
             if (Disabled.HasValue)

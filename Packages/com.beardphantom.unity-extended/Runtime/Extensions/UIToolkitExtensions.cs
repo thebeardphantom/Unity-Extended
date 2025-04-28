@@ -7,7 +7,7 @@ namespace BeardPhantom.UnityExtended
     {
         public static void SetPositionFromScreenPoint(this VisualElement visualElement, Vector2 screenPosition)
         {
-            var panelPosition = visualElement.panel.GetPanelPositionFromScreenPoint(screenPosition);
+            Vector2 panelPosition = visualElement.panel.GetPanelPositionFromScreenPoint(screenPosition);
             visualElement.transform.position = panelPosition;
         }
 
@@ -20,27 +20,27 @@ namespace BeardPhantom.UnityExtended
 
         public static void SetPositionFromWorldPoint(this VisualElement visualElement, Vector2 worldPosition, Camera camera)
         {
-            var panelPosition = visualElement.panel.GetPanelPositionFromWorldPoint(worldPosition, camera);
+            Vector2 panelPosition = visualElement.panel.GetPanelPositionFromWorldPoint(worldPosition, camera);
             visualElement.transform.position = panelPosition;
         }
 
         public static Bounds WorldToPanelBounds(this IPanel panel, Bounds boundsWorld, Camera camera)
         {
             var topLeft = new Vector2(boundsWorld.min.x, boundsWorld.max.y);
-            var rect = RuntimePanelUtils.CameraTransformWorldToPanelRect(panel, topLeft, boundsWorld.size, camera);
+            Rect rect = RuntimePanelUtils.CameraTransformWorldToPanelRect(panel, topLeft, boundsWorld.size, camera);
             var boundsPanel = new Bounds(rect.center, rect.size);
             return boundsPanel;
         }
 
         public static Vector2 GetPanelPositionFromWorldPoint(this IPanel panel, Vector2 worldPosition, Camera camera)
         {
-            var panelPosition = RuntimePanelUtils.CameraTransformWorldToPanel(panel, worldPosition, camera);
+            Vector2 panelPosition = RuntimePanelUtils.CameraTransformWorldToPanel(panel, worldPosition, camera);
             return panelPosition;
         }
 
         public static bool IsVisibleToCamera(this VisualElement visualElement, Camera camera)
         {
-            var rect = visualElement.worldBound;
+            Rect rect = visualElement.worldBound;
             return camera.pixelRect.Overlaps(rect);
         }
     }

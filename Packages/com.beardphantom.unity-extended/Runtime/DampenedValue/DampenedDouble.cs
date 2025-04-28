@@ -12,7 +12,7 @@ namespace BeardPhantom.UnityExtended
         /// <inheritdoc />
         public override double Simulate(float deltaTime)
         {
-            var velocity = Velocity;
+            double velocity = Velocity;
             Value = AsAngle
                 ? Mathd.SmoothDampAngle(Value, TargetValue, ref velocity, SmoothTime, MaxSpeed, deltaTime)
                 : Mathd.SmoothDamp(Value, TargetValue, ref velocity, SmoothTime, MaxSpeed, deltaTime);

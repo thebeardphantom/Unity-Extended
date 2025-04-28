@@ -11,7 +11,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
         static SerializedPropertyUtility()
         {
-            var scriptAttributeUtility = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.ScriptAttributeUtility");
+            Type scriptAttributeUtility = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.ScriptAttributeUtility");
             Assert.IsNotNull(scriptAttributeUtility, "ScriptAttributeUtility != null");
 
             _getFieldInfoFromProperty = scriptAttributeUtility.GetMethod(

@@ -1,6 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using UnityEditor;
-using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace BeardPhantom.UnityExtended.Editor
 {
@@ -19,7 +20,7 @@ namespace BeardPhantom.UnityExtended.Editor
         {
             if (Selection.activeObject == obj)
             {
-                var path = AssetDatabase.GetAssetPath(obj);
+                string path = AssetDatabase.GetAssetPath(obj);
                 Selection.activeObject = AssetDatabase.LoadAssetAtPath<Object>(path);
             }
 
@@ -54,14 +55,14 @@ namespace BeardPhantom.UnityExtended.Editor
         [MenuItem("Assets/Replace Source")]
         private static void ReplaceSourceAsset()
         {
-            var guids = Selection.assetGUIDs;
-            foreach (var guid in guids)
+            string[] guids = Selection.assetGUIDs;
+            foreach (string guid in guids)
             {
-                var originalPath = AssetDatabase.GUIDToAssetPath(guid);
-                var ext = Path.GetExtension(originalPath).Substring(1);
-                var type = AssetDatabase.GetMainAssetTypeAtPath(originalPath);
-                var originalName = Path.GetFileNameWithoutExtension(originalPath);
-                var replacementPath = EditorUtility.OpenFilePanelWithFilters(
+                string originalPath = AssetDatabase.GUIDToAssetPath(guid);
+                string ext = Path.GetExtension(originalPath).Substring(1);
+                Type type = AssetDatabase.GetMainAssetTypeAtPath(originalPath);
+                string originalName = Path.GetFileNameWithoutExtension(originalPath);
+                string replacementPath = EditorUtility.OpenFilePanelWithFilters(
                     $"Replace Source Asset '{originalPath}'",
                     "",
                     new[]

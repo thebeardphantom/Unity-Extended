@@ -8,11 +8,11 @@ namespace BeardPhantom.UnityExtended.Editor
     public class SerializedDictionaryPropertyDrawer : PropertyDrawer
     {
         private static readonly string _propertyPath =
-            $"<{SerializedDictionary<object, object>.SERIALIZED_KEY_VALUE_PAIRS_PROPERTY_NAME}>k__BackingField";
+            $"<{SerializedDictionary<object, object>.SerializedKeyValuePairsPropertyName}>k__BackingField";
 
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
-            var serializedValuesProperty = property.FindPropertyRelative(_propertyPath);
+            SerializedProperty serializedValuesProperty = property.FindPropertyRelative(_propertyPath);
             return new PropertyField(serializedValuesProperty, property.displayName);
         }
     }

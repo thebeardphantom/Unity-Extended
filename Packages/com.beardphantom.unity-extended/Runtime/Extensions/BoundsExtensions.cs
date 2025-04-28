@@ -25,7 +25,7 @@ namespace BeardPhantom.UnityExtended
                 z = Mathf.Lerp(bounds.min.z, bounds.max.z, z),
             };
         }
-        
+
         public static Vector3 GetNormalizedPosition(this Bounds bounds, Vector3 position)
         {
             return new Vector3
@@ -38,7 +38,7 @@ namespace BeardPhantom.UnityExtended
 
         public static Bounds GetTotalBounds(GameObject gameObject)
         {
-            using var _ = ListPool<Renderer>.Get(out var renderers);
+            using PooledObject<List<Renderer>> _ = ListPool<Renderer>.Get(out List<Renderer> renderers);
             gameObject.GetComponentsInChildren(renderers);
             return GetTotalBounds(renderers);
         }
@@ -47,9 +47,9 @@ namespace BeardPhantom.UnityExtended
         {
             Bounds totalBounds = default;
             var hasBounds = false;
-            foreach (var renderer in renderers)
+            foreach (Renderer renderer in renderers)
             {
-                var bounds = renderer.bounds;
+                Bounds bounds = renderer.bounds;
                 if (hasBounds)
                 {
                     totalBounds.Encapsulate(bounds);
@@ -67,8 +67,8 @@ namespace BeardPhantom.UnityExtended
         public static Bounds WorldToScreenBounds(this Bounds boundsWorld, Camera camera)
         {
             var screenBounds = new Bounds();
-            var minScreen = camera.WorldToScreenPoint(boundsWorld.min);
-            var maxScreen = camera.WorldToScreenPoint(boundsWorld.max);
+            Vector3 minScreen = camera.WorldToScreenPoint(boundsWorld.min);
+            Vector3 maxScreen = camera.WorldToScreenPoint(boundsWorld.max);
             screenBounds.SetMinMax(minScreen, maxScreen);
             return screenBounds;
         }

@@ -25,8 +25,8 @@ namespace BeardPhantom.UnityExtended.Editor
 
         private static void CreateNew(object userData)
         {
-            var (type, property) = ((Type, SerializedProperty))userData;
-            var instance = Activator.CreateInstance(type);
+            (Type type, SerializedProperty property) = ((Type, SerializedProperty))userData;
+            object instance = Activator.CreateInstance(type);
 
             property.managedReferenceValue = instance;
             property.isExpanded = true;
@@ -37,7 +37,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
         private static string GetManagedReferenceTypeName(SerializedProperty property)
         {
-            var type = property.type;
+            string type = property.type;
             type = type.Remove(0, 17);
             type = type.Substring(0, type.Length - 1);
             return type;
@@ -61,8 +61,8 @@ namespace BeardPhantom.UnityExtended.Editor
             {
                 height = EditorGUIUtility.singleLineHeight,
             };
-            var typeName = GetManagedReferenceTypeName(property);
-            var hasValue = !string.IsNullOrWhiteSpace(typeName);
+            string typeName = GetManagedReferenceTypeName(property);
+            bool hasValue = !string.IsNullOrWhiteSpace(typeName);
 
             if (Event.current.type == EventType.ContextClick && headerRect.Contains(Event.current.mousePosition))
             {
@@ -99,8 +99,8 @@ namespace BeardPhantom.UnityExtended.Editor
 
             for (var i = 0; i < _typeOptionLabels.Length; i++)
             {
-                var typeOptionLabel = _typeOptionLabels[i];
-                var type = _typeOptions[i];
+                string typeOptionLabel = _typeOptionLabels[i];
+                Type type = _typeOptions[i];
                 content = new GUIContent($"Create/{typeOptionLabel}");
                 if (hasValue)
                 {
@@ -123,7 +123,7 @@ namespace BeardPhantom.UnityExtended.Editor
         {
             _initialized = true;
 
-            var fieldType = fieldInfo.FieldType;
+            Type fieldType = fieldInfo.FieldType;
             if (fieldType.IsGenericType)
             {
                 fieldType = fieldType.GetGenericArguments()[0];

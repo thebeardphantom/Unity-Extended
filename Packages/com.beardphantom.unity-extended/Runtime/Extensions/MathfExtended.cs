@@ -4,21 +4,10 @@ namespace BeardPhantom.UnityExtended
 {
     public static class MathfExtended
     {
-        public static float Wrap(float value, float min, float max)
+        public static float Repeat(float value, float min, float max)
         {
-            var range = max - min;
-            var wrappedValue = value - Mathf.Floor((value - min) / range) * range;
-
-            if (wrappedValue < min)
-            {
-                wrappedValue += range;
-            }
-            else if (wrappedValue >= max)
-            {
-                wrappedValue -= range;
-            }
-
-            return wrappedValue;
+            float range = max - min;
+            return Mathf.Repeat(value - min, range) + min;
         }
 
         public static float ClampMagnitude(float value, float magnitude)

@@ -36,8 +36,8 @@ namespace BeardPhantom.UnityExtended.Editor
             {
                 using (new EditorGUI.IndentLevelScope(1))
                 {
-                    var defaultHeight = EditorGUI.GetPropertyHeight(property, label, true);
-                    var nextRect = position;
+                    float defaultHeight = EditorGUI.GetPropertyHeight(property, label, true);
+                    Rect nextRect = position;
                     nextRect.yMin += defaultHeight;
                     nextRect.height = EditorGUIUtility.singleLineHeight;
                     switch (dampenedValue)
@@ -84,7 +84,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
             if (_editor == null)
             {
-                foreach (var editor in ActiveEditorTracker.sharedTracker.activeEditors)
+                foreach (UnityEditor.Editor editor in ActiveEditorTracker.sharedTracker.activeEditors)
                 {
                     if (editor.serializedObject == property.serializedObject)
                     {
@@ -99,7 +99,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            var height = EditorGUI.GetPropertyHeight(property, label, true);
+            float height = EditorGUI.GetPropertyHeight(property, label, true);
             if (ShouldDrawBonusSection(property))
             {
                 height += EditorGUIUtility.singleLineHeight * 3;
