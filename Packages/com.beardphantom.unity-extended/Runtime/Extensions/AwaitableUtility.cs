@@ -36,7 +36,10 @@ namespace BeardPhantom.UnityExtended
             {
                 await awaitable;
             }
-            catch (OperationCanceledException) { }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
         }
 
         public static async Awaitable WaitForSecondsRealtime(float seconds, CancellationToken cancellationToken = default)
