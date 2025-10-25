@@ -30,15 +30,57 @@ namespace BeardPhantom.UnityExtended
             await Task.CompletedTask;
         }
 
-        public static async void Forget(this Awaitable awaitable)
+        public static async void Forget(this Awaitable awaitable, bool silenceOperationCancelledExceptions = true)
         {
-            try
+            if (silenceOperationCancelledExceptions)
             {
-                await awaitable;
+                try
+                {
+                    await awaitable;
+                }
+                catch (OperationCanceledException) { }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
             }
-            catch (Exception e)
+            else
             {
-                Debug.LogException(e);
+                try
+                {
+                    await awaitable;
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
+            }
+        }
+
+        public static async void Forget<T>(this Awaitable<T> awaitable, bool silenceOperationCancelledExceptions = true)
+        {
+            if (silenceOperationCancelledExceptions)
+            {
+                try
+                {
+                    await awaitable;
+                }
+                catch (OperationCanceledException) { }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
+            }
+            else
+            {
+                try
+                {
+                    await awaitable;
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
             }
         }
 

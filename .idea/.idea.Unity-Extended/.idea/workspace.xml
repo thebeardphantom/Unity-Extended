@@ -6,10 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="64f31cad-ec58-4a78-8302-329c0c4bf66f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Extended/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Extended/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/AwaitableUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/AwaitableUtility.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/AnimatorExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/AnimatorExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/BoundsExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/BoundsExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/DummyMonoBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/DummyMonoBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/MathExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/MathExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/MathfExtended.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/MathfExtended.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/UnityObjectExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/UnityObjectExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Vector3Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/Extensions/Vector3Extensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Search.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Search.settings" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,15 +45,8 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e8a406da998549af9a2680936c7da25a159c00/c0/83eb8eec/Bounds.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8a522b806eac9bb894e6e4c5fe87f353457535e769447e79c6b396beecb5d0/System.Threading.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Editor/ReadOnlyPropertyDrawer.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ILiteEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/LiteEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/MeshRendererSubObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/ObservableValueChangedArgs.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/RenderProxy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Runtime/UnityObjectExtensions.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Packages/com.beardphantom.unity-extended/Tests/Editor/ShapeMath/SphereTests.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -92,7 +91,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\_Content\WorkRoot\Unity\Editors\6000.0.48f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\_Content\WorkRoot\Unity\Editors\6000.0.49f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath D:\Mika\WorkRoot\UPM\Unity-Extended -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Mika\WorkRoot\UPM\Unity-Extended" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -103,7 +102,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\_Content\WorkRoot\Unity\Editors\6000.0.48f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\_Content\WorkRoot\Unity\Editors\6000.0.49f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\_Content\WorkRoot\UPM\Unity-Extended -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\_Content\WorkRoot\UPM\Unity-Extended" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -176,7 +175,8 @@
       <workItem from="1682755031553" duration="4605000" />
       <workItem from="1721182146252" duration="3291000" />
       <workItem from="1745814883199" duration="1334000" />
-      <workItem from="1746929941933" duration="405000" />
+      <workItem from="1746929941933" duration="786000" />
+      <workItem from="1747592848391" duration="3879000" />
     </task>
     <task id="LOCAL-00001" summary="Add ObservableValue.cs, remove in from LiteEvent.cs">
       <created>1659144187516</created>

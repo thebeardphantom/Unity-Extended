@@ -11,12 +11,7 @@ namespace BeardPhantom.UnityExtended
             return GetPositionFromNormalized(bounds, normalizedPosition.x, normalizedPosition.y, normalizedPosition.z);
         }
 
-        public static Vector3 GetPositionFromNormalized(this Bounds bounds, float x, float y)
-        {
-            return GetPositionFromNormalized(bounds, x, y, 0f);
-        }
-
-        public static Vector3 GetPositionFromNormalized(this Bounds bounds, float x, float y, float z)
+        public static Vector3 GetPositionFromNormalized(this Bounds bounds, float x, float y, float z = 0f)
         {
             return new Vector3
             {
@@ -36,14 +31,14 @@ namespace BeardPhantom.UnityExtended
             };
         }
 
-        public static Bounds GetTotalBounds(GameObject gameObject)
+        public static Bounds GetTotalRendererBounds(GameObject gameObject)
         {
             using PooledObject<List<Renderer>> _ = ListPool<Renderer>.Get(out List<Renderer> renderers);
             gameObject.GetComponentsInChildren(renderers);
-            return GetTotalBounds(renderers);
+            return GetTotalRendererBounds(renderers);
         }
 
-        public static Bounds GetTotalBounds(IEnumerable<Renderer> renderers)
+        public static Bounds GetTotalRendererBounds(IEnumerable<Renderer> renderers)
         {
             Bounds totalBounds = default;
             var hasBounds = false;

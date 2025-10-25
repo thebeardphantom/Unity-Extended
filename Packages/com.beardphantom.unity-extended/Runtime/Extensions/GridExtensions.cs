@@ -6,6 +6,11 @@ namespace BeardPhantom.UnityExtended
     {
         public static Vector2Int WorldToCell2D(this Grid grid, Vector2 position)
         {
+            return WorldToCell2D(grid, (Vector3)position);
+        }
+
+        public static Vector2Int WorldToCell2D(this Grid grid, Vector3 position)
+        {
             return grid.WorldToCell(position).To2D();
         }
 
@@ -24,9 +29,9 @@ namespace BeardPhantom.UnityExtended
             return WorldToCellCenterWorld2D(grid, (Vector3)position);
         }
 
-        public static Vector2 WorldToCellCenterWorld2D(this Grid grid, Vector3 position3D)
+        public static Vector2 WorldToCellCenterWorld2D(this Grid grid, Vector3 position)
         {
-            Vector3Int cell = grid.WorldToCell(position3D);
+            Vector3Int cell = grid.WorldToCell(position);
             return grid.GetCellCenterWorld2D(cell);
         }
     }

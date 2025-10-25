@@ -17,7 +17,7 @@ namespace BeardPhantom.UnityExtended
             }
 
             CancellationToken destroyCancellationToken = animator.gameObject.GetDestroyCancellationToken();
-            if (cancellationToken.Equals(default))
+            if (cancellationToken.Equals(CancellationToken.None))
             {
                 cancellationToken = destroyCancellationToken;
             }

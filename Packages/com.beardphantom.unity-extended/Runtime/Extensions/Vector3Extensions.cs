@@ -30,6 +30,13 @@ namespace BeardPhantom.UnityExtended
             return v3;
         }
 
+        public static Vector3 NormalizeAndGetMagnitude(this Vector3 v3, out float magnitude)
+        {
+            magnitude = v3.magnitude;
+            Vector3 normalized = v3 / magnitude;
+            return normalized;
+        }
+
         public static Vector2 RemapXZToXY(this Vector3 v3)
         {
             return new Vector2(v3.x, v3.z);
