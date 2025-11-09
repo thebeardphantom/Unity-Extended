@@ -7,9 +7,9 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public static class ProjectWindowExtensions
     {
-        private const string DeleteSubasset = "Assets/Delete Subasset";
+        private const string DeleteSubassetPath = "Assets/Delete Subasset";
 
-        private const string DeleteSubassetContext = "CONTEXT/ScriptableObject/Delete Subasset";
+        private const string DeleteSubassetContextPath = "CONTEXT/ScriptableObject/Delete Subasset";
 
         private static bool IsValidSubasset(Object obj)
         {
@@ -28,25 +28,25 @@ namespace BeardPhantom.UnityExtended.Editor
             AssetDatabase.SaveAssets();
         }
 
-        [MenuItem(DELETE_SUBASSET, true)]
+        [MenuItem(DeleteSubassetPath, true)]
         private static bool DeleteSubassetValidate()
         {
             return IsValidSubasset(Selection.activeObject);
         }
 
-        [MenuItem(DELETE_SUBASSET, priority = 16)]
+        [MenuItem(DeleteSubassetPath, priority = 16)]
         private static void DeleteSubasset()
         {
             DeleteSubasset(Selection.activeObject);
         }
 
-        [MenuItem(DELETE_SUBASSET_CONTEXT, true)]
+        [MenuItem(DeleteSubassetContextPath, true)]
         private static bool DeleteSubassetContextValidate(MenuCommand cmd)
         {
             return IsValidSubasset(cmd.context);
         }
 
-        [MenuItem(DELETE_SUBASSET_CONTEXT)]
+        [MenuItem(DeleteSubassetContextPath)]
         private static void DeleteSubassetContext(MenuCommand cmd)
         {
             DeleteSubasset(cmd.context);
