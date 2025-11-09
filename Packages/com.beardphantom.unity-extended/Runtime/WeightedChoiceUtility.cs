@@ -5,44 +5,42 @@ namespace BeardPhantom.UnityExtended
 {
     public static class WeightedChoiceUtility
     {
-        public static readonly UnityRandomAdapter UnityRandomAdapter = new();
-
-        private static readonly SystemRandomAdapter s_systemRandomAdapter = new(null);
+        private static readonly SystemRandomNumberGenerator s_systemRandomNumberGenerator = new(null);
 
         public static T ChooseFromWeighted<T>(this IReadOnlyList<T> choices) where T : IWeightedChoice
         {
-            return ChooseFromWeighted(choices, UnityRandomAdapter);
+            return ChooseFromWeighted(choices, UnityRandomNumberGenerator.Instance);
         }
 
         public static int ChooseIndexFromWeighted<T>(this IReadOnlyList<T> choices) where T : IWeightedChoice
         {
-            return ChooseIndexFromWeighted(choices, UnityRandomAdapter);
+            return ChooseIndexFromWeighted(choices, UnityRandomNumberGenerator.Instance);
         }
 
         public static T ChooseFromWeighted<T>(this IReadOnlyList<T> choices, Random systemRandom) where T : IWeightedChoice
         {
-            s_systemRandomAdapter.Random = systemRandom;
-            T result = ChooseFromWeighted(choices, s_systemRandomAdapter);
-            s_systemRandomAdapter.Random = null;
+            s_systemRandomNumberGenerator.Random = systemRandom;
+            T result = ChooseFromWeighted(choices, s_systemRandomNumberGenerator);
+            s_systemRandomNumberGenerator.Random = null;
             return result;
         }
 
         public static int ChooseIndexFromWeighted<T>(this IReadOnlyList<T> choices, Random systemRandom) where T : IWeightedChoice
         {
-            s_systemRandomAdapter.Random = systemRandom;
-            int index = ChooseIndexFromWeighted(choices, s_systemRandomAdapter);
-            s_systemRandomAdapter.Random = null;
+            s_systemRandomNumberGenerator.Random = systemRandom;
+            int index = ChooseIndexFromWeighted(choices, s_systemRandomNumberGenerator);
+            s_systemRandomNumberGenerator.Random = null;
             return index;
         }
 
-        public static T ChooseFromWeighted<T>(this IReadOnlyList<T> choices, IRandomAdapter randomAdapter)
+        public static T ChooseFromWeighted<T>(this IReadOnlyList<T> choices, IRandomNumberGenerator rng)
             where T : IWeightedChoice
         {
-            int index = ChooseIndexFromWeighted(choices, randomAdapter);
+            int index = ChooseIndexFromWeighted(choices, rng);
             return index < 0 ? default : choices[index];
         }
 
-        public static int ChooseIndexFromWeighted<T>(this IReadOnlyList<T> choices, IRandomAdapter randomAdapter)
+        public static int ChooseIndexFromWeighted<T>(this IReadOnlyList<T> choices, IRandomNumberGenerator rng)
             where T : IWeightedChoice
         {
             var weightSum = 0;
@@ -51,16 +49,16 @@ namespace BeardPhantom.UnityExtended
                 weightSum += choices[i].Weight;
             }
 
-            int rng = randomAdapter.Next(0, weightSum);
+            int value = rng.Next(0, weightSum);
             for (var i = 0; i < choices.Count; i++)
             {
                 T choice = choices[i];
-                if (rng < choice.Weight)
+                if (value < choice.Weight)
                 {
                     return i;
                 }
 
-                rng -= choice.Weight;
+                value -= choice.Weight;
             }
 
             return -1;

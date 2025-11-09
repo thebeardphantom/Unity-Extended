@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Assertions;
 
 namespace BeardPhantom.UnityExtended
 {
     public static class ListExtensions
     {
-        private static readonly UnityRandomAdapter s_unityRandomAdapter = new();
-
         public static int ResolveIndex(this IList list, Index index)
         {
             return index.GetOffset(list.Count);
@@ -23,9 +20,21 @@ namespace BeardPhantom.UnityExtended
         public static T RemoveAtSwapback<T>(this IList<T> list, int index)
         {
             int count = list.Count;
-            Assert.AreNotEqual(0, count, "list.Count == 0");
-            Assert.IsTrue(index < count, "index < list.Count");
-            Assert.IsTrue(index >= 0, "index >= 0");
+            if (count == 0)
+            {
+                throw new Exception("Cannot remove from an empty list.");
+            }
+
+            if (index >= count)
+            {
+                throw new IndexOutOfRangeException($"Index {index} must be less than or equal to count {count}.");
+            }
+
+            if (index < 0)
+            {
+                throw new IndexOutOfRangeException($"Index {index} must be greater than or equal to zero.");
+            }
+
             T item;
             if (count == 1)
             {
@@ -44,34 +53,34 @@ namespace BeardPhantom.UnityExtended
 
         public static void Shuffle<T>(this IList<T> list)
         {
-            Shuffle(list, s_unityRandomAdapter);
+            Shuffle(list, UnityRandomNumberGenerator.Instance);
         }
 
-        public static void Shuffle<T>(this IList<T> list, IRandomAdapter randomAdapter)
+        public static void Shuffle<T>(this IList<T> list, IRandomNumberGenerator rng)
         {
             int n = list.Count;
             while (n > 1)
             {
                 n--;
-                int k = randomAdapter.Next(0, n + 1);
+                int k = rng.Next(0, n + 1);
                 (list[k], list[n]) = (list[n], list[k]);
             }
         }
 
-        public static T Random<T>(this IList<T> list, IRandomAdapter randomAdapter)
+        public static T Random<T>(this IReadOnlyList<T> list, IRandomNumberGenerator rng)
         {
-            int index = randomAdapter.Next(0, list.Count - 1);
+            int index = rng.Next(0, list.Count);
             return list[index];
         }
 
         public static T RemoveRandom<T>(this IList<T> list)
         {
-            return RemoveRandom(list, s_unityRandomAdapter);
+            return RemoveRandom(list, UnityRandomNumberGenerator.Instance);
         }
 
-        public static T RemoveRandom<T>(this IList<T> list, IRandomAdapter randomAdapter)
+        public static T RemoveRandom<T>(this IList<T> list, IRandomNumberGenerator rng)
         {
-            int index = randomAdapter.Next(0, list.Count - 1);
+            int index = rng.Next(0, list.Count);
             T rnd = list[index];
             list.RemoveAt(index);
             return rnd;
@@ -82,6 +91,52 @@ namespace BeardPhantom.UnityExtended
             T rnd = list[index];
             list.RemoveAt(index);
             return rnd;
+        }
+
+        public static int ResolveIndex<T>(this ReadOnlySpan<T> span, Index index)
+        {
+            return index.GetOffset(span.Length);
+        }
+
+        public static int ResolveIndex<T>(this Span<T> span, Index index)
+        {
+            return index.GetOffset(span.Length);
+        }
+
+        public static void Shuffle<T>(this Span<T> span)
+        {
+            Shuffle(span, UnityRandomNumberGenerator.Instance);
+        }
+
+        public static void Shuffle<T>(this Span<T> span, IRandomNumberGenerator rng)
+        {
+            int n = span.Length;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(0, n + 1);
+                (span[k], span[n]) = (span[n], span[k]);
+            }
+        }
+
+        public static T Random<T>(this ReadOnlySpan<T> span, IRandomNumberGenerator rng)
+        {
+            if (span.Length == 0)
+            {
+                throw new Exception("Cannot select from an empty span.");
+            }
+
+            return span[rng.Next(0, span.Length)];
+        }
+
+        public static T Random<T>(this Span<T> span, IRandomNumberGenerator rng)
+        {
+            if (span.Length == 0)
+            {
+                throw new Exception("Cannot select from an empty span.");
+            }
+
+            return span[rng.Next(0, span.Length)];
         }
     }
 }

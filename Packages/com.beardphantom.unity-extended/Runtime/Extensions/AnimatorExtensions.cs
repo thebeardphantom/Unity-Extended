@@ -10,12 +10,6 @@ namespace BeardPhantom.UnityExtended
             int stateHash,
             CancellationToken cancellationToken = default)
         {
-            bool IsPlaying()
-            {
-                AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-                return stateInfo.shortNameHash == stateHash && stateInfo.normalizedTime < 1f;
-            }
-
             CancellationToken destroyCancellationToken = animator.gameObject.GetDestroyCancellationToken();
             if (cancellationToken.Equals(CancellationToken.None))
             {
@@ -32,6 +26,13 @@ namespace BeardPhantom.UnityExtended
             animator.Play(stateHash, -1, 0f);
             await AwaitableUtility.WaitUntil(IsPlaying, cancellationToken);
             await AwaitableUtility.WaitWhile(IsPlaying, cancellationToken);
+            return;
+
+            bool IsPlaying()
+            {
+                AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+                return stateInfo.shortNameHash == stateHash && stateInfo.normalizedTime < 1f;
+            }
         }
     }
 }

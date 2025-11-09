@@ -1,6 +1,6 @@
 ﻿namespace BeardPhantom.UnityExtended
 {
-    public interface IRandomAdapter
+    public interface IRandomNumberGenerator
     {
         int Seed { set; }
 

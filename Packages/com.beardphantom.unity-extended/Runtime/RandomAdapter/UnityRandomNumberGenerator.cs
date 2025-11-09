@@ -2,9 +2,9 @@
 
 namespace BeardPhantom.UnityExtended
 {
-    public class UnityRandomAdapter : IRandomAdapter
+    public class UnityRandomNumberGenerator : IRandomNumberGenerator
     {
-        public static readonly UnityRandomAdapter Instance = new();
+        public static readonly UnityRandomNumberGenerator Instance = new();
 
         /// <inheritdoc />
         public int Seed
@@ -14,6 +14,8 @@ namespace BeardPhantom.UnityExtended
 
         /// <inheritdoc />
         public float Value => Random.value;
+
+        private UnityRandomNumberGenerator() { }
 
         /// <inheritdoc />
         public int Next(int minInclusive, int maxExclusive)

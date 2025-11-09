@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Runtime.CompilerServices;
+using UnityEngine;
 
 namespace BeardPhantom.UnityExtended
 {
     public static class UnityObjectExtensions
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsNull<T>(this T obj) where T : class
         {
             if (obj is Object unityObj)

@@ -2,7 +2,7 @@
 
 namespace BeardPhantom.UnityExtended
 {
-    public class SystemRandomAdapter : IRandomAdapter
+    public class SystemRandomNumberGenerator : IRandomNumberGenerator
     {
         /// <inheritdoc />
         public int Seed
@@ -15,7 +15,7 @@ namespace BeardPhantom.UnityExtended
 
         internal Random Random { get; set; }
 
-        public SystemRandomAdapter(Random random)
+        public SystemRandomNumberGenerator(Random random)
         {
             Random = random;
         }
