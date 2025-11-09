@@ -9,9 +9,9 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public class SerializedPropertyTree
     {
-        private static readonly Regex _arrayRegex = new(@"[^\.\n\r]+\.Array\.data\[\d+\]");
+        private static readonly Regex s_arrayRegex = new(@"[^\.\n\r]+\.Array\.data\[\d+\]");
 
-        private static readonly Regex _pathPartRegex = new(@"([^\.\n\r]+)\.Array\.data\[(\d+)\]|[^\.\n\r]+");
+        private static readonly Regex s_pathPartRegex = new(@"([^\.\n\r]+)\.Array\.data\[(\d+)\]|[^\.\n\r]+");
 
         public readonly Node Root;
 
@@ -22,7 +22,7 @@ namespace BeardPhantom.UnityExtended.Editor
             Node lastNode = root;
             string originalPath = property.propertyPath;
             var pathBuilder = new StringBuilder();
-            MatchCollection matches = _pathPartRegex.Matches(originalPath);
+            MatchCollection matches = s_pathPartRegex.Matches(originalPath);
 
             foreach (Match match in matches)
             {
@@ -35,7 +35,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
                 SerializedProperty prop = serializedObj.FindProperty(pathBuilder.ToString());
 
-                if (_arrayRegex.IsMatch(match.Value))
+                if (s_arrayRegex.IsMatch(match.Value))
                 {
                     string memberName = match.Groups[1].Value;
                     var list = lastNode.GetMemberByName<IList>(memberName);

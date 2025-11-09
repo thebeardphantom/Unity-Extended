@@ -11,61 +11,61 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public static class CopyUtilities
     {
-        private const string ASSETS_COPY_PREFIX = "Assets/Copy.../";
+        private const string AssetsCopyPrefix = "Assets/Copy.../";
 
-        private const int PRIORITY = 17;
+        private const int Priority = 17;
 
-        private static MethodInfo _makeAssetUriMethod;
+        private static MethodInfo s_makeAssetUriMethod;
 
         private static void FindUriMethod()
         {
-            const string TYPE_NAME = "UnityEditor.UIElements.StyleSheets.URIHelpers";
+            const string TypeName = "UnityEditor.UIElements.StyleSheets.URIHelpers";
             Assembly assembly = typeof(UIElementsEntryPoint).Assembly;
-            Type type = assembly.GetType(TYPE_NAME);
-            _makeAssetUriMethod = type.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+            Type type = assembly.GetType(TypeName);
+            s_makeAssetUriMethod = type.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
                 .FirstOrDefault(m => m.Name == "MakeAssetUri" && m.GetParameters().Length == 2);
         }
 
-        [MenuItem(ASSETS_COPY_PREFIX + "GUID", true, priority = PRIORITY)]
-        [MenuItem(ASSETS_COPY_PREFIX + "Path", true, priority = PRIORITY)]
-        [MenuItem(ASSETS_COPY_PREFIX + "Local File ID", true, priority = PRIORITY)]
-        [MenuItem(ASSETS_COPY_PREFIX + "UI Toolkit URI", true, priority = PRIORITY)]
+        [MenuItem(AssetsCopyPrefix + "GUID", true, priority = Priority)]
+        [MenuItem(AssetsCopyPrefix + "Path", true, priority = Priority)]
+        [MenuItem(AssetsCopyPrefix + "Local File ID", true, priority = Priority)]
+        [MenuItem(AssetsCopyPrefix + "UI Toolkit URI", true, priority = Priority)]
         private static bool CopyValidate()
         {
             return Selection.activeObject.IsNotNull();
         }
 
-        [MenuItem(ASSETS_COPY_PREFIX + "Path", priority = PRIORITY)]
+        [MenuItem(AssetsCopyPrefix + "Path", priority = Priority)]
         private static void CopyPath()
         {
             string path = AssetDatabase.GetAssetPath(Selection.activeObject);
             GUIUtility.systemCopyBuffer = path;
         }
 
-        [MenuItem(ASSETS_COPY_PREFIX + "GUID", priority = PRIORITY)]
+        [MenuItem(AssetsCopyPrefix + "GUID", priority = Priority)]
         private static void CopyGuid()
         {
             AssetDatabase.TryGetGUIDAndLocalFileIdentifier(Selection.activeObject, out string guid, out long _);
             GUIUtility.systemCopyBuffer = guid;
         }
 
-        [MenuItem(ASSETS_COPY_PREFIX + "Local File ID", priority = PRIORITY)]
+        [MenuItem(AssetsCopyPrefix + "Local File ID", priority = Priority)]
         private static void CopyLocalFileId()
         {
             AssetDatabase.TryGetGUIDAndLocalFileIdentifier(Selection.activeObject, out _, out long localId);
             GUIUtility.systemCopyBuffer = localId.ToString();
         }
 
-        [MenuItem(ASSETS_COPY_PREFIX + "UI Toolkit URI", priority = PRIORITY)]
+        [MenuItem(AssetsCopyPrefix + "UI Toolkit URI", priority = Priority)]
         private static void CopyUIToolkitUri()
         {
             Object assetObject = Selection.activeObject;
-            if (_makeAssetUriMethod.IsNull())
+            if (s_makeAssetUriMethod.IsNull())
             {
                 FindUriMethod();
             }
 
-            var uri = (string)_makeAssetUriMethod.Invoke(
+            var uri = (string)s_makeAssetUriMethod.Invoke(
                 null,
                 new object[]
                 {

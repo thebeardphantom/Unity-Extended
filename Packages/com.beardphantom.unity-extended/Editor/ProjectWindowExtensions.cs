@@ -7,9 +7,9 @@ namespace BeardPhantom.UnityExtended.Editor
 {
     public static class ProjectWindowExtensions
     {
-        private const string DELETE_SUBASSET = "Assets/Delete Subasset";
+        private const string DeleteSubasset = "Assets/Delete Subasset";
 
-        private const string DELETE_SUBASSET_CONTEXT = "CONTEXT/ScriptableObject/Delete Subasset";
+        private const string DeleteSubassetContext = "CONTEXT/ScriptableObject/Delete Subasset";
 
         private static bool IsValidSubasset(Object obj)
         {

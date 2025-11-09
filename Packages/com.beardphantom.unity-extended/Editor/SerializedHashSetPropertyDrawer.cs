@@ -10,7 +10,7 @@ namespace BeardPhantom.UnityExtended.Editor
     [CustomPropertyDrawer(typeof(SerializedHashSet<>))]
     public class SerializedHashSetPropertyDrawer : PropertyDrawer
     {
-        private static readonly string _propertyPath =
+        private static readonly string s_propertyPath =
             $"<{SerializedHashSet<object>.SerializedValuesPropertyName}>k__BackingField";
 
         private static void CheckForDuplicates(VisualElement propertyField)
@@ -48,7 +48,7 @@ namespace BeardPhantom.UnityExtended.Editor
 
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
-            SerializedProperty serializedValuesProperty = property.FindPropertyRelative(_propertyPath).Copy();
+            SerializedProperty serializedValuesProperty = property.FindPropertyRelative(s_propertyPath).Copy();
             var propertyField = new PropertyField(serializedValuesProperty, property.displayName)
             {
                 userData = serializedValuesProperty,

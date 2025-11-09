@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine.Pool;
 
 namespace BeardPhantom.UnityExtended
 {
@@ -53,9 +54,13 @@ namespace BeardPhantom.UnityExtended
 
             public void Invoke(T args)
             {
-                foreach (OnEventInvoked<T> callback in _callbacks)
+                using (ListPool<OnEventInvoked<T>>.Get(out List<OnEventInvoked<T>> callbacksCopy))
                 {
-                    callback.Invoke(args);
+                    callbacksCopy.AddRange(_callbacks);
+                    foreach (OnEventInvoked<T> callback in callbacksCopy)
+                    {
+                        callback.Invoke(args);
+                    }
                 }
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -8,14 +9,14 @@ namespace BeardPhantom.UnityExtended
     {
         private readonly Mesh _mesh;
 
-        private readonly List<Material> _materials;
-
         private readonly int _subMeshCount;
 
         private readonly RenderProxyOptions _options;
 
+        private List<Material> _materials;
+
         /// <inheritdoc />
-        public override IEnumerable<Material> Materials => _materials;
+        public override IEnumerable<Material> Materials => _materials ?? Enumerable.Empty<Material>();
 
         private MeshRendererSubObject(MeshRenderer renderer, MeshFilter meshFilter, RenderProxyOptions options)
         {
@@ -70,13 +71,15 @@ namespace BeardPhantom.UnityExtended
         /// <inheritdoc />
         public override void Dispose()
         {
-            ListPool<Material>.Release(_materials);
             if (_options.HasFlagFast(RenderProxyOptions.UseUniqueMaterialInstances))
             {
                 foreach (Material material in _materials)
                 {
                     Object.Destroy(material);
                 }
+
+                ListPool<Material>.Release(_materials);
+                _materials = null;
             }
 
             if (_options.HasFlagFast(RenderProxyOptions.UseUniqueMeshInstance))

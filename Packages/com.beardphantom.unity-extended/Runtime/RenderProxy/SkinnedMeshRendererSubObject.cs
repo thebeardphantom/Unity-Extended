@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -8,16 +9,16 @@ namespace BeardPhantom.UnityExtended
     {
         private readonly Mesh _mesh;
 
-        private readonly List<Material> _materials;
-
         private readonly int _subMeshCount;
 
         private readonly RenderProxyOptions _options;
 
         private readonly SkinnedMeshRenderer _rendererSrc;
 
+        private List<Material> _materials;
+
         /// <inheritdoc />
-        public override IEnumerable<Material> Materials => _materials;
+        public override IEnumerable<Material> Materials => _materials ?? Enumerable.Empty<Material>();
 
         public SkinnedMeshRendererSubObject(SkinnedMeshRenderer renderer, RenderProxyOptions options)
         {
@@ -26,7 +27,9 @@ namespace BeardPhantom.UnityExtended
             LocalToWorld = RenderProxyUtility.CreateMatrix(renderer.transform);
 
             _rendererSrc = renderer;
-            _mesh = Object.Instantiate(renderer.sharedMesh);
+            _mesh = options.HasFlagFast(RenderProxyOptions.UseUniqueMeshInstance)
+                ? Object.Instantiate(renderer.sharedMesh)
+                : renderer.sharedMesh;
 
             // Copy shared materials
             using (ListPool<Material>.Get(out List<Material> sharedMaterials))
@@ -60,7 +63,6 @@ namespace BeardPhantom.UnityExtended
         /// <inheritdoc />
         public override void Dispose()
         {
-            ListPool<Material>.Release(_materials);
             if (_options.HasFlagFast(RenderProxyOptions.UseUniqueMaterialInstances))
             {
                 foreach (Material material in _materials)
@@ -68,6 +70,9 @@ namespace BeardPhantom.UnityExtended
                     Object.Destroy(material);
                 }
             }
+
+            ListPool<Material>.Release(_materials);
+            _materials = null;
 
             if (_options.HasFlagFast(RenderProxyOptions.UseUniqueMeshInstance))
             {

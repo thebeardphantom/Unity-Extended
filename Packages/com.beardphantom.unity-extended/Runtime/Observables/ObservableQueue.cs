@@ -1,14 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace BeardPhantom.UnityExtended
 {
-    public interface IObservableQueue : ICollection
-    {
-        void CopyFrom(Array array);
-    }
-
     public class ObservableQueue<T> : Queue<T>, IObservableQueue
     {
         public event LiteEvent<ItemEnqueuedArgs>.OnEventInvoked ItemEnqueued

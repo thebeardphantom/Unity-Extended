@@ -11,24 +11,24 @@ namespace BeardPhantom.UnityExtended.Editor
         {
             add
             {
-                var callback = (EditorApplication.CallbackFunction)_globalEventHandler.GetValue(null);
+                var callback = (EditorApplication.CallbackFunction)s_globalEventHandler.GetValue(null);
                 callback += value;
-                _globalEventHandler.SetValue(null, callback);
+                s_globalEventHandler.SetValue(null, callback);
             }
             remove
             {
-                var callback = (EditorApplication.CallbackFunction)_globalEventHandler.GetValue(null);
+                var callback = (EditorApplication.CallbackFunction)s_globalEventHandler.GetValue(null);
                 callback -= value;
-                _globalEventHandler.SetValue(null, callback);
+                s_globalEventHandler.SetValue(null, callback);
             }
         }
 
-        private static readonly FieldInfo _globalEventHandler;
+        private static readonly FieldInfo s_globalEventHandler;
 
         static EditorApplicationUtility()
         {
             Type type = typeof(EditorApplication);
-            _globalEventHandler = type.GetField(
+            s_globalEventHandler = type.GetField(
                 "globalEventHandler",
                 BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
         }

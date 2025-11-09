@@ -44,19 +44,21 @@ namespace BeardPhantom.UnityExtended
             Type = typeof(T);
             Values = new NativeArray<T>((T[])Enum.GetValues(Type), Allocator.Domain);
             Names = Enum.GetNames(Type);
+
             IsFlagsEnum = true;
             var allFlagsValue = 0;
             foreach (T value in Values)
             {
                 int intValue = UnsafeUtility.EnumToInt(value);
                 allFlagsValue |= intValue;
-                if (!Mathf.IsPowerOfTwo(intValue))
+                if (IsFlagsEnum && intValue != 0 && !Mathf.IsPowerOfTwo(intValue))
                 {
                     IsFlagsEnum = false;
+                    break;
                 }
             }
 
-            AllFlagsValue = (T)Enum.ToObject(Type, allFlagsValue);
+            AllFlagsValue = IsFlagsEnum ? (T)Enum.ToObject(Type, allFlagsValue) : default;
         }
 
         public static void Prime()
