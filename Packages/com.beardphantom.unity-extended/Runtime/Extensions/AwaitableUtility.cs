@@ -1,5 +1,6 @@
 ﻿#if UNITY_6000_0_OR_NEWER
 using System;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Unity.Jobs;
@@ -9,29 +10,16 @@ namespace BeardPhantom.UnityExtended
 {
     public static partial class AwaitableUtility
     {
+        public static Awaitable Completed => GetCompleted();
+
         public static async Awaitable ToAwaitable(this Task task)
         {
-            // Avoid context capture; Awaitable resumes on Unity’s player loop when awaited.
             await task.ConfigureAwait(false);
         }
 
         public static async Awaitable ToAwaitable(this ValueTask task)
         {
-            // Same rationale.
             await task.ConfigureAwait(false);
-        }
-
-        public static async Awaitable<T> FromResult<T>(T result)
-        {
-            // Keep a minimal await to avoid CS1998 warnings; already completed.
-            await Task.CompletedTask.ConfigureAwait(false);
-            return result;
-        }
-
-        public static async Awaitable GetCompleted()
-        {
-            // Already-completed awaitable.
-            await Task.CompletedTask.ConfigureAwait(false);
         }
 
         public static void Forget(this Awaitable awaitable, bool silenceOperationCancelledExceptions = true)
@@ -127,6 +115,14 @@ namespace BeardPhantom.UnityExtended
             }
         }
 
+        /// <summary>
+        /// Gets an Awaitable that is already completed.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        private static async Awaitable GetCompleted() { }
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+
         private static async Task ForgetImpl(Awaitable awaitable, bool silenceOperationCancelledExceptions)
         {
             try
@@ -151,6 +147,19 @@ namespace BeardPhantom.UnityExtended
             {
                 Debug.LogException(e);
             }
+        }
+    }
+
+    public static class AwaitableUtility<T>
+    {
+        public static Awaitable<T> Completed => FromResult();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        public static async Awaitable<T> FromResult(T result = default)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+        {
+            return result;
         }
     }
 }
