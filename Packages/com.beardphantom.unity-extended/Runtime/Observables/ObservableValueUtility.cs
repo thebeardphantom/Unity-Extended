@@ -27,7 +27,7 @@ namespace BeardPhantom.UnityExtended
             this ObservableValue<T> observableValue,
             out ObservableValue<T> outObservableValue)
         {
-            ObservableChangeScope<T> scope = BeginChangeScope(observableValue);
+            ObservableChangeScope<T> scope = observableValue.BeginChangeScope();
             outObservableValue = observableValue;
             return scope;
         }

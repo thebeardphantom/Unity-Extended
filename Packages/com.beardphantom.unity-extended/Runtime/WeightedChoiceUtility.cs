@@ -9,18 +9,18 @@ namespace BeardPhantom.UnityExtended
 
         public static T ChooseFromWeighted<T>(this IReadOnlyList<T> choices) where T : IWeightedChoice
         {
-            return ChooseFromWeighted(choices, UnityRandomNumberGenerator.Instance);
+            return choices.ChooseFromWeighted(UnityRandomNumberGenerator.Instance);
         }
 
         public static int ChooseIndexFromWeighted<T>(this IReadOnlyList<T> choices) where T : IWeightedChoice
         {
-            return ChooseIndexFromWeighted(choices, UnityRandomNumberGenerator.Instance);
+            return choices.ChooseIndexFromWeighted(UnityRandomNumberGenerator.Instance);
         }
 
         public static T ChooseFromWeighted<T>(this IReadOnlyList<T> choices, Random systemRandom) where T : IWeightedChoice
         {
             s_systemRandomNumberGenerator.Random = systemRandom;
-            T result = ChooseFromWeighted(choices, s_systemRandomNumberGenerator);
+            T result = choices.ChooseFromWeighted(s_systemRandomNumberGenerator);
             s_systemRandomNumberGenerator.Random = null;
             return result;
         }
@@ -28,7 +28,7 @@ namespace BeardPhantom.UnityExtended
         public static int ChooseIndexFromWeighted<T>(this IReadOnlyList<T> choices, Random systemRandom) where T : IWeightedChoice
         {
             s_systemRandomNumberGenerator.Random = systemRandom;
-            int index = ChooseIndexFromWeighted(choices, s_systemRandomNumberGenerator);
+            int index = choices.ChooseIndexFromWeighted(s_systemRandomNumberGenerator);
             s_systemRandomNumberGenerator.Random = null;
             return index;
         }
@@ -36,7 +36,7 @@ namespace BeardPhantom.UnityExtended
         public static T ChooseFromWeighted<T>(this IReadOnlyList<T> choices, IRandomNumberGenerator rng)
             where T : IWeightedChoice
         {
-            int index = ChooseIndexFromWeighted(choices, rng);
+            int index = choices.ChooseIndexFromWeighted(rng);
             return index < 0 ? default : choices[index];
         }
 

@@ -38,7 +38,7 @@ namespace BeardPhantom.UnityExtended.HexMath
 
         public static Vector2Int GetNeighborOffsetFlat(this Vector2Int cell, Direction direction)
         {
-            return GetNeighborOffsetFlat(cell.To3D(), direction).To2D();
+            return cell.To3D().GetNeighborOffsetFlat(direction).To2D();
         }
 
         public static Vector3Int GetNeighborOffsetFlat(this Vector3Int cell, Direction direction)
@@ -52,12 +52,12 @@ namespace BeardPhantom.UnityExtended.HexMath
 
         public static Vector2Int GetNeighborCellFlat(this Vector2Int cell, Direction direction)
         {
-            return GetNeighborCellFlat(cell.To3D(), direction).To2D();
+            return cell.To3D().GetNeighborCellFlat(direction).To2D();
         }
 
         public static Vector3Int GetNeighborCellFlat(this Vector3Int cell, Direction direction)
         {
-            Vector3Int offset = GetNeighborOffsetFlat(cell, direction);
+            Vector3Int offset = cell.GetNeighborOffsetFlat(direction);
             return cell + offset;
         }
 

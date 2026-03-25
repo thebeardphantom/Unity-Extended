@@ -1,0 +1,22 @@
+{
+    "name": "BeardPhantom.UnityExtended.Physics2D",
+    "rootNamespace": "",
+    "references": [
+        "GUID:85a17685812c1074dbb3c408458ccaf4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.physics2d",
+            "expression": "0.0.0",
+            "define": "UNITY_PHYSICS2D"
+        }
+    ],
+    "noEngineReferences": false
+}

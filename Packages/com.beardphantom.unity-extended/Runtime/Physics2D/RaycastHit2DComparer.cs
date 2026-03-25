@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_PHYSICS2D
+using UnityEngine;
 
 namespace BeardPhantom.UnityExtended
 {
@@ -10,3 +11,4 @@ namespace BeardPhantom.UnityExtended
         }
     }
 }
+#endif

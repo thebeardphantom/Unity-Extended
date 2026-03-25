@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_PHYSICS2D
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -140,3 +141,4 @@ namespace BeardPhantom.UnityExtended
         }
     }
 }
+#endif

@@ -3,6 +3,9 @@ using UnityEngine.Pool;
 
 namespace BeardPhantom.UnityExtended
 {
+    /// <summary>
+    /// Provides extension methods for working with object pools in Unity.
+    /// </summary>
     public static class ObjectPoolExtensions
     {
         /// <summary>
