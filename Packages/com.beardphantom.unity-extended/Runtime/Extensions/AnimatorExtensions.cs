@@ -45,8 +45,8 @@ namespace BeardPhantom.UnityExtended
             }
 
             animator.Play(stateHash, -1, 0f);
-            await AwaitableUtility.WaitUntil(IsPlaying, cancellationToken);
-            await AwaitableUtility.WaitWhile(IsPlaying, cancellationToken);
+            await AwaitableUtility.WaitUntilAsync(IsPlaying, cancellationToken);
+            await AwaitableUtility.WaitWhileAsync(IsPlaying, cancellationToken);
             return;
 
             bool IsPlaying()

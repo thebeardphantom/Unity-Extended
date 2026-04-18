@@ -1,5 +1,6 @@
-﻿using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using JetBrains.Annotations;
+using System.Runtime.CompilerServices;
+using Object = UnityEngine.Object;
 
 namespace BeardPhantom.UnityExtended
 {
@@ -16,8 +17,10 @@ namespace BeardPhantom.UnityExtended
         /// <typeparam name="T">The type of the object to check. Must be a reference type.</typeparam>
         /// <param name="obj">The object to check for null.</param>
         /// <returns>True if the object is null or a Unity "fake null"; otherwise, false.</returns>
+        [Pure]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool IsNull<T>(this T obj) where T : class
+        [ContractAnnotation("null => true; notnull => false")]
+        public static bool IsNull<T>([CanBeNull] this T obj) where T : class
         {
             if (obj is Object unityObj)
             {
@@ -40,8 +43,10 @@ namespace BeardPhantom.UnityExtended
         /// <typeparam name="T">The type of the object being checked.</typeparam>
         /// <param name="obj">The object to check for non-nullity.</param>
         /// <returns>True if the object is not null; otherwise, false.</returns>
+        [Pure]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool IsNotNull<T>(this T obj) where T : class
+        [ContractAnnotation("null => false; notnull => true")]
+        public static bool IsNotNull<T>([CanBeNull] this T obj) where T : class
         {
             return !obj.IsNull();
         }

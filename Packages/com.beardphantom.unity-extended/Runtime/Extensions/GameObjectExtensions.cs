@@ -43,5 +43,23 @@ namespace BeardPhantom.UnityExtended
             result = default;
             return false;
         }
+
+        /// <summary>
+        /// Sets the layer of the specified GameObject and all its child GameObjects recursively.
+        /// </summary>
+        /// <param name="gameObject">
+        /// The GameObject whose layer and the layer of its children will be changed.
+        /// </param>
+        /// <param name="layer">
+        /// The layer to apply to the GameObject and its children.
+        /// </param>
+        public static void SetLayerRecursively(this GameObject gameObject, int layer)
+        {
+            gameObject.layer = layer;
+            foreach (Transform child in gameObject.transform)
+            {
+                child.gameObject.SetLayerRecursively(layer);
+            }
+        }
     }
 }

@@ -90,7 +90,7 @@ namespace BeardPhantom.UnityExtended
         /// <returns>
         /// An <see cref="Awaitable" /> that resolves after the specified number of real-time seconds has passed.
         /// </returns>
-        public static async Awaitable WaitForSecondsRealtime(float seconds, CancellationToken cancellationToken = default)
+        public static async Awaitable WaitForSecondsRealtimeAsync(float seconds, CancellationToken cancellationToken = default)
         {
             if (seconds <= 0f)
             {
@@ -119,7 +119,7 @@ namespace BeardPhantom.UnityExtended
         /// <returns>
         /// An <see cref="Awaitable" /> that resolves once the predicate returns true.
         /// </returns>
-        public static async Awaitable WaitUntil(Func<bool> predicate, CancellationToken cancellationToken = default)
+        public static async Awaitable WaitUntilAsync(Func<bool> predicate, CancellationToken cancellationToken = default)
         {
             if (predicate == null)
             {
@@ -147,7 +147,7 @@ namespace BeardPhantom.UnityExtended
         /// <returns>
         /// An <see cref="Awaitable" /> that resolves when the specified condition evaluates to false or the operation is canceled.
         /// </returns>
-        public static async Awaitable WaitWhile(Func<bool> predicate, CancellationToken cancellationToken = default)
+        public static async Awaitable WaitWhileAsync(Func<bool> predicate, CancellationToken cancellationToken = default)
         {
             if (predicate == null)
             {
@@ -234,7 +234,8 @@ namespace BeardPhantom.UnityExtended
         private static async Awaitable GetCompleted() { }
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 
-        private static async Task ForgetImpl(Awaitable awaitable, bool silenceOperationCancelledExceptions)
+        // ReSharper disable Unity.PerformanceAnalysis
+        private static async Awaitable ForgetImpl(Awaitable awaitable, bool silenceOperationCancelledExceptions)
         {
             try
             {
@@ -247,7 +248,7 @@ namespace BeardPhantom.UnityExtended
             }
         }
 
-        private static async Task ForgetImpl<T>(Awaitable<T> awaitable, bool silenceOperationCancelledExceptions)
+        private static async Awaitable ForgetImpl<T>(Awaitable<T> awaitable, bool silenceOperationCancelledExceptions)
         {
             try
             {

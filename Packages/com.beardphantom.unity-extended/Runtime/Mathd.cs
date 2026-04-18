@@ -194,21 +194,44 @@ namespace BeardPhantom.UnityExtended
             return Math.Log10(f);
         }
 
+        /// <summary>
+        /// Returns the smallest integral value that is greater than or equal to the specified number.
+        /// </summary>
+        /// <param name="f">The number to be rounded up.</param>
+        /// <returns>The smallest integral value greater than or equal to <paramref name="f" />.</returns>
         public static double Ceil(double f)
         {
             return Math.Ceiling(f);
         }
 
+        /// <summary>
+        /// Rounds the specified double-precision floating-point value to the largest integer less than or equal to it.
+        /// </summary>
+        /// <param name="f">The double-precision floating-point value to round down.</param>
+        /// <returns>The largest integer less than or equal to the specified value.</returns>
         public static double Floor(double f)
         {
             return Math.Floor(f);
         }
 
+        /// <summary>
+        /// Rounds a double-precision floating-point value to the nearest integral value.
+        /// </summary>
+        /// <param name="f">The double-precision floating-point number to be rounded.</param>
+        /// <returns>
+        /// The integer nearest to the specified value. If the fractional component of the value is halfway between
+        /// two integers, the even integer is returned.
+        /// </returns>
         public static double Round(double f)
         {
             return Math.Round(f);
         }
 
+        /// <summary>
+        /// Rounds the specified double value up to the nearest integer and returns the result as an int.
+        /// </summary>
+        /// <param name="f">The double value to be rounded up.</param>
+        /// <returns>The smallest integer greater than or equal to the specified double value.</returns>
         public static int CeilToInt(double f)
         {
             return (int)Math.Ceiling(f);

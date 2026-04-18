@@ -9,7 +9,7 @@ namespace BeardPhantom.UnityExtended
 {
     public static partial class AwaitableUtility
     {
-        public static async Awaitable WhenAll(IEnumerable<Awaitable> awaitables, CancellationToken cancellationToken = default)
+        public static async Awaitable WhenAllAsync(IEnumerable<Awaitable> awaitables, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
             using PooledObject<List<Awaitable>> _ = ListPool<Awaitable>.Get(out List<Awaitable> list);
@@ -33,7 +33,7 @@ namespace BeardPhantom.UnityExtended
             }
         }
 
-        public static async Awaitable WhenAll(Awaitable awaitable1, Awaitable awaitable2, CancellationToken cancellationToken = default)
+        public static async Awaitable WhenAllAsync(Awaitable awaitable1, Awaitable awaitable2, CancellationToken cancellationToken = default)
         {
             while (!awaitable1.IsCompleted || !awaitable2.IsCompleted)
             {
@@ -46,7 +46,7 @@ namespace BeardPhantom.UnityExtended
             await awaitable2;
         }
 
-        public static async Awaitable WhenAll(
+        public static async Awaitable WhenAllAsync(
             Awaitable awaitable1,
             Awaitable awaitable2,
             Awaitable awaitable3,
@@ -64,7 +64,7 @@ namespace BeardPhantom.UnityExtended
             await awaitable3;
         }
 
-        public static async Awaitable WhenAll(
+        public static async Awaitable WhenAllAsync(
             Awaitable awaitable1,
             Awaitable awaitable2,
             Awaitable awaitable3,
@@ -84,7 +84,7 @@ namespace BeardPhantom.UnityExtended
             await awaitable4;
         }
 
-        public static async Awaitable WhenAll(
+        public static async Awaitable WhenAllAsync(
             Awaitable awaitable1,
             Awaitable awaitable2,
             Awaitable awaitable3,
@@ -110,7 +110,7 @@ namespace BeardPhantom.UnityExtended
             await awaitable5;
         }
 
-        public static async Awaitable WhenAll(
+        public static async Awaitable WhenAllAsync(
             Awaitable awaitable1,
             Awaitable awaitable2,
             Awaitable awaitable3,
@@ -139,7 +139,7 @@ namespace BeardPhantom.UnityExtended
             await awaitable6;
         }
 
-        public static async Awaitable WhenAll(
+        public static async Awaitable WhenAllAsync(
             Awaitable awaitable1,
             Awaitable awaitable2,
             Awaitable awaitable3,
@@ -171,7 +171,7 @@ namespace BeardPhantom.UnityExtended
             await awaitable7;
         }
 
-        public static async Awaitable WhenAll(
+        public static async Awaitable WhenAllAsync(
             Awaitable awaitable1,
             Awaitable awaitable2,
             Awaitable awaitable3,
@@ -206,7 +206,7 @@ namespace BeardPhantom.UnityExtended
             await awaitable8;
         }
 
-        public static async Awaitable<(T1 Result1, T2 Result2)> WhenAll<T1, T2>(
+        public static async Awaitable<(T1 Result1, T2 Result2)> WhenAllAsync<T1, T2>(
             Awaitable<T1> awaitable1,
             Awaitable<T2> awaitable2,
             CancellationToken cancellationToken = default)
@@ -222,7 +222,7 @@ namespace BeardPhantom.UnityExtended
             return (result1, result2);
         }
 
-        public static async Awaitable<(T1 Result1, T2 Result2, T3 Result3)> WhenAll<T1, T2, T3>(
+        public static async Awaitable<(T1 Result1, T2 Result2, T3 Result3)> WhenAllAsync<T1, T2, T3>(
             Awaitable<T1> awaitable1,
             Awaitable<T2> awaitable2,
             Awaitable<T3> awaitable3,
@@ -240,7 +240,7 @@ namespace BeardPhantom.UnityExtended
             return (result1, result2, result3);
         }
 
-        public static async Awaitable<(T1 Result1, T2 Result2, T3 Result3, T4 Result4)> WhenAll<T1, T2, T3, T4>(
+        public static async Awaitable<(T1 Result1, T2 Result2, T3 Result3, T4 Result4)> WhenAllAsync<T1, T2, T3, T4>(
             Awaitable<T1> awaitable1,
             Awaitable<T2> awaitable2,
             Awaitable<T3> awaitable3,
@@ -263,7 +263,7 @@ namespace BeardPhantom.UnityExtended
             return (result1, result2, result3, result4);
         }
 
-        public static async Awaitable<(T1 Result1, T2 Result2, T3 Result3, T4 Result4, T5 Result5)> WhenAll<T1, T2, T3, T4, T5>(
+        public static async Awaitable<(T1 Result1, T2 Result2, T3 Result3, T4 Result4, T5 Result5)> WhenAllAsync<T1, T2, T3, T4, T5>(
             Awaitable<T1> awaitable1,
             Awaitable<T2> awaitable2,
             Awaitable<T3> awaitable3,
@@ -289,7 +289,7 @@ namespace BeardPhantom.UnityExtended
             return (result1, result2, result3, result4, result5);
         }
 
-        public static async Awaitable<(T1 Result1, T2 Result2, T3 Result3, T4 Result4, T5 Result5, T6 Result6)> WhenAll<T1, T2, T3, T4, T5,
+        public static async Awaitable<(T1 Result1, T2 Result2, T3 Result3, T4 Result4, T5 Result5, T6 Result6)> WhenAllAsync<T1, T2, T3, T4, T5,
             T6>(
             Awaitable<T1> awaitable1,
             Awaitable<T2> awaitable2,
@@ -319,7 +319,7 @@ namespace BeardPhantom.UnityExtended
             return (result1, result2, result3, result4, result5, result6);
         }
 
-        public static async Awaitable<(T1 Result1, T2 Result2, T3 Result3, T4 Result4, T5 Result5, T6 Result6, T7 Result7)> WhenAll<T1, T2,
+        public static async Awaitable<(T1 Result1, T2 Result2, T3 Result3, T4 Result4, T5 Result5, T6 Result6, T7 Result7)> WhenAllAsync<T1, T2,
             T3, T4, T5, T6, T7>(
             Awaitable<T1> awaitable1,
             Awaitable<T2> awaitable2,
@@ -353,7 +353,7 @@ namespace BeardPhantom.UnityExtended
         }
 
         public static async Awaitable<(T1 Result1, T2 Result2, T3 Result3, T4 Result4, T5 Result5, T6 Result6, T7 Result7, T8 Result8)>
-            WhenAll<T1, T2, T3, T4, T5, T6, T7, T8>(
+            WhenAllAsync<T1, T2, T3, T4, T5, T6, T7, T8>(
                 Awaitable<T1> awaitable1,
                 Awaitable<T2> awaitable2,
                 Awaitable<T3> awaitable3,

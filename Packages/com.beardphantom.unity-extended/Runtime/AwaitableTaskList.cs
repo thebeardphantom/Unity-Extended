@@ -39,7 +39,7 @@ namespace BeardPhantom.UnityExtended
         public async Awaitable WhenAll()
         {
             ThrowIfUnusable();
-            await AwaitableUtility.WhenAll(_tasks);
+            await AwaitableUtility.WhenAllAsync(_tasks);
             MarkUsed();
         }
 
