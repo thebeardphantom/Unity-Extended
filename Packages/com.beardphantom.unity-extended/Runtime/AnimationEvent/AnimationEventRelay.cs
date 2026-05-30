@@ -37,7 +37,7 @@ namespace BeardPhantom.UnityExtended
 
         private void OnValidate()
         {
-            TryGetComponent<Animator>(out Animator animator);
+            TryGetComponent(out Animator animator);
             Animator = animator;
         }
 

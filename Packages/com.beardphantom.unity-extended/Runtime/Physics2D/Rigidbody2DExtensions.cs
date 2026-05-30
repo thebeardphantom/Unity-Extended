@@ -11,19 +11,19 @@ namespace BeardPhantom.UnityExtended
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void LookAt2D(this Rigidbody2D rigidbody2D, Transform other)
         {
-            LookAt2D(rigidbody2D, other.GetPosition2D(), Transform2DExtensions.Forward2D);
+            rigidbody2D.LookAt2D(other.GetPosition2D(), Transform2DExtensions.Forward2D);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void LookAt2D(this Rigidbody2D rigidbody2D, Transform other, Vector2 forward2D)
         {
-            LookAt2D(rigidbody2D, other.GetPosition2D(), forward2D);
+            rigidbody2D.LookAt2D(other.GetPosition2D(), forward2D);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void LookAt2D(this Rigidbody2D rigidbody2D, Vector2 position)
         {
-            LookAt2D(rigidbody2D, position, Transform2DExtensions.Forward2D);
+            rigidbody2D.LookAt2D(position, Transform2DExtensions.Forward2D);
         }
 
         public static void LookAt2D(this Rigidbody2D rigidbody2D, Vector2 position, Vector2 forward2D)
@@ -35,7 +35,7 @@ namespace BeardPhantom.UnityExtended
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float GetLookAtAngle2D(this Rigidbody2D rigidbody2D, Vector2 position)
         {
-            return GetLookAtAngle2D(rigidbody2D, position, Transform2DExtensions.Forward2D);
+            return rigidbody2D.GetLookAtAngle2D(position, Transform2DExtensions.Forward2D);
         }
 
         public static float GetLookAtAngle2D(this Rigidbody2D rigidbody2D, Vector2 position, Vector2 forward2D)
@@ -48,13 +48,13 @@ namespace BeardPhantom.UnityExtended
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 DirectionTo(this Rigidbody2D rigidbody2D, Transform other)
         {
-            return DirectionTo(rigidbody2D, other.GetPosition2D());
+            return rigidbody2D.DirectionTo(other.GetPosition2D());
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 DirectionTo(this Rigidbody2D rigidbody2D, Rigidbody2D other)
         {
-            return DirectionTo(rigidbody2D, other.position);
+            return rigidbody2D.DirectionTo(other.position);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -72,13 +72,13 @@ namespace BeardPhantom.UnityExtended
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float DistanceTo(this Rigidbody2D rigidbody2D, Rigidbody2D other)
         {
-            return DistanceTo(rigidbody2D, other.position);
+            return rigidbody2D.DistanceTo(other.position);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float DistanceTo(this Rigidbody2D rigidbody2D, Transform transform)
         {
-            return DistanceTo(rigidbody2D, transform.GetPosition2D());
+            return rigidbody2D.DistanceTo(transform.GetPosition2D());
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -90,13 +90,13 @@ namespace BeardPhantom.UnityExtended
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float DistanceToSqr(this Rigidbody2D rigidbody2D, Rigidbody2D other)
         {
-            return DistanceToSqr(rigidbody2D, other.position);
+            return rigidbody2D.DistanceToSqr(other.position);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float DistanceToSqr(this Rigidbody2D rigidbody2D, Transform transform)
         {
-            return DistanceToSqr(rigidbody2D, transform.GetPosition2D());
+            return rigidbody2D.DistanceToSqr(transform.GetPosition2D());
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

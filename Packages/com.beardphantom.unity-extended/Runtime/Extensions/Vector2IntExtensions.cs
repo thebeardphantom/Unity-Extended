@@ -4,7 +4,7 @@ using UnityEngine;
 namespace BeardPhantom.UnityExtended
 {
     /// <summary>
-    /// Provides extension methods for the <see cref="Vector2Int"/> struct, adding additional functionality
+    /// Provides extension methods for the <see cref="Vector2Int" /> struct, adding additional functionality
     /// to manipulate and convert instances of this type.
     /// </summary>
     public static class Vector2IntExtensions
@@ -22,10 +22,10 @@ namespace BeardPhantom.UnityExtended
         }
 
         /// <summary>
-        /// Returns a new <see cref="Vector2Int"/> with the absolute values of the x and y components of the given vector.
+        /// Returns a new <see cref="Vector2Int" /> with the absolute values of the x and y components of the given vector.
         /// </summary>
-        /// <param name="v2Int">The input <see cref="Vector2Int"/> vector.</param>
-        /// <returns>A new <see cref="Vector2Int"/> where both x and y components are converted to their absolute values.</returns>
+        /// <param name="v2Int">The input <see cref="Vector2Int" /> vector.</param>
+        /// <returns>A new <see cref="Vector2Int" /> where both x and y components are converted to their absolute values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2Int Abs(this Vector2Int v2Int)
         {

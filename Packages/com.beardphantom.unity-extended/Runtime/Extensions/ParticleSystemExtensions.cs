@@ -3,7 +3,7 @@
 namespace BeardPhantom.UnityExtended
 {
     /// <summary>
-    /// Provides extension methods for Unity's <see cref="ParticleSystem"/> class.
+    /// Provides extension methods for Unity's <see cref="ParticleSystem" /> class.
     /// </summary>
     public static class ParticleSystemExtensions
     {

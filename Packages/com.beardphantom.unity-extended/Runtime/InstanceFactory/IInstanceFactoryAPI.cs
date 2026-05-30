@@ -13,7 +13,7 @@ namespace BeardPhantom.UnityExtended
             Quaternion? rotation = null,
             InstantiateParameters instantiateParameters = default,
             CancellationToken cancellationToken = default);
-        
+
         GameObject Instantiate(
             GameObject original,
             Vector3? position = null,

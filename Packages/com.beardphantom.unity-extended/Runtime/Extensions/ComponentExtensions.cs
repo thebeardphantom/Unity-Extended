@@ -157,7 +157,7 @@ namespace BeardPhantom.UnityExtended
 
             return clone;
         }
-        
+
         private static bool IsRenderingComponent(Component component)
         {
             return component is Renderer or MeshFilter or Animator;
